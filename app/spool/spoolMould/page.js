@@ -51,6 +51,7 @@ export default async function procedureOfMould(req, res) {
 							<li>In case inspection passed, do the winding test at the winding machine with experienced operator. </li>
 							<li>With operator's opinion, get samples with modified extrusion specification like cooling time and total cycle time. </li>
 							<li>Issue Pass certification and check the extrusion condition from time to time. </li>
+							<li>Refer below Charts </li>
 						</ol>
 					</div>
 				</main>
