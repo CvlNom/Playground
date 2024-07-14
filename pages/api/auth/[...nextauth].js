@@ -9,8 +9,8 @@ import bcrypt from 'bcrypt';
 export const authOptions = {
 	providers: [
 		GithubProvider({
-			clientId: 'Ov23lijf7YgwTmIOKroR',
-			clientSecret: '89e574bc224aa8a9f70dac852f8deb61524999ee',
+			clientId: 'Ov23licU7IWlWJKkaT3a',
+			clientSecret: '9d2c25ebbecbab975c5ccc8cd499e1e2c0fd9e7a',
 		}),
 
 		CredentialsProvider({
