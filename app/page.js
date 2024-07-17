@@ -1,14 +1,17 @@
-import { connectDB } from '@/util/database';
-import { MongoClient } from 'mongodb';
+// import { connectDB } from '@/util/database';
+// import { MongoClient } from 'mongodb';
 import Link from 'next/link';
+import WeatherBox from './component/WeatherBox';
 
 export default async function Home() {
-	const client = await connectDB;
-	const db = client.db('forum');
+	// const client = await connectDB;
+	// const db = client.db('forum');
 
-	//post에 있는 모든 자료를 가져오기. 서버 컴포넌트에서만 작성
-	let result = await db.collection('post').find().toArray();
+	// //post에 있는 모든 자료를 가져오기. 서버 컴포넌트에서만 작성
+	// let result = await db.collection('post').find().toArray();
 	// console.log(result)
+
+	
 
 	return (
 		<div className='pageBody'>
@@ -19,14 +22,14 @@ export default async function Home() {
 
 			<main id='mainHome'>
 				<div className='homeItem1'>
-				<h2>Welcome to Tube & Wire Drawing Workshop</h2>
-					<p>Engineering Experience of</p>
+					<h1>Welcome to wire-lab.net</h1>
+					{/* <p>Engineering Experience of</p>
 					<ul className='homeUl'>
 						<li>Flux Cored Wire </li>
 						<li>Solid Wire & Stick Electrode</li>
 						<li>Seamless FCW Wire</li>
 						<li>Aluminum Welding Wire</li>
-					</ul>
+					</ul> */}
 				</div>
 				<div className='homeItem1'>
 					<p>Share Design Tips of</p>
@@ -36,6 +39,9 @@ export default async function Home() {
 						<li>Tube Forming Profile</li>
 						<li>Plastic Spool </li>
 					</ul>
+				</div>
+				<div className='homeItem1' id='humidCheck'>
+					<WeatherBox />
 				</div>
 				<div className='homeItem2'>
 					<Link href='/api/auth/signin' className='loginBox'>
