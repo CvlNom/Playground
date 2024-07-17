@@ -396,6 +396,15 @@ footer p {
 
 
 /* 각 ID에 개별적인 background-image 설정 */
+/* .loginSignup {
+	background-image: url('/back-home01.png');
+	background-size:cover;
+	margin: 0px;
+  height: 100vh;
+	background-position: center; 
+	
+} */
+
 #asideCRD {
     background-image: url('/crd_case_assemble.png');
 }
@@ -403,7 +412,7 @@ footer p {
     background-image: url('/crd01.png');
 }
 #asideCRD01 {
-    background-image: url('/scrd.png');
+    background-image: url('/back_home.png');
 }
 #asideForming {
     background-image: url('/back_form01.png');
@@ -437,6 +446,7 @@ footer p {
 }
 #asideHome {
     background-image: url('/back_home.png');
+		/* display: none; */
 }
 #mainHome {
     background-image: url('/formingFlower.png');
@@ -446,7 +456,7 @@ main {
 }
 
 #asideRegister {
-	background-image: url('/PCD.png');
+	background-image: url('/grip.png');
 }
 #asideForum,
 #asideWrite,
@@ -851,7 +861,7 @@ body {
 .sequence-table {
 	display: flex;
 	flex-direction: column;
-	width: 1000px;
+	width: 900px;
 }
 .columns > p {
 	font-size: 14px;
@@ -867,7 +877,7 @@ body {
 }
 
 .columns > input {
-	width: 66px;
+	width: 61px;
 	text-align: right;
 	padding-top: 4px;
 	padding-bottom: 4px;
@@ -1050,4 +1060,12 @@ main > h2{
 
 a {
 	color: blue;
+}
+
+.weather-box{
+	background-color: rgba(127, 255, 212, 0.451);
+	padding: 5px 20px;
+	border-radius: 5px;
+	text-align: center;
+	margin-bottom: 50px;
 }
