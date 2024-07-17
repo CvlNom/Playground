@@ -280,7 +280,7 @@ const Inputs = () => {
 							checked={selectedRadio === 'option1'}
 							onChange={handleRadioChange}
 						/>
-						<label for='choice1'>D15 (ø5.2 - 2.5)</label>
+						<label htmlFor='choice1'>D15 (ø5.2 - 2.5)</label>
 						<input
 							type='radio'
 							id='choice2'
@@ -289,7 +289,7 @@ const Inputs = () => {
 							checked={selectedRadio === 'option2'}
 							onChange={handleRadioChange}
 						/>
-						<label for='choice2'>D18 (ø5.2 - 3.5)</label>
+						<label htmlFor='choice2'>D18 (ø5.2 - 3.5)</label>
 						<input
 							type='radio'
 							id='choice3'
@@ -298,7 +298,7 @@ const Inputs = () => {
 							checked={selectedRadio === 'option3'}
 							onChange={handleRadioChange}
 						/>
-						<label for='choice3'>D21 (ø6.8 - 3.86)</label>
+						<label htmlFor='choice3'>D21 (ø6.8 - 3.86)</label>
 						<input
 							type='radio'
 							id='choice4'
@@ -307,7 +307,7 @@ const Inputs = () => {
 							checked={selectedRadio === 'option4'}
 							onChange={handleRadioChange}
 						/>
-						<label for='choice4'>D24 (ø6.8 - 5.3)</label>
+						<label htmlFor='choice4'>D24 (ø6.8 - 5.3)</label>
 						<br />
 					</fieldset>
 				</div>
