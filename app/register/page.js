@@ -11,10 +11,12 @@ export default function Register() {
 				<div>
 					<form method='POST' action='/api/auth/signup' className='loginSignup'>
 						<input name='name' type='text' placeholder='Put your name' />
-						<p>Please make a unique name as possible.  </p>
+						<p>Please make a unique name as possible. </p>
 						<input name='email' type='text' placeholder='E-mail Address' />
 						<input name='password' type='password' placeholder='Password' />
-						<button type='submit'>SIGN UP</button>
+						<button type='submit' style={{ backgroundColor: 'lightgreen' }}>
+							SIGN UP (회원가입)
+						</button>
 					</form>
 				</div>
 			</main>
