@@ -10,14 +10,14 @@ import InputSpool from './InputSpool.js'
 
 
 export default async function designSpool(req, res) {
-  let session = await getServerSession(authOptions)
+  // let session = await getServerSession(authOptions)
 
-  if (!session) {
-    return (
-      <LoginSignup />
-    )
+  // if (!session) {
+  //   return (
+  //     <LoginSignup />
+  //   )
 
-  } else {
+  // } else {
     return (
 			<div className='pageBody'>
 				<header>
@@ -68,5 +68,5 @@ export default async function designSpool(req, res) {
 				</footer>
 			</div>
 		);
-  }
+  // }
 }
