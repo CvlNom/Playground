@@ -117,7 +117,7 @@ const Sequence01 = () => {
 					<p>#12</p>
 				</div>
 				<div className='columns'>
-					<input type='text' value='R Rate (%)' readOnly />
+					<input type='text' value='R-Rate(%)' readOnly />
 					<input type='number' step='0.1' name='block1' value={inputRate.block1} onChange={handleChange0} />
 					<input type='number' step='0.1' name='block2' value={inputRate.block2} onChange={handleChange0} />
 					<input type='number' step='0.1' name='block3' value={inputRate.block3} onChange={handleChange0} />
