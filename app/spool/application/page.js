@@ -20,13 +20,13 @@ export default async function applicationMethod(req, res) {
 	];
 	const rowHeights = [50, 80, 50, 80, 50];
 
-	let session = await getServerSession(authOptions)
-  if (!session) {
-    return (
-      <LoginSignup />
-    )
+	// let session = await getServerSession(authOptions)
+  // if (!session) {
+  //   return (
+  //     <LoginSignup />
+  //   )
 
-  } else {
+  // } else {
     return (
 			<div className='pageBody'>
 				<header>
@@ -98,5 +98,5 @@ export default async function applicationMethod(req, res) {
 				</footer>
 			</div>
 		);
-  }
+  // }
 }
