@@ -61,7 +61,7 @@ export default async function Home() {
 				<small>We do not take any responsibility except on Contracts.</small>
 				<br />
 				<small>
-					<a href='mailto:alexkwak24@gmail.com'>Contact: alexkwak24@gmail.com</a>
+					<a href='mailto:alexkwak@wire-lab.net'>Contact: alexkwak@wire-lab.net</a>
 				</small>
 			</footer>
 		</div>
