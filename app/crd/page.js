@@ -51,7 +51,11 @@ export default async function CRD(req, res) {
 				</aside>
 				<footer>
 					<hr />
-					author: Alex Kwak <br />
+					author:
+					<Link href='/aboutME' style={{ color: 'black' }}>
+						Alex Kwak
+					</Link>{' '}
+					<br />
 					&copy; copyright reserved.
 					<small>We do not take any responsibility except on Contracts.</small>
 					<br />
