@@ -228,6 +228,11 @@ const DrawFormingRoll = () => {
 				ctx.closePath();
 				ctx.fillStyle = 'blue';
 				ctx.fill();
+
+				ctx.font = '14px Arial';
+				ctx.fillStyle = 'blue';
+				ctx.textAlign = 'center';
+				ctx.fillText(((dx2 - dx1) / scaleCanvas).toFixed(3), x0, dy1 + l0 + g0 / 1.5 - 16);
 			}
 		}
 
@@ -509,6 +514,7 @@ const DrawFormingRoll = () => {
 			ctx.stroke();
 
 			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, (x1a - x1) / 2, 15, 8, 0);
+			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 15, 8, 1);
 			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 15, 8, 0);
 			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 15, 8, 0);
 			drawDimVer(x6a, y0, x4a, y2, (x6a - x5a) * 1.8, 15, 8, 0);
