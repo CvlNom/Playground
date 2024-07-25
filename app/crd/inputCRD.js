@@ -22,8 +22,7 @@ const InputCRD = () => {
 
 	useEffect(() => {
 		// console.log(selectedRadio, inputValues);
-		const newValues = ß;
-		selectedRadio === 'option2'
+		const newValues = selectedRadio === 'option2'
 			? {
 					input1: '3.0',
 					input2: '2.94',

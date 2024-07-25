@@ -64,9 +64,9 @@ export default async function Home() {
 								</Link>
 							</li>
 							<li>
-								<Link href='./crd/assemble' style={{ color: 'white' }}>
+								{/* <Link href='./crd/assemble' style={{ color: 'white' }}> */}
 									More Different Thinking
-								</Link>
+								{/* </Link> */}
 							</li>
 							{/* <li>
 								<Link href='./crd/comparison' style={{ color: 'white' }}>
