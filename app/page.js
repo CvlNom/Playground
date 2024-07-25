@@ -53,7 +53,29 @@ export default async function Home() {
 				</div>
 			</main>
 			<aside className='mainBody' id='asideHome'>
-				<div className='homeItem0'>{/* <img src="./new_CRD.png" alt='crd Image' className='rollingSteel' /> */}</div>
+				<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking' />
+				<div className='home-side0'>
+					{/* <p> UPDATE!!</p> */}
+					<div className='mainBodyUl'>
+						<ul>
+							<li>
+								<Link href='./differentThinking/01' style={{ color: 'white' }}>
+									Welding Seam for FCW
+								</Link>
+							</li>
+							<li>
+								<Link href='./crd/assemble' style={{ color: 'white' }}>
+									More Different Thinking
+								</Link>
+							</li>
+							{/* <li>
+								<Link href='./crd/comparison' style={{ color: 'white' }}>
+									PCD vs. CRD
+								</Link>
+							</li> */}
+						</ul>
+					</div>
+				</div>
 			</aside>
 			<footer>
 				author: Alex Kwak <br />

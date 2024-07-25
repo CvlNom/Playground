@@ -32,12 +32,12 @@ export default async function DieProfile(req, res) {
 						<ul>
 							<li>
 								<Link href='./pcd/byReduction' style={{ color: 'white' }}>
-									By reduction
+									Sequence by Reduction
 								</Link>
 							</li>
 							<li>
 								<Link href='./pcd/byElongation' style={{ color: 'white' }}>
-									By elongation
+									Sequence by Elongation
 								</Link>
 							</li>
 						</ul>

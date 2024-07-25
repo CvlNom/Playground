@@ -412,7 +412,7 @@ footer p {
     background-image: url('/crd01.png');
 }
 #asideCRD01 {
-    background-image: url('/back_home.png');
+    background-image: url('/side-crd01.png');
 }
 #asideForming {
     background-image: url('/back_form01.png');
@@ -477,7 +477,6 @@ main {
 #asideSpool03,
 #asideHome,
 #mainHome,
-main, 
 #asideRegister,
 #asideForum,
 #asideWrite,
@@ -491,6 +490,7 @@ main,
   background-position: center;   
 }
 
+main, 
 #asideForming,
 #mainHome,
 #asideElongation,
@@ -523,14 +523,14 @@ main,
 .mainBodyUl {
 	display: flex;
 	justify-content: left;
-	align-items: center;
+	align-items:flex-start;
 	min-height: 25vh;
 	margin-left: -10px;
 	/* background: black; */
 }
 
 .mainBodyUl ul {
-	width: 180px;
+	width: 200px;
 	list-style: none;
 }
 
@@ -844,6 +844,28 @@ body {
 	/* justify-content: end; */
 }
 
+.input1_die {
+	display: flex;
+	width: 500px;
+	margin-left: 10px;
+	
+	/* justify-content: center; */
+}
+.input1_die div {
+	width: 250px;
+	margin-bottom: 0px;
+}
+.input1_die div > input {
+	width: 50px;
+	justify-content: right;
+	margin-left: 10px;
+	padding-left: 20px;
+}
+.input1_label {
+	width: 200px;
+	/* justify-content: end; */
+}
+
 .input_CRD {
 	display: flex;
 	margin-left: 10px;
@@ -1048,7 +1070,7 @@ main > h2{
 	padding-bottom: 5px;
 }
 .mainRadio{
-	padding-left: 15px;
+	padding-left: 5px;
 }
 .mainRadio label{
 	padding-left: 20px;
@@ -1068,4 +1090,34 @@ a {
 	border-radius: 5px;
 	text-align: center;
 	margin-bottom: 50px;
+}
+
+.home-side0 {
+	width: 260px;
+	height: 300px;
+	background-color: white;
+	margin-top: -5px;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-image: url('/H-Project.png');
+	background-size:contain;
+	background-position: bottom;
+	
+
+}
+
+.differentThinking {
+	width: 260px;
+	margin:0px;
+	padding: 0px;
+}
+.differentThinking01 {
+	width: 800px;
+	margin:0px;
+	padding: 20px;
+}
+
+.inputBlankSize {
+	width: 600px;
+	margin: 5px;
 }

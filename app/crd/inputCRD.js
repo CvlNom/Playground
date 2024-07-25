@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const InputCRD = () => {
 	const [inputValues, setInputValues] = useState({
 		input1: '3.0',
-		input2: '2.85',
+		input2: '2.88',
 		input3: '0.1',
 		input4: '0.4',
 	});
@@ -21,12 +21,29 @@ const InputCRD = () => {
 	};
 
 	useEffect(() => {
-		console.log(selectedRadio, inputValues);
+		// console.log(selectedRadio, inputValues);
+		const newValues = ß;
+		selectedRadio === 'option2'
+			? {
+					input1: '3.0',
+					input2: '2.94',
+					input3: '0.05',
+					input4: '0.2',
+			  }
+			: {
+					input1: '3.0',
+					input2: '2.88',
+					input3: '0.1',
+					input4: '0.4',
+			  };
+		setInputValues(newValues);
+
 		drawProfile();
 	}, [inputValues, selectedRadio]);
 
 	const handleRadioChange = (event) => {
-		setSelectedRadio(event.target.value);
+		const value = event.target.value;
+		setSelectedRadio(value);
 	};
 
 	function drawProfile() {
@@ -476,22 +493,21 @@ const InputCRD = () => {
 		<div className='container'>
 			<div className='input_CRD'>
 				<div>
-				<label>In Wire(IP):</label>
-				<input type='number' name='input1' step='0.01' value={inputValues.input1} onChange={handleChange} />			
+					<label>In Wire(IP):</label>
+					<input type='number' name='input1' step='0.01' value={inputValues.input1} onChange={handleChange} />
 				</div>
 				<div>
-				<label>Out Wire(OP):</label>
-				<input type='number' name='input2' step='0.01' value={inputValues.input2} onChange={handleChange} />
+					<label>Out Wire(OP):</label>
+					<input type='number' name='input2' step='0.01' value={inputValues.input2} onChange={handleChange} />
 				</div>
 				<div>
-				<label>Roll Gap(G/2):</label>
-				<input type='number' name='input3' step='0.01' value={inputValues.input3} onChange={handleChange} />
+					<label>Roll Gap(G/2):</label>
+					<input type='number' name='input3' step='0.01' value={inputValues.input3} onChange={handleChange} />
 				</div>
 				<div>
-				<label>Edge Round(eR):</label>
-				<input type='number' name='input4' step='0.1' value={inputValues.input4} onChange={handleChange} />
+					<label>Edge Round(eR):</label>
+					<input type='number' name='input4' step='0.1' value={inputValues.input4} onChange={handleChange} />
 				</div>
-				
 			</div>
 
 			<div className='radioButton' id='radio'>

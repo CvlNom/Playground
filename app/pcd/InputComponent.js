@@ -10,7 +10,13 @@ const Inputs = () => {
 		input5: '25',
 		input6: '25',
 	});
+	const [inputBlank, setInputBlank] = useState({
+		input1: '5.8',
+		input2: '8.0',
+	});
+
 	const [selectedRadio, setSelectedRadio] = useState('option1');
+	const [selectedRadio0, setSelectedRadio0] = useState('option1');
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -19,18 +25,35 @@ const Inputs = () => {
 			[name]: value,
 		});
 	};
+	const handleChange0 = (event) => {
+		const { name, value } = event.target;
+		setInputBlank({
+			...inputBlank,
+			[name]: value,
+		});
+	};
+
+	const handleRadioChange0 = (event) => {
+		setSelectedRadio0(event.target.value);
+		// console.log('selection', selectedRadio0);
+	};
 
 	const handleRadioChange = (event) => {
 		setSelectedRadio(event.target.value);
 	};
 
 	useEffect(() => {
-		console.log(selectedRadio, inputValues);
+		// console.log(selectedRadio, inputValues);
 		drawProfile();
-	}, [inputValues, selectedRadio]);
+	}, [inputValues, selectedRadio, selectedRadio0, inputBlank]);
 
 	function drawProfile() {
-		const scale = 80;
+		let scale = 80;
+		if (selectedRadio0 === 'option2' && inputBlank.input1 > 5.3) {
+			scale = 60;
+			console.log('true');
+		}
+
 		const iW = (inputValues.input1 / 2) * scale;
 		const hD = (inputValues.input2 / 2) * scale;
 		const rAngle = inputValues.input3 / 2;
@@ -47,25 +70,33 @@ const Inputs = () => {
 		const dieCanvas = document.getElementById('dieCanvas');
 		const ctx = dieCanvas.getContext('2d');
 
+		console.log(selectedRadio0);
+
 		// 선택된 값에 따라 콘솔에 문자 출력
-		switch (selectedRadio) {
-			case 'option1':
-				dieH = 2.5 * scale;
-				dieOD = 5.2 * scale;
-				break;
-			case 'option2':
-				dieH = 3.5 * scale;
-				dieOD = 5.2 * scale;
-				break;
-			case 'option3':
-				dieH = 3.86 * scale;
-				dieOD = 6.8 * scale;
-				break;
-			case 'option4':
-				dieH = 5.3 * scale;
-				dieOD = 6.8 * scale;
-				break;
+		if (selectedRadio0 === 'option1') {
+			switch (selectedRadio) {
+				case 'option1':
+					dieH = 2.5 * scale;
+					dieOD = 5.2 * scale;
+					break;
+				case 'option2':
+					dieH = 3.5 * scale;
+					dieOD = 5.2 * scale;
+					break;
+				case 'option3':
+					dieH = 3.86 * scale;
+					dieOD = 6.8 * scale;
+					break;
+				case 'option4':
+					dieH = 5.3 * scale;
+					dieOD = 6.8 * scale;
+					break;
+			}
+		} else {
+			dieH = inputBlank.input1 * scale;
+			dieOD = inputBlank.input2 * scale;
 		}
+
 		console.log('dieH', dieH);
 
 		// Clear the canvas
@@ -266,53 +297,98 @@ const Inputs = () => {
 							<input type='number' name='input6' value={inputValues.input6} onChange={handleChange} />
 						</div>
 					</div>
-						<p> note: L of Bearing, Back and Approach are a length ratio of hole diameter.</p>
+					<p> note: L of Bearing, Back and Approach are a length ratio of hole diameter.</p>
 				</div>
-				
-				<div className='radioButton' id='radio'>
+
+				<div className='radioButton' id='radioChoice'>
 					<fieldset>
-						<legend>Choose PCD Blank</legend>
+						<legend>Blank Size Selection</legend>
 						<input
 							type='radio'
-							id='choice1'
-							name='radioGroup'
+							id='selection1'
+							name='radioGroup2'
 							value='option1'
-							checked={selectedRadio === 'option1'}
-							onChange={handleRadioChange}
+							checked={selectedRadio0 === 'option1'}
+							onChange={handleRadioChange0}
 						/>
-						<label htmlFor='choice1'>D15 (ø5.2 - 2.5)</label>
+						<label htmlFor='selection1'>Blank Type</label>
 						<input
 							type='radio'
-							id='choice2'
-							name='radioGroup'
+							id='selection2'
+							name='radioGroup2'
 							value='option2'
-							checked={selectedRadio === 'option2'}
-							onChange={handleRadioChange}
+							checked={selectedRadio0 === 'option2'}
+							onChange={handleRadioChange0}
 						/>
-						<label htmlFor='choice2'>D18 (ø5.2 - 3.5)</label>
-						<input
-							type='radio'
-							id='choice3'
-							name='radioGroup'
-							value='option3'
-							checked={selectedRadio === 'option3'}
-							onChange={handleRadioChange}
-						/>
-						<label htmlFor='choice3'>D21 (ø6.8 - 3.86)</label>
-						<input
-							type='radio'
-							id='choice4'
-							name='radioGroup'
-							value='option4'
-							checked={selectedRadio === 'option4'}
-							onChange={handleRadioChange}
-						/>
-						<label htmlFor='choice4'>D24 (ø6.8 - 5.3)</label>
+						<label htmlFor='selection2'>User Input Size</label>
 						<br />
 					</fieldset>
 				</div>
+
+				<br />
+
+				{selectedRadio0 === 'option2' ? (
+					<div className='inputBlankSize'>
+						<fieldset className='fieldsetUserInput'>
+							<legend>Input Blank Size</legend>
+							<div className='input1_die'>
+								<div>
+									<label className='input_label'>Height(mm):</label>
+									<input type='number' name='input1' step='0.1' value={inputBlank.input1} onChange={handleChange0} />
+								</div>
+								<div>
+									<label className='input_label'>Diameter(mm):</label>
+									<input type='number' name='input2' step='0.1' value={inputBlank.input2} onChange={handleChange0} />
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				) : (
+					<div className='radioButton' id='radio'>
+						<fieldset>
+							<legend>Choose PCD Blank</legend>
+							<input
+								type='radio'
+								id='choice1'
+								name='radioGroup'
+								value='option1'
+								checked={selectedRadio === 'option1'}
+								onChange={handleRadioChange}
+							/>
+							<label htmlFor='choice1'>D15 (ø5.2 - 2.5)</label>
+							<input
+								type='radio'
+								id='choice2'
+								name='radioGroup'
+								value='option2'
+								checked={selectedRadio === 'option2'}
+								onChange={handleRadioChange}
+							/>
+							<label htmlFor='choice2'>D18 (ø5.2 - 3.5)</label>
+							<input
+								type='radio'
+								id='choice3'
+								name='radioGroup'
+								value='option3'
+								checked={selectedRadio === 'option3'}
+								onChange={handleRadioChange}
+							/>
+							<label htmlFor='choice3'>D21 (ø6.8 - 3.86)</label>
+							<input
+								type='radio'
+								id='choice4'
+								name='radioGroup'
+								value='option4'
+								checked={selectedRadio === 'option4'}
+								onChange={handleRadioChange}
+							/>
+							<label htmlFor='choice4'>D24 (ø6.8 - 5.3)</label>
+							<br />
+						</fieldset>
+					</div>
+				)}
 			</div>
-			<div class='canvas'>
+			<div className='canvas'>
 				<canvas id='dieCanvas' width='700' height='600'></canvas>
 			</div>
 		</div>
