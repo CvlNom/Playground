@@ -21,24 +21,28 @@ const InputCRD = () => {
 	};
 
 	useEffect(() => {
-		// console.log(selectedRadio, inputValues);
-		const newValues = selectedRadio === 'option2'
-			? {
-					input1: '3.0',
-					input2: '2.94',
-					input3: '0.05',
-					input4: '0.2',
-			  }
-			: {
-					input1: '3.0',
-					input2: '2.88',
-					input3: '0.1',
-					input4: '0.4',
-			  };
-		setInputValues(newValues);
-
 		drawProfile();
 	}, [inputValues, selectedRadio]);
+
+	useEffect(() => {
+		// console.log(selectedRadio, inputValues);
+		const newValues =
+			selectedRadio === 'option2'
+				? {
+						input1: '3.0',
+						input2: '2.94',
+						input3: '0.05',
+						input4: '0.2',
+				  }
+				: {
+						input1: '3.0',
+						input2: '2.88',
+						input3: '0.1',
+						input4: '0.4',
+				  };
+		setInputValues(newValues);
+	}, [selectedRadio]);
+
 
 	const handleRadioChange = (event) => {
 		const value = event.target.value;
