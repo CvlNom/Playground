@@ -227,7 +227,7 @@ const App = () => {
 
 				<h2 style={styles.subheader}>EDUCATION</h2>
 				<ul>
-					<li>DongA University / Mechanical Engineering / bachelor degree / ~ Feb. 1994</li>
+					<li>DongA University / Mechanical Engineering / Bachelor Degree / ~ Feb. 1994</li>
 					<li>Yonsei University / MBA / March 2011 (45 days course)</li>
 					<li>
 						Busan National University/ Production Automation Engineering / Master Degree / March 2013 to Feb. 2015

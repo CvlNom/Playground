@@ -424,7 +424,7 @@ footer p {
     background-image: url('/bevel.png');
 }
 #asideDie {
-    background-image: url('/back_die.png');
+    background-image: url('/back-pcd.png');
 }
 #asideElongation {
     background-image: url('/elongation_rate.png');
@@ -461,7 +461,7 @@ main {
 #asideForum,
 #asideWrite,
 #asideDetail {
-	background-image: url('/forum01.png');
+	background-image: url('/back-forum.png');
 }
 
 
@@ -470,7 +470,6 @@ main {
 #asideCRD,
 #asideCRD01,
 #asideCRD02,
-#asideDie,
 #asideSpool,
 #asideSpool01,
 #asideSpool02,
@@ -491,6 +490,7 @@ main {
 }
 
 main, 
+#asideDie,
 #asideForming,
 #mainHome,
 #asideElongation,
@@ -1099,7 +1099,7 @@ a {
 	margin-top: -5px;
 	margin-left: 0px;
 	margin-right: 0px;
-	background-image: url('/H-Project.png');
+	background-image: url('/back_differentThink.png');
 	background-size:contain;
 	background-position: bottom;
 	
