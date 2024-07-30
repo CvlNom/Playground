@@ -77,7 +77,7 @@ const WeatherBox = () => {
 			</h3>
 			<h3 style={{ color: getColorByHumidity(weather?.main.humidity) }}>Humidity: {weather?.main.humidity}%</h3>
 			<h3 style={{ color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
-				Dew Point: {dPoint} ℃ / {dPoint * 1.8 + 32} ℉
+				Dew Point: {dPoint} ℃ / {(dPoint * 1.8 + 32).toFixed(1)} ℉
 			</h3>
 		</div>
 	);
