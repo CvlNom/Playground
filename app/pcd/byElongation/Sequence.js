@@ -9,18 +9,18 @@ const Sequence = () => {
 		finalDia: '1.180',
 	});
 	const [inputRate, setInputRate] = useState({
-		block1: '23.3',
-		block2: '42',
-		block3: '32',
-		block4: '26',
-		block5: '25.5',
-		block6: '25',
-		block7: '24',
-		block8: '22',
-		block9: '15',
-		block10: '0',
-		block11: '0',
-		block12: '0',
+		block1: '17.0',
+		block2: '17.0',
+		block3: '17.0',
+		block4: '17.0',
+		block5: '17.0',
+		block6: '17.0',
+		block7: '17.0',
+		block8: '17.0',
+		block9: '17.0',
+		block10: '17.0',
+		block11: '17.0',
+		block12: '17.0',
 	});
 
 	const [calSize, setCalSize] = useState([]);

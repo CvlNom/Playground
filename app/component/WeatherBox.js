@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 const WeatherBox = () => {
 	const [weather, setWeather] = useState(null);
 	const [dPoint, setDPoint] = useState();
+	const [loading, setLoading] = useState(false);
 
 	const getCurrentLocation = () => {
 		navigator.geolocation.getCurrentPosition((position) => {
@@ -17,12 +18,12 @@ const WeatherBox = () => {
 	const getWeatherByCurrentLocation = async (lat, lon) => {
 		let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e6dc0365d7faade5bd76157c4f1112af&units=metric`;
 
-		// setLoading(true);
+		setLoading(true);
 		let response = await fetch(url);
 		let data = await response.json();
 		setWeather(data);
 		// console.log('--------', data);
-		// setLoading(false);
+		setLoading(false);
 		// console.log(data.main.temp, data.main.humidity);
 		const dewPoint = calculateDewPoint(data.main.temp, data.main.humidity);
 		setDPoint(dewPoint.toFixed(1));
@@ -67,18 +68,25 @@ const WeatherBox = () => {
 	};
 
 	return (
+		<div>
+			{loading? (
+				<div className='weather-box'> 
+				<h3>Loading ......</h3>
+				</div>
+			) : (
 		<div className='weather-box'>
 			{/* <div>{weather && weather.name}</div> */}
-			<h4 style={{ color: 'blue' }}>City: {weather?.name}</h4>
-
-			<h3>
-				{' '}
+			<h3 style={{ color: 'black' }}>City: {weather?.name}</h3>
+			<h4 style={{ color: 'blue' }}>
 				{weather?.main.temp.toFixed(1)} ℃ / {(weather?.main.temp * 1.8 + 32).toFixed(1)} ℉
-			</h3>
+			</h4>
 			<h3 style={{ color: getColorByHumidity(weather?.main.humidity) }}>Humidity: {weather?.main.humidity}%</h3>
-			<h3 style={{ color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
+			<h4 style={{ color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
 				Dew Point: {dPoint} ℃ / {(dPoint * 1.8 + 32).toFixed(1)} ℉
-			</h3>
+			</h4>
+		</div>
+
+			)}
 		</div>
 	);
 };

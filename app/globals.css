@@ -205,7 +205,7 @@ a {
 
 #radio {
 	display: flex;
-	padding: 5px;
+	padding: 0px;
 	gap: 10px;
 }
 
@@ -277,7 +277,7 @@ textarea {
 	font-size: 25px;
 	color: black;
 	margin-bottom: 40px;
-	background-color: grey;
+	background-color: rgb(130, 203, 153);
 	border-radius: 25px;
 	justify-content: center;
 	transition: all 0.3s ease 0s;
@@ -285,7 +285,7 @@ textarea {
 .loginBox:hover {
 	font-weight: 600;
 	margin-bottom: 40px;
-	background-color: rgb(114, 174, 130);
+	background-color: rgb(46, 221, 93);
 }
 
 .rollingSteel {
@@ -911,8 +911,8 @@ body {
 }
 .sequence-input {
 	display: flex;
-	margin: 5px 10px;
-	padding: 5px;
+	margin-top: 15px;
+	padding: 0px;
 }
 .sequence-input > div > input {
 	width: 60px;
@@ -920,7 +920,7 @@ body {
 	margin-left: 5px;
 }
 .sequence-input > div {
-	width: 190px;
+	width: 220px;
 }
 .detail-title {
 	display: flex;
@@ -1008,7 +1008,7 @@ main > h2{
 	text-align: left;
 }
 .annotation{
-	padding-left: 10px;
+	padding-left: 20px;
 	color: black;
 }
 .annotation p{
@@ -1086,8 +1086,10 @@ a {
 
 .weather-box{
 	background-color: rgba(127, 255, 212, 0.451);
+	background-image: url('/back-dewPoint.png');
+	margin-top: -22px;
 	padding: 5px 20px;
-	border-radius: 5px;
+	border-radius: 0px;
 	text-align: center;
 	margin-bottom: 50px;
 }
@@ -1099,6 +1101,7 @@ a {
 	margin-top: -5px;
 	margin-left: 0px;
 	margin-right: 0px;
+	margin-bottom: -5px;
 	background-image: url('/back_differentThink.png');
 	background-size:contain;
 	background-position: bottom;

@@ -265,28 +265,53 @@ const BlockTable = () => {
 					<label>Target Size:</label>
 					<input type='number' step='0.01' name='finalDia' value={inputValues.finalDia} onChange={handleChange0} />
 				</div>
-				<div className='sequence-factor'>
-					<label>R factor:</label>
-					<input type='number' step='0.001' name='factor' value={inputValues.factor} onChange={handleChange0} />
-				</div>
-				<div className='sequence-halpGap'>
-					<label>G/2:</label>
-					<input type='number' step='0.01' name='halpGap' value={inputValues.halpGap} onChange={handleChange0} />
-				</div>
-				<div className='sequence-edgeR'>
-					<label>eR:</label>
-					<input type='number' step='0.01' name='edgeR' value={inputValues.edgeR} onChange={handleChange0} />
-				</div>
-			</div>
-			
-			<div className='sequence-table'></div>
-
-			<br />
-			<div className='crd-block-table'>
 				<div className='block-table-input'>
-					<label htmlFor='rows'>Enter number of Stage (3-6):</label>
+					<label htmlFor='rows'>No. of Stage (3-6):</label>
 					<input type='number' id='rows' name='rows' min='3' max='6' value={rows} onChange={handleRowChange} />
 				</div>
+			</div>
+
+			<div className='sequence-input'>
+				<div className='sequence-factor'>
+					<label>R factor&nbsp;&nbsp;&nbsp;:</label>
+					<input
+						type='number'
+						step='0.001'
+						name='factor'
+						style={{ backgroundColor: 'grey' }}
+						value={inputValues.factor}
+						onChange={handleChange0}
+					/>
+				</div>
+				<div className='sequence-halpGap'>
+					<label>G/2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+					<input
+						type='number'
+						step='0.01'
+						name='halpGap'
+						style={{ backgroundColor: 'grey' }}
+						value={inputValues.halpGap}
+						onChange={handleChange0}
+					/>
+				</div>
+				<div className='sequence-edgeR'>
+					<label>eR (Edge Round)&nbsp;&nbsp;:</label>
+					<input
+						type='number'
+						step='0.01'
+						name='edgeR'
+						style={{ backgroundColor: 'grey' }}
+						value={inputValues.edgeR}
+						onChange={handleChange0}
+					/>
+					<br/>
+				</div>
+			</div>
+					<p style={{fontSize:'14px', fontStyle: 'italic'}}>** Normal case, Do not need to change grayed input. </p>
+
+			<div className='sequence-table'></div>
+
+			<div className='crd-block-table'>
 				<br />
 				<table border='1'>
 					<thead>

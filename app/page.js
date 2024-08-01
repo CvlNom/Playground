@@ -40,9 +40,9 @@ export default async function Home() {
 						<li>Plastic Spool </li>
 					</ul>
 				</div>
-				<div className='homeItem1' id='humidCheck'>
+				{/* <div className='homeItem1' id='humidCheck'>
 					<WeatherBox />
-				</div>
+				</div> */}
 				<div className='homeItem2'>
 					<Link href='/api/auth/signin' className='loginBox'>
 						LOG IN
@@ -53,7 +53,7 @@ export default async function Home() {
 				</div>
 			</main>
 			<aside className='mainBody' id='asideHome'>
-				<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking' />
+					<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking'/>
 				<div className='home-side0'>
 					{/* <p> UPDATE!!</p> */}
 					<div className='mainBodyUl'>
@@ -65,25 +65,29 @@ export default async function Home() {
 							</li>
 							<li>
 								{/* <Link href='./crd/assemble' style={{ color: 'white' }}> */}
-									More Different Thinking
+									More......
 								{/* </Link> */}
 							</li>
 							{/* <li>
 								<Link href='./crd/comparison' style={{ color: 'white' }}>
-									PCD vs. CRD
+								PCD vs. CRD
 								</Link>
-							</li> */}
+								</li> */}
 						</ul>
+
 					</div>
+					<WeatherBox />
 				</div>
 			</aside>
 			<footer>
-				author: Alex Kwak <br />
+				author:Alex Kwak
+				<br />
 				&copy; copyright reserved.
 				<small>We do not take any responsibility except on Contracts.</small>
 				<br />
 				<small>
-					<a href='mailto:alexkwak@wire-lab.net'>Contact: alexkwak@wire-lab.net</a>
+					<a href='mailto:alexkwak24@gmail.com'>Contact: alexkwak24@gmail.com</a>
+					<a href='mailto:alexkwak@wire-lab.net'>, alexkwak@wire-lab.net</a>
 				</small>
 			</footer>
 		</div>

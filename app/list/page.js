@@ -110,7 +110,9 @@ export default async function List({searchParams}) {
 					</div>
 				</main>
 
-				<aside id='asideForum'></aside>
+				<aside id='asideForum'>
+					
+				</aside>
 
 				<footer>
 					author: Alex Kwak <br />

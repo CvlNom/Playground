@@ -15,6 +15,7 @@ const Inputs = () => {
 		input2: '8.0',
 	});
 
+
 	const [selectedRadio, setSelectedRadio] = useState('option1');
 	const [selectedRadio0, setSelectedRadio0] = useState('option1');
 
@@ -49,10 +50,10 @@ const Inputs = () => {
 
 	function drawProfile() {
 		let scale = 80;
-		if (selectedRadio0 === 'option2' && inputBlank.input1 > 5.3) {
-			scale = 60;
-			console.log('true');
-		}
+		if (selectedRadio0==='option2' && inputBlank.input1 > 5.3) {
+			scale = 60
+			console.log('true')
+		} 
 
 		const iW = (inputValues.input1 / 2) * scale;
 		const hD = (inputValues.input2 / 2) * scale;
@@ -74,29 +75,31 @@ const Inputs = () => {
 
 		// 선택된 값에 따라 콘솔에 문자 출력
 		if (selectedRadio0 === 'option1') {
-			switch (selectedRadio) {
-				case 'option1':
-					dieH = 2.5 * scale;
-					dieOD = 5.2 * scale;
-					break;
-				case 'option2':
-					dieH = 3.5 * scale;
-					dieOD = 5.2 * scale;
-					break;
-				case 'option3':
-					dieH = 3.86 * scale;
-					dieOD = 6.8 * scale;
-					break;
-				case 'option4':
-					dieH = 5.3 * scale;
-					dieOD = 6.8 * scale;
-					break;
-			}
-		} else {
-			dieH = inputBlank.input1 * scale;
-			dieOD = inputBlank.input2 * scale;
-		}
+				switch (selectedRadio) {
+					case 'option1':
+						dieH = 2.5 * scale;
+						dieOD = 5.2 * scale;
+						break;
+					case 'option2':
+						dieH = 3.5 * scale;
+						dieOD = 5.2 * scale;
+						break;
+					case 'option3':
+						dieH = 3.86 * scale;
+						dieOD = 6.8 * scale;
+						break;
+					case 'option4':
+						dieH = 5.3 * scale;
+						dieOD = 6.8 * scale;
+						break;
+				}
+			} else {
 
+				dieH = inputBlank.input1 * scale;
+				dieOD = inputBlank.input2 * scale;
+			}
+			
+		
 		console.log('dieH', dieH);
 
 		// Clear the canvas

@@ -9,16 +9,16 @@ const Sequence01 = () => {
 		finalDia: '1.180',
 	});
 	const [inputRate, setInputRate] = useState({
-		block1: '23.3',
-		block2: '42',
-		block3: '32',
+		block1: '25',
+		block2: '30',
+		block3: '28',
 		block4: '26',
 		block5: '25.5',
 		block6: '25',
 		block7: '24',
 		block8: '22',
-		block9: '15',
-		block10: '0',
+		block9: '20',
+		block10: '15',
 		block11: '0',
 		block12: '0',
 	});

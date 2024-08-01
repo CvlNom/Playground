@@ -156,7 +156,7 @@ const DrawFormingRoll = () => {
 			let coordinate = [X1, Y1, X2, Y2];
 			return coordinate;
 		}
-
+			// 좌표, l0: 치수선 높이(좌표에서의 거리)
 		function drawDimTopHor(dx1, dy1, dx2, dy2, l0, g0, l1, pos) {
 			ctx.lineWidth = 0.5;
 			ctx.strokeStyle = 'blue';
