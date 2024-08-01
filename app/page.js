@@ -23,13 +23,13 @@ export default async function Home() {
 			<main id='mainHome'>
 				<div className='homeItem1'>
 					<h1>Welcome to wire-lab.net</h1>
-					{/* <p>Engineering Experience of</p>
+					<p>With Engineering Experience of</p>
 					<ul className='homeUl'>
 						<li>Flux Cored Wire </li>
 						<li>Solid Wire & Stick Electrode</li>
 						<li>Seamless FCW Wire</li>
 						<li>Aluminum Welding Wire</li>
-					</ul> */}
+					</ul>
 				</div>
 				<div className='homeItem1'>
 					<p>Share Design Tips of</p>
