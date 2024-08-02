@@ -11,8 +11,6 @@ export default async function Home() {
 	// let result = await db.collection('post').find().toArray();
 	// console.log(result)
 
-	
-
 	return (
 		<div className='pageBody'>
 			<header>
@@ -53,7 +51,7 @@ export default async function Home() {
 				</div>
 			</main>
 			<aside className='mainBody' id='asideHome'>
-					<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking'/>
+				<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking' />
 				<div className='home-side0'>
 					{/* <p> UPDATE!!</p> */}
 					<div className='mainBodyUl'>
@@ -65,7 +63,7 @@ export default async function Home() {
 							</li>
 							<li>
 								{/* <Link href='./crd/assemble' style={{ color: 'white' }}> */}
-									More......
+								More......
 								{/* </Link> */}
 							</li>
 							{/* <li>
@@ -74,7 +72,6 @@ export default async function Home() {
 								</Link>
 								</li> */}
 						</ul>
-
 					</div>
 					<WeatherBox />
 				</div>
