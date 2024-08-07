@@ -1,16 +1,17 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const InputSpool = () => {
+const InputSpool = ({ calculatedValue }) => {
 	const [inputValues, setInputValues] = useState({
 		input1: 1.19,
-		input2: 7.05,
+		input2: 8.53,
 		input3: 104,
 		input4: 6.5,
 		input5: 300,
 		input6: 10.0,
 		input7: 15.0,
 	});
+	console.log('-----------', calculatedValue);
 
 	const [selectedRadio, setSelectedRadio] = useState('option1');
 
@@ -83,7 +84,7 @@ const InputSpool = () => {
 			// console.log('?????????????????????????????');
 			scaleCanvas = 4;
 			let x0 = spoolCanvas.width / 2;
-			let y0 = spoolCanvas.height * 0.90;
+			let y0 = spoolCanvas.height * 0.9;
 			let y1 = y0 - 25.5 * scaleCanvas;
 			let y2 = y1 - 3.5 * scaleCanvas;
 			let y3 = y2 - startDia * 0.1 * scaleCanvas;
@@ -112,22 +113,22 @@ const InputSpool = () => {
 			ctx.lineTo(x1, y3);
 			ctx.lineTo(x1, y4);
 			ctx.lineTo(x4, y5);
-			ctx.lineTo(x4, y6-10);
-			ctx.lineTo(x4+10, y8+20);
-			ctx.lineTo(x4, y8+12);
-			ctx.lineTo(x4, y8+3);
-			ctx.lineTo(x4+3, y8);
-			ctx.lineTo(x2-3, y8);
-			ctx.lineTo(x2, y8+3);
+			ctx.lineTo(x4, y6 - 10);
+			ctx.lineTo(x4 + 10, y8 + 20);
+			ctx.lineTo(x4, y8 + 12);
+			ctx.lineTo(x4, y8 + 3);
+			ctx.lineTo(x4 + 3, y8);
+			ctx.lineTo(x2 - 3, y8);
+			ctx.lineTo(x2, y8 + 3);
 			ctx.lineTo(x2, y6);
 			ctx.lineTo(x2a, y6);
-			ctx.lineTo(x2a, y8+3);
-			ctx.lineTo(x2a+3, y8);
-			ctx.lineTo(x4a-3, y8);
-			ctx.lineTo(x4a, y8+3);
-			ctx.lineTo(x4a, y8+12);
-			ctx.lineTo(x4a-10, y8+20);
-			ctx.lineTo(x4a, y6-10);
+			ctx.lineTo(x2a, y8 + 3);
+			ctx.lineTo(x2a + 3, y8);
+			ctx.lineTo(x4a - 3, y8);
+			ctx.lineTo(x4a, y8 + 3);
+			ctx.lineTo(x4a, y8 + 12);
+			ctx.lineTo(x4a - 10, y8 + 20);
+			ctx.lineTo(x4a, y6 - 10);
 			// ctx.lineTo(x4a, y8);
 			ctx.lineTo(x4a, y5);
 			ctx.lineTo(x1a, y4);
@@ -683,6 +684,8 @@ const InputSpool = () => {
 						<div className='spool_input'>
 							<label>Wire weight (g/M):</label>
 							<input type='number' name='input2' step='0.1' value={inputValues.input2} onChange={handleChange} />
+							{/* <label>Wire weight (g/M):</label>
+							<input type='number' name='input2' step='0.1' value={calculatedValue}  /> */}
 						</div>
 						<div className='spool_input'>
 							<label>Winding weight (kg):</label>
