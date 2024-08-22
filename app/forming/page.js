@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
+import TubeInfo from '../component/TubeInfo';
 import DrawFormingRoll from './DrawFormingRoll';
 
 export default async function forming(req, res) {
