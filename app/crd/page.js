@@ -57,7 +57,7 @@ export default async function CRD(req, res) {
 					</Link>{' '}
 					<br />
 					&copy; copyright reserved.
-					<small>We do not take any responsibility except on Contracts.</small>
+					<small>I do not take any responsibility except on Contracts.</small>
 					<br />
 					<small>
 						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>

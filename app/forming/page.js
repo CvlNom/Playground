@@ -42,13 +42,14 @@ export default async function forming(req, res) {
 							</li> */}
 						</ul>
 					</div>
-
-					
+					<div>
+						<TubeInfo />
+					</div>
 				</aside>
 				<footer>
 					author: Alex Kwak <br />
 					&copy; copyright reserved.
-					<small>We do not take any responsibility except on Contracts.</small>
+					<small>I do not take any responsibility except on Contracts.</small>
 					<br />
 					<small>
 						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>

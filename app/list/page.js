@@ -111,13 +111,19 @@ export default async function List({searchParams}) {
 				</main>
 
 				<aside id='asideForum'>
-					
+					<div>
+						<h4>Question,</h4>
+						<h4>Advice,</h4>
+						<h4>Share Experience,</h4>
+						<h4>and anything you think,</h4>
+						<h4>POST your opinion!!</h4>
+					</div>
 				</aside>
 
 				<footer>
 					author: Alex Kwak <br />
 					&copy; copyright reserved.
-					<small>We do not take any responsibility except on Contracts.</small>
+					<small>I do not take any responsibility except on Contracts.</small>
 					<br />
 					<small>
 						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>

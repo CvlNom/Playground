@@ -68,7 +68,7 @@ const WeatherBox = () => {
 	};
 
 	return (
-		<div>
+		<div style={{ marginTop: '10px' }}>
 			{loading ? (
 				<div className='weather-box'>
 					<h3>Loading ......</h3>
@@ -81,7 +81,7 @@ const WeatherBox = () => {
 						{weather?.main.temp.toFixed(1)} ℃ / {(weather?.main.temp * 1.8 + 32).toFixed(1)} ℉
 					</h4>
 					<h3 style={{ color: getColorByHumidity(weather?.main.humidity) }}>Humidity: {weather?.main.humidity}%</h3>
-					<h4 style={{ color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
+					<h4 style={{ backgroundColor: 'white', color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
 						Dew Point: {dPoint} ℃ / {(dPoint * 1.8 + 32).toFixed(1)} ℉
 					</h4>
 				</div>
