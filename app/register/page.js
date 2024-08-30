@@ -1,3 +1,5 @@
+import Footer from '../component/Footer';
+
 export default function Register() {
 	return (
 		<div className='pageBody'>
@@ -10,7 +12,7 @@ export default function Register() {
 			<main>
 				<div>
 					<form method='POST' action='/api/auth/signup' className='loginSignup'>
-						<input name='name' type='text' placeholder='Put your name' />
+						<input name='name' type='text' placeholder='Put your ID' />
 						<p>Please make a unique name as possible. </p>
 						<input name='email' type='text' placeholder='E-mail Address' />
 						<input name='password' type='password' placeholder='Password' />
@@ -21,15 +23,7 @@ export default function Register() {
 				</div>
 			</main>
 			<aside id='asideRegister'>Side</aside>
-			<footer>
-				author: Alex Kwak <br />
-				&copy; copyright reserved.
-				<small>I do not take any responsibility except on Contracts.</small>
-				<br />
-				<small>
-					<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-				</small>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

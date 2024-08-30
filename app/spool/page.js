@@ -8,6 +8,7 @@ import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
 import WireWeight from '../component/WireWeight';
 import InputSpool from './InputSpool.js';
+import Footer from '../component/Footer';
 
 export default function designSpool(req, res) {
 	// let session = await getServerSession(authOptions)
@@ -27,7 +28,7 @@ export default function designSpool(req, res) {
 			</header>
 
 			<main>
-				<h2>Design Plastic Spool (Bobbin)</h2>
+				<h3>Design Plastic Spool (Bobbin)</h3>
 				<InputSpool calculatedValue={calculatedValue} />
 			</main>
 
@@ -54,15 +55,7 @@ export default function designSpool(req, res) {
 				<WireWeight setCalculatedValue={setCalculatedValue} />
 			</aside>
 
-			<footer>
-				author: Alex Kwak <br />
-				&copy; copyright reserved.
-				<small>I do not take any responsibility except on Contracts.</small>
-				<br />
-				<small>
-					<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-				</small>
-			</footer>
+			<Footer />
 		</div>
 	);
 	// }

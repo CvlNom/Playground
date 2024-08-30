@@ -99,7 +99,7 @@ const Sequence01 = () => {
 					<input type='number' step='0.001' name='finalDia' value={inputValues.finalDia} onChange={handleChange} />
 				</div>
 			</div>
-			<h3>Design Die Sequence by area reduction rate</h3>
+			<h4>Design Die Sequence by area reduction rate</h4>
 			<div className='sequence-table'>
 				<div className='columns'>
 					<p>#Start</p>
@@ -159,7 +159,7 @@ const Sequence01 = () => {
 			</div>
 			<hr />
 
-			<h3>Selection CRD or PCD according to detailed engineering</h3>
+			<h4>Selection CRD or PCD according to detailed engineering</h4>
 			<CheckTable data={calSize} data1={red} data2={elo} />
 		</div>
 	);

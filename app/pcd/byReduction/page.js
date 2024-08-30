@@ -15,7 +15,7 @@ export default function byReduction() {
 			</header>
 
 			<main>
-				<h2>Design Die Sequence by Reduction</h2>
+				<h3>Design Die Sequence by Reduction</h3>
 				<Sequence01 />
 				<div className='howToUse'>
 					<p>How to use</p>

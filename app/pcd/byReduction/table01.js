@@ -63,6 +63,12 @@ const CheckTable = (props) => {
 		switch (rows[rowIndex].column5) {
 			case 'CRD':
 				break;
+			case 'H5':
+				dieH = 18;
+				break;
+			case 'D27':
+				dieH = 8.7;
+				break;
 			case 'D24':
 				dieH = 5.3;
 				break;
@@ -194,6 +200,8 @@ const CheckTable = (props) => {
 										<select value={row.column5} onChange={(e) => handleDropdownChange(rowIndex, e.target.value)}>
 											<option value='select'>select!</option>
 											<option value='CRD'>CRD</option>
+											<option value='H5'>H5</option>
+											<option value='D27'>D27</option>
 											<option value='D24'>D24</option>
 											<option value='D21'>D21</option>
 											<option value='D18'>D18</option>

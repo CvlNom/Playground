@@ -1,23 +1,18 @@
 import Head from 'next/head';
 import InputCRD from './inputCRD';
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
-
-
-
+import Footer from '../component/Footer';
 
 export default async function CRD(req, res) {
-  let session = await getServerSession(authOptions)
+	let session = await getServerSession(authOptions);
 
-  if (!session) {
-    return (
-      <LoginSignup />
-    )
-
-  } else {
-    return (
+	if (!session) {
+		return <LoginSignup />;
+	} else {
+		return (
 			<div className='pageBody'>
 				<header>
 					<title>Design CRD profile</title>
@@ -25,7 +20,7 @@ export default async function CRD(req, res) {
 				</header>
 
 				<main>
-					<h2>Design CRD profile</h2>
+					<h3>Design CRD profile</h3>
 					<InputCRD />
 				</main>
 				<aside className='mainBody' id='asideCRD'>
@@ -49,21 +44,8 @@ export default async function CRD(req, res) {
 						</ul>
 					</div>
 				</aside>
-				<footer>
-					<hr />
-					author:
-					<Link href='/aboutME' style={{ color: 'black' }}>
-						Alex Kwak
-					</Link>{' '}
-					<br />
-					&copy; copyright reserved.
-					<small>I do not take any responsibility except on Contracts.</small>
-					<br />
-					<small>
-						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-					</small>
-				</footer>
+				<Footer />
 			</div>
 		);
-  }
+	}
 }

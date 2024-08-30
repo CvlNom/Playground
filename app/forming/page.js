@@ -5,6 +5,7 @@ import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
 import TubeInfo from '../component/TubeInfo';
 import DrawFormingRoll from './DrawFormingRoll';
+import Footer from '../component/Footer';
 
 export default async function forming(req, res) {
 	let session = await getServerSession(authOptions);
@@ -20,9 +21,10 @@ export default async function forming(req, res) {
 				</header>
 
 				<main>
-					<h2>Design Tube Forming Profile</h2>
+					<h3>Design Tube Forming Profile</h3>
 					<DrawFormingRoll />
 				</main>
+
 				<aside className='mainBody' id='asideForming'>
 					<div className='mainBodyUl'>
 						<ul>
@@ -36,26 +38,14 @@ export default async function forming(req, res) {
 									Stand Arrangement
 								</Link>
 							</li>
-							{/* <li>
-							<Link href='../crd/assemble' style={{ color: 'white' }}>
-								Advantages
-							</Link>
-							</li> */}
 						</ul>
 					</div>
 					<div>
 						<TubeInfo />
 					</div>
 				</aside>
-				<footer>
-					author: Alex Kwak <br />
-					&copy; copyright reserved.
-					<small>I do not take any responsibility except on Contracts.</small>
-					<br />
-					<small>
-						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-					</small>
-				</footer>
+
+				<Footer />
 			</div>
 		);
 	}

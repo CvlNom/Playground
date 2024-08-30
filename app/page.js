@@ -2,6 +2,7 @@
 // import { MongoClient } from 'mongodb';
 import Link from 'next/link';
 import WeatherBox from './component/WeatherBox';
+import Footer from './component/Footer';
 
 export default async function Home() {
 	// const client = await connectDB;
@@ -76,17 +77,7 @@ export default async function Home() {
 					<WeatherBox />
 				</div>
 			</aside>
-			<footer>
-				author:Alex Kwak
-				<br />
-				&copy; copyright reserved.
-				<small>We do not take any responsibility except on Contracts.</small>
-				<br />
-				<small>
-					<a href='mailto:alexkwak24@gmail.com'>Contact: alexkwak24@gmail.com</a>
-					<a href='mailto:alexkwak@wire-lab.net'>, alexkwak@wire-lab.net</a>
-				</small>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

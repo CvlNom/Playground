@@ -5,10 +5,11 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
 export const dynamic = 'force-dynamic';
+import Footer from '../component/Footer';
 
-export default async function List({searchParams}) {
+export default async function List({ searchParams }) {
 	let page = parseInt(searchParams.page, 10);
-	
+
 	page = !page || page < 1 ? 1 : page;
 	const perPage = 20;
 
@@ -21,7 +22,7 @@ export default async function List({searchParams}) {
 		.sort({ _id: -1 })
 		.toArray();
 	const itemCount = await db.collection('post').countDocuments({});
-	
+
 	const totalPages = Math.ceil(itemCount / perPage);
 	const prevPage = page - 1 > 0 ? page - 1 : 1;
 	const nextPage = page + 1;
@@ -46,7 +47,7 @@ export default async function List({searchParams}) {
 				</header>
 
 				<main>
-					<h2>Forum</h2>
+					<h3>Forum</h3>
 					<div className='list-bg'>
 						<div className='container00 '>
 							<div>
@@ -120,15 +121,7 @@ export default async function List({searchParams}) {
 					</div>
 				</aside>
 
-				<footer>
-					author: Alex Kwak <br />
-					&copy; copyright reserved.
-					<small>I do not take any responsibility except on Contracts.</small>
-					<br />
-					<small>
-						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-					</small>
-				</footer>
+				<Footer />
 			</div>
 		);
 	}

@@ -1,10 +1,8 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Link from 'next/link';
-import LoginBtn from './LoginBtn';
-import LogoutBtn from './LogoutBtn';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
+import NavBar from './component/NavBar'; // NavBar 컴포넌트를 불러옵니다.
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,36 +14,11 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	let session = await getServerSession(authOptions);
 	console.log(session);
+
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<div className='nav_header'>
-					{/* <img class='kwakLogo' src='./public/kwakLogo.png' alt='logo'/> */}
-
-					<nav>
-						<div className='nav_link'>
-							<Link href='/' className='nav_a'>Home</Link>
-							<Link href='/list' className='nav_a'>Forum</Link>
-							<Link href='/pcd' className='nav_a'>PCD</Link>
-							<Link href='/crd' className='nav_a'>CRD</Link>
-							<Link href='/forming' className='nav_a'>Tube Forming</Link>
-							<Link href='/spool' className='nav_a'>Spool</Link>
-						</div>
-					</nav>
-
-					<div className='nav_btn'>
-						{session ? (
-							<span>
-								🙋 {session.user.name} <LogoutBtn />
-							</span>
-						) : (
-							<span>
-								<LoginBtn />
-							</span>
-						)}
-					</div>
-				</div>
-
+				<NavBar session={session} /> {/* NavBar 컴포넌트를 사용합니다. */}
 				{children}
 			</body>
 		</html>
