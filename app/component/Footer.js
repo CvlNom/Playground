@@ -6,9 +6,9 @@ const Footer = () => {
 			<hr />
       <div>
 			author:
-			<Link href='/aboutME' style={{ color: 'black' }}>
+			{/* <Link href='/aboutME' style={{ color: 'black' }}> */}
 				Alex Kwak
-			</Link>{' '}
+			{/* </Link>{' '} */}
 			<br />
 			&copy; copyright reserved.
 			<small>I do not take any responsibility except on Contracts.</small>
