@@ -11,8 +11,8 @@ const InputSpool = ({ calculatedValue }) => {
 		input6: 10.0,
 		input7: 15.0,
 	});
-	console.log('-----------', calculatedValue);
-
+  console.log('-----------', calculatedValue)
+	
 	const [selectedRadio, setSelectedRadio] = useState('option1');
 
 	const handleChange = (event) => {
@@ -84,7 +84,7 @@ const InputSpool = ({ calculatedValue }) => {
 			// console.log('?????????????????????????????');
 			scaleCanvas = 4;
 			let x0 = spoolCanvas.width / 2;
-			let y0 = spoolCanvas.height * 0.9;
+			let y0 = spoolCanvas.height * 1.05;
 			let y1 = y0 - 25.5 * scaleCanvas;
 			let y2 = y1 - 3.5 * scaleCanvas;
 			let y3 = y2 - startDia * 0.1 * scaleCanvas;
@@ -745,7 +745,7 @@ const InputSpool = ({ calculatedValue }) => {
 				<br />
 			</div>
 			<div className='spoolCanvas'>
-				<canvas id='spoolCanvas' width='800' height='800'></canvas>
+				<canvas id='spoolCanvas' width='800' height='680'></canvas>
 			</div>
 		</div>
 	);

@@ -82,15 +82,7 @@ export default async function procedureOfMould(req, res) {
 					</div>
 				</aside>
 
-				<footer>
-					author: Alex Kwak <br />
-					&copy; copyright reserved.
-					<small>We do not take any responsibility except on Contracts.</small>
-					<br />
-					<small>
-						<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-					</small>
-				</footer>
+				
 			</div>
 		);
   // }

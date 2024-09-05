@@ -1,9 +1,43 @@
-
+'use client'
 import React from 'react';
-
+import { useState } from 'react';
 const App = () => {
+	// State to track if the user is authenticated
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [password, setPassword] = useState('');
+
+	// Correct password for the protected content
+	const correctPassword = '1149';
+
+	// Handle password input change
+	const handlePasswordChange = (e) => {
+		setPassword(e.target.value);
+	};
+
+	// Handle form submission
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (password === correctPassword) {
+			setIsAuthenticated(true);
+		} else {
+			alert('Incorrect Password');
+		}
+	};
 	return (
-		<main>
+		<div className='App'>
+			{!isAuthenticated ? (
+        // If not authenticated, show the password input form
+        <form onSubmit={handleSubmit}>
+          <h2>Enter Password to Access the Page</h2>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={handlePasswordChange} 
+            placeholder="Enter password"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      ) : (
 			<div style={styles.container}>
 				<h1 style={styles.header}>Hee Jin (Alex) Kwak</h1>
 				<hr />
@@ -29,8 +63,9 @@ const App = () => {
 				<h3 style={styles.subsubheader}>Process Engineering</h3>
 				<ul>
 					<li>Tube and Wire Manufacturing Process</li>
-					<li>“Tube Forming Design”</li>
-					<li>“Design Wire Drawing by CRD”</li>
+					<li>Design Tube Forming Mill</li>
+					<li>Design Cassette Roller Die for Wire-
+						Drawing</li>
 					<li>30 Years experience on FCW Plant</li>
 					<li>Build Aluminum Welding Wire Plant</li>
 				</ul>
@@ -251,7 +286,8 @@ const App = () => {
 					<li>PCT No: PCT/US13/36883</li>
 				</ul>
 			</div>
-		</main>
+			)}
+		</div>
 	);
 };
 

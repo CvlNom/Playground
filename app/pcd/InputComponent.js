@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const Inputs = () => {
+const dieDesign = () => {
 	const [inputValues, setInputValues] = useState({
 		input1: '1.35',
 		input2: '1.18',
@@ -300,7 +300,7 @@ const Inputs = () => {
 							<input type='number' name='input6' value={inputValues.input6} onChange={handleChange} />
 						</div>
 					</div>
-					<p> note: L of Bearing, Back and Approach are a length ratio of hole diameter.</p>
+					{/* <p> note: L of Bearing, Back and Approach are a length ratio of hole diameter.</p> */}
 				</div>
 
 				<div className='radioButton' id='radioChoice'>
@@ -314,7 +314,7 @@ const Inputs = () => {
 							checked={selectedRadio0 === 'option1'}
 							onChange={handleRadioChange0}
 						/>
-						<label htmlFor='selection1'>Blank Type</label>
+						<label htmlFor='selection1'>By Blank Type</label>
 						<input
 							type='radio'
 							id='selection2'
@@ -323,7 +323,7 @@ const Inputs = () => {
 							checked={selectedRadio0 === 'option2'}
 							onChange={handleRadioChange0}
 						/>
-						<label htmlFor='selection2'>User Input Size</label>
+						<label htmlFor='selection2'>By User Input</label>
 						<br />
 					</fieldset>
 				</div>
@@ -331,9 +331,9 @@ const Inputs = () => {
 				<br />
 
 				{selectedRadio0 === 'option2' ? (
-					<div className='inputBlankSize'>
+					<div className='radioButton1'>
 						<fieldset className='fieldsetUserInput'>
-							<legend>Input Blank Size</legend>
+							{/* <legend>User Input Size</legend> */}
 							<div className='input1_die'>
 								<div>
 									<label className='input_label'>Height(mm):</label>
@@ -347,9 +347,9 @@ const Inputs = () => {
 						</fieldset>
 					</div>
 				) : (
-					<div className='radioButton' id='radio'>
+					<div className='radioButton1' id='radio'>
 						<fieldset>
-							<legend>Choose PCD Blank</legend>
+							{/* <legend>Blank Type</legend> */}
 							<input
 								type='radio'
 								id='choice1'
@@ -398,4 +398,4 @@ const Inputs = () => {
 	);
 };
 
-export default Inputs;
+export default dieDesign;

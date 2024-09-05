@@ -14,10 +14,10 @@ export default async function Home() {
 
 	return (
 		<div className='pageBody'>
-			<header>
+			{/* <header>
 				<title>HOME: FCW Design Tool</title>
 				<link rel='icon' href='/logo.png' />
-			</header>
+			</header> */}
 
 			<main id='mainHome'>
 				<div className='homeItem1'>
@@ -63,21 +63,18 @@ export default async function Home() {
 								</Link>
 							</li>
 							<li>
-								{/* <Link href='./crd/assemble' style={{ color: 'white' }}> */}
-								More......
-								{/* </Link> */}
-							</li>
-							{/* <li>
-								<Link href='./crd/comparison' style={{ color: 'white' }}>
-								PCD vs. CRD
+								<Link href='./differentThinking/fillRatio' style={{ color: 'white' }}>
+									Controlling Fill Ratio for FCW
 								</Link>
-								</li> */}
+							</li>
+							
+							
 						</ul>
 					</div>
 					<WeatherBox />
 				</div>
 			</aside>
-			<Footer />
+			
 		</div>
 	);
 }

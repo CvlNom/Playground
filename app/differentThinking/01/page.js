@@ -100,9 +100,12 @@ export default function differentThinking01() {
 							<p>From the Patent of US20150044506A1.</p>
 							<ol>
 								<li>To protect the flux, add one more tube to weld.</li>
-								<li>Cause of the small tube diameter similar to the existing process, very simple to make a final products</li>
-								<li>However some cumbersome works needed for double tube and some obstacles to adjust fill percent of flux</li>
-								
+								<li>
+									Cause of the small tube diameter similar to the existing process, very simple to make a final products
+								</li>
+								<li>
+									However some cumbersome works needed for double tube and some obstacles to adjust fill percent of flux
+								</li>
 							</ol>
 						</div>
 					)}
@@ -114,7 +117,6 @@ export default function differentThinking01() {
 							<ol>
 								<li>Not to penetrate the laser beam to the flux, adjust the angle of laser.</li>
 								<li>Or make the tube type of folded so the beam could not reach to the flux</li>
-								
 							</ol>
 						</div>
 					)}
@@ -123,7 +125,8 @@ export default function differentThinking01() {
 				<div className='howToUse'></div>
 			</main>
 
-			<aside className='mainBody' id='asideSpool01'>
+			<aside className='mainBody' id='asideWeldSeam'>
+				<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking' />
 				<div className='mainBodyUl'>
 					<ul>
 						<li>
@@ -131,19 +134,10 @@ export default function differentThinking01() {
 								⬅️ Home
 							</Link>
 						</li>
-						
 					</ul>
 				</div>
 			</aside>
-			<footer>
-				author: Alex Kwak <br />
-				&copy; copyright reserved.
-				<small>We do not take any responsibility except on Contracts.</small>
-				<br />
-				<small>
-					<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-				</small>
-			</footer>
+			
 		</div>
 	);
 }

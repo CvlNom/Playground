@@ -11,11 +11,11 @@ export default async function Detail(props) {
 		<div className='pageBody'>
 			<header>
 				<title>Forum: Detail</title>
-				<h2>Detailed Content</h2>
 				<link rel='icon' href='/logo.png' />
 			</header>
 
 			<main className='detail_main'>
+				<h3>Detailed Content</h3>
 				<div className='detail_title'>
 					<p id='label_title'>Title:</p> 
 					<p id='content_title'>{result.title}</p>
@@ -30,16 +30,7 @@ export default async function Detail(props) {
 				
 			</main>
 			<aside id='asideDetail'>Side</aside>
-			<footer>
-				<hr />
-				author: Alex Kwak <br />
-				&copy; copyright reserved.
-				<small>I do not take any responsibility except on Contracts.</small>
-				<br />
-				<small>
-					<a href='mailto:alexkwak24@gmail.com'> alexkwak24@gmail.com</a>
-				</small>
-			</footer>
+
 		</div>
 	);
 }

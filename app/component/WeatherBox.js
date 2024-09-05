@@ -58,7 +58,7 @@ const WeatherBox = () => {
 		return 'red';
 	};
 	const getColorByDewPoint = (temp, dpTemp) => {
-		let diff = temp - dpTemp;
+        let diff = temp - dpTemp;
 		// console.log('--------', diff);
 		if (diff < 4) return 'red';
 		if (diff < 6) return 'orange';
@@ -68,23 +68,24 @@ const WeatherBox = () => {
 	};
 
 	return (
-		<div style={{ marginTop: '10px' }}>
-			{loading ? (
-				<div className='weather-box'>
-					<h3>Loading ......</h3>
+		<div style={{marginTop:'10px'}}>
+			{loading? (
+				<div className='weather-box'> 
+				<h3>Loading ......</h3>
 				</div>
 			) : (
-				<div className='weather-box'>
-					{/* <div>{weather && weather.name}</div> */}
-					<h3 style={{ color: 'lightblue' }}>City: {weather?.name}</h3>
-					<h4 style={{ color: 'white' }}>
-						{weather?.main.temp.toFixed(1)} ℃ / {(weather?.main.temp * 1.8 + 32).toFixed(1)} ℉
-					</h4>
-					<h3 style={{ color: getColorByHumidity(weather?.main.humidity) }}>Humidity: {weather?.main.humidity}%</h3>
-					<h4 style={{ backgroundColor: 'white', color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
-						Dew Point: {dPoint} ℃ / {(dPoint * 1.8 + 32).toFixed(1)} ℉
-					</h4>
-				</div>
+		<div className='weather-box'>
+			{/* <div>{weather && weather.name}</div> */}
+			<h3 style={{ color: 'lightblue' }}>City: {weather?.name}</h3>
+			<h4 style={{ color: 'white' }}>
+				{weather?.main.temp.toFixed(1)} ℃ / {(weather?.main.temp * 1.8 + 32).toFixed(1)} ℉
+			</h4>
+			<h3 style={{ color: getColorByHumidity(weather?.main.humidity) }}>Humidity: {weather?.main.humidity}%</h3>
+			<h4 style={{ backgroundColor: 'white', color: getColorByDewPoint(weather?.main.temp, dPoint) }}>
+				Dew Point: {dPoint} ℃ / {(dPoint * 1.8 + 32).toFixed(1)} ℉
+			</h4>
+		</div>
+
 			)}
 		</div>
 	);

@@ -23,7 +23,7 @@ export default function Register() {
 				</div>
 			</main>
 			<aside id='asideRegister'>Side</aside>
-			<Footer />
+			
 		</div>
 	);
 }

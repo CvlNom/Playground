@@ -7,6 +7,7 @@ import TubeInfo from '../component/TubeInfo';
 import DrawFormingRoll from './DrawFormingRoll';
 import Footer from '../component/Footer';
 
+
 export default async function forming(req, res) {
 	let session = await getServerSession(authOptions);
 
@@ -45,7 +46,7 @@ export default async function forming(req, res) {
 					</div>
 				</aside>
 
-				<Footer />
+				
 			</div>
 		);
 	}

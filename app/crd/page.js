@@ -1,18 +1,24 @@
 import Head from 'next/head';
 import InputCRD from './inputCRD';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
-import Footer from '../component/Footer';
+import Footer from '../component/Footer'
+
+
+
 
 export default async function CRD(req, res) {
-	let session = await getServerSession(authOptions);
+  let session = await getServerSession(authOptions)
 
-	if (!session) {
-		return <LoginSignup />;
-	} else {
-		return (
+  if (!session) {
+    return (
+      <LoginSignup />
+    )
+
+  } else {
+    return (
 			<div className='pageBody'>
 				<header>
 					<title>Design CRD profile</title>
@@ -44,8 +50,8 @@ export default async function CRD(req, res) {
 						</ul>
 					</div>
 				</aside>
-				<Footer />
+				
 			</div>
 		);
-	}
+  }
 }
