@@ -24,6 +24,8 @@ export default async function forming(req, res) {
 				<main>
 					<h3>Design Tube Forming Profile</h3>
 					<DrawFormingRoll />
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</main>
 
 				<aside className='mainBody' id='asideForming'>
@@ -45,8 +47,6 @@ export default async function forming(req, res) {
 						<TubeInfo />
 					</div>
 				</aside>
-
-				
 			</div>
 		);
 	}

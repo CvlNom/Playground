@@ -22,21 +22,24 @@ export default async function selectStrip(req, res) {
 					<h2>Strip Selection for tube making</h2>
 					<img src='../stripToTube.png' alt='image of crd assemble' className='img-strip-tube' />
 					<div className='howToUse'>
-					<p>Strip Selection</p>
-					<ol>
-						<li>Tube Diameter = (Width / 3.14) + Thickness </li>
-						<li>Inside shrink and outside stretch during forming process </li>
-						<li>Not enough stretch make imperfection of seam section shape</li>
-						<li>To make ideal shape of the seam section, apply bevelling roll and "W" bending at F1 stand.</li>
-					</ol>
-					<p>Process Engineering for Flux Cored Welding Wire</p>
-					<ol>
-						<li>Ratio of width and thickness decides the void ratio to fill a powder. </li>
-						<li>Depending on the product type and powder's specific density, need to adjust strip size.</li>
-						<li>Plus, considering on the process capability and final strength of wire, decide the start diameter by strip thickness and width.</li>
-					</ol>
-
-
+						<p>Strip Selection</p>
+						<ol>
+							<li>Tube Diameter = (Width / 3.14) + Thickness </li>
+							<li>Inside shrink and outside stretch during forming process </li>
+							<li>Not enough stretch make imperfection of seam section shape</li>
+							<li>To make ideal shape of the seam section, apply bevelling roll and "W" bending at F1 stand.</li>
+						</ol>
+						<p>Process Engineering for Flux Cored Welding Wire</p>
+						<ol>
+							<li>Ratio of width and thickness decides the void ratio to fill a powder. </li>
+							<li>Depending on the product type and powder's specific density, need to adjust strip size.</li>
+							<li>
+								Plus, considering on the process capability and final strength of wire, decide the start diameter by
+								strip thickness and width.
+							</li>
+						</ol>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
 					</div>
 				</main>
 				<aside className='mainBody' id='asideForming02'>

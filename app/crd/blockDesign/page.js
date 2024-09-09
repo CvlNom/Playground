@@ -16,16 +16,15 @@ export default function blockDesign() {
 
 			<main>
 				<h2>Design CRD Block by Size</h2>
-				<BlockTable/>
-				
+				<BlockTable />
+
 				<div className='howToUse'>
 					<p>How to use</p>
 					<ol>
 						<li>Fill start and target size</li>
-						<li>Adjust OP at table referring  R rate around 8 to 9%</li>
+						<li>Adjust OP at table referring R rate around 8 to 9%</li>
 						<li>Adjust Number of Stage to meet the target size</li>
 						<li>With profile drawing of "R" and "S", this table can be a manufacturing drawing for CRD rolls</li>
-						
 					</ol>
 				</div>
 				<div className='annotation'>
@@ -34,9 +33,10 @@ export default function blockDesign() {
 						<li>R factor is the parameter to shape of oval round.</li>
 						<li>G/2 is halp gap between rolls, in case of big diameter it will be better to increase.</li>
 						<li>eR is edge round and like G/2 adjust if needed.</li>
-						
 					</ol>
 				</div>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 			</main>
 
 			<aside className='mainBody' id='asideCRD01'>

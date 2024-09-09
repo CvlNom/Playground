@@ -89,7 +89,10 @@ export default function principleOfLL() {
 								<li>The wire diameter becomes bigger as die wear out.</li>
 								<li>As a result, there is no space to layer on next layer to the wall</li>
 								<li>Then wire goes next furrow between bottom wires and start to ruin the principle</li>
-								<li>To keep the principle, operator try to push wire to the wall by stick, however the failure rate goes up effecting winding productivity.</li>
+								<li>
+									To keep the principle, operator try to push wire to the wall by stick, however the failure rate goes
+									up effecting winding productivity.
+								</li>
 							</ol>
 						</div>
 					)}
@@ -101,6 +104,8 @@ export default function principleOfLL() {
 				</div>
 
 				<div className='howToUse'></div>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 			</main>
 
 			<aside className='mainBody' id='asideSpool01'>
@@ -124,7 +129,6 @@ export default function principleOfLL() {
 					</ul>
 				</div>
 			</aside>
-			
 		</div>
 	);
 }

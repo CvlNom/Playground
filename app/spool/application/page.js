@@ -36,29 +36,31 @@ export default async function applicationMethod(req, res) {
 
 				<main>
 					<div className='mainContent'>
-					<h2>3 Ways to make the Level Layer Winding</h2>
-					<table border='1'>
-						<thead style={{ height: '40px' }}>
-							<tr>
-								<th style={{ width: '150px' }}>Comparison Item</th>
-								<th style={{ width: '250px' }}>By Operator</th>
-								<th style={{ width: '250px' }}>Apply Grooved Spool</th>
-								<th style={{ width: '250px' }}>Introduce Full Automatic M/C</th>
-							</tr>
-						</thead>
-						<tbody>
-							{tableData.map((row, rowIndex) => (
-								<tr key={rowIndex} style={{ height: `${rowHeights[rowIndex]}px` }}>
-									{row.map((cell, colIndex) => (
-										<td key={colIndex} style={{ width: colIndex === 0 ? '150px' : '250px' }}>
-											{cell}
-										</td>
-									))}
+						<h2>3 Ways to make the Level Layer Winding</h2>
+						<table border='1'>
+							<thead style={{ height: '40px' }}>
+								<tr>
+									<th style={{ width: '150px' }}>Comparison Item</th>
+									<th style={{ width: '250px' }}>By Operator</th>
+									<th style={{ width: '250px' }}>Apply Grooved Spool</th>
+									<th style={{ width: '250px' }}>Introduce Full Automatic M/C</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{tableData.map((row, rowIndex) => (
+									<tr key={rowIndex} style={{ height: `${rowHeights[rowIndex]}px` }}>
+										{row.map((cell, colIndex) => (
+											<td key={colIndex} style={{ width: colIndex === 0 ? '150px' : '250px' }}>
+												{cell}
+											</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</main>
 
 				<aside className='mainBody' id='asideSpool02'>
@@ -86,8 +88,6 @@ export default async function applicationMethod(req, res) {
 						</ul>
 					</div>
 				</aside>
-
-				
 			</div>
 		);
   // }

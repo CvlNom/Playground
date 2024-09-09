@@ -42,6 +42,8 @@ export default function byReduction() {
 						<li>relative contact length by T. Maxwell</li>
 						<li>Contact point by this page</li>
 					</ol>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</div>
 			</main>
 
@@ -61,7 +63,6 @@ export default function byReduction() {
 					</ul>
 				</div>
 			</aside>
-			
 		</div>
 	);
 }

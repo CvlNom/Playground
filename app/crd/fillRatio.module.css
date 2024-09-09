@@ -1,0 +1,28 @@
+.sideDescription {
+  font-size: 12px;
+  background-color:  rgba(227, 241, 241, 0.773);
+  margin: 0px;
+  padding: 5px 10px;
+  color: black;
+}
+
+.sideDescription > h4 {
+  padding-left: 14px;
+  font-size: 16px;
+}
+
+.sideDescription p {
+  font-size: 13px;
+  font-weight: 600;
+  font-style: italic;
+  margin-left: -10px;
+  margin-bottom: 10px;
+}
+
+.sideDescription ul {
+  padding-bottom: 15px;
+}
+.sideDescription > ul > li{
+  padding-bottom: 5px;
+}
+

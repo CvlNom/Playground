@@ -34,8 +34,9 @@ export default async function rollArrangement(req, res) {
 							</li>
 							<li>Stable forming works enough to do weld by laser.</li>
 						</ol>
-						
 					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</main>
 				<aside className='mainBody' id='asideForming01'>
 					<div className='mainBodyUl'>

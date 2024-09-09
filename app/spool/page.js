@@ -30,6 +30,8 @@ export default function designSpool(req, res) {
 				<main>
 					<h3>Design Plastic Spool (Bobbin)</h3>
 					<InputSpool calculatedValue={calculatedValue} />
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</main>
 
 				<aside className='mainBody' id='asideSpool'>
@@ -54,8 +56,6 @@ export default function designSpool(req, res) {
 					</div>
 					<WireWeight setCalculatedValue={setCalculatedValue} />
 				</aside>
-
-				
 			</div>
 		);
   // }

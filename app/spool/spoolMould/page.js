@@ -46,13 +46,19 @@ export default async function procedureOfMould(req, res) {
 						<ol>
 							<li>Check shape and dimension and also flange straightness.</li>
 							<li>Cut the part of layer groove and polish for the microscope picture. </li>
-							<li>Scaling the picture of groove by CAD software and measure the groove distance and last lap distance. </li>
+							<li>
+								Scaling the picture of groove by CAD software and measure the groove distance and last lap distance.{' '}
+							</li>
 							<li>If not passed inspection, let maker do repair work and new samples for inspection. </li>
 							<li>In case inspection passed, do the winding test at the winding machine with experienced operator. </li>
-							<li>With operator's opinion, get samples with modified extrusion specification like cooling time and total cycle time. </li>
+							<li>
+								With operator's opinion, get samples with modified extrusion specification like cooling time and total
+								cycle time.{' '}
+							</li>
 							<li>Issue Pass certification and check the extrusion condition from time to time. </li>
-							
 						</ol>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
 					</div>
 				</main>
 
@@ -81,8 +87,6 @@ export default async function procedureOfMould(req, res) {
 						</ul>
 					</div>
 				</aside>
-
-				
 			</div>
 		);
   // }

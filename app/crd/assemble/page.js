@@ -108,12 +108,13 @@ export default function blockAssemble() {
 					{selectedOption === 'option4' && (
 						<div>
 							<img src='../crd-assemble04.png' alt='image of crd assemble' className='crd-assemble01' />
-							
 						</div>
 					)}
 				</div>
 
 				<div className='howToUse'></div>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 			</main>
 
 			<aside className='mainBody' id='asideCRD02'>

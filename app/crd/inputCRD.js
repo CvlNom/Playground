@@ -59,11 +59,10 @@ const InputCRD = () => {
 		const crdCanvas = document.getElementById('crdCanvas');
 		const ctx = crdCanvas.getContext('2d');
 		const PI = Math.PI;
-
 		let scaleCanvas = '';
 
 		const rollDiameter = inputValues.input2;
-		console.log(rollDiameter);
+		// console.log(rollDiameter);
 		if (rollDiameter < 3.0) {
 			scaleCanvas = 100;
 		} else {

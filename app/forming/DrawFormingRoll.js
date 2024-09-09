@@ -332,9 +332,9 @@ const DrawFormingRoll = () => {
 		function drawDimRound(dx1, dy1, dR, angle, l1, pos) {
 			let b1 = Math.sin(angle * (Math.PI / 180)) * dR;
 			let c1 = Math.cos(angle * (Math.PI / 180)) * dR;
-			let b11 = Math.cos((90 - angle - 30) * (Math.PI / 180)) * l1;
+			let b11 = Math.cos((90 - angle - 30) * (Math.PI / 180)) * l1 ;
 			let c11 = Math.sqrt(Math.pow(l1, 2) - Math.pow(b11, 2));
-			let b111 = Math.cos(angle * (Math.PI / 180)) * l1;
+			let b111 = Math.cos(angle * (Math.PI / 180)) * l1 ;
 			let c111 = Math.sqrt(Math.pow(l1, 2) - Math.pow(b111, 2));
 			ctx.lineWidth = 0.5;
 			ctx.strokeStyle = 'blue';
@@ -471,7 +471,7 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x6a, y0);
 			ctx.stroke();
 
-			drawDimTopHor(x4, y1, x4a, y1, 140, 15, 8, 0);
+			drawDimTopHor(x4, y1, x4a, y1, 140, 10, 8, 0);
 
 			// Top Roll Profile
 			ctx.lineWidth = 2;
@@ -493,7 +493,7 @@ const DrawFormingRoll = () => {
 			ctx.arc(tx4a, y1 - 0.2 * scaleCanvas, eR, (180 * PI) / 180, (270 * PI) / 180, false);
 			ctx.lineTo(x6a, y0 - 0.2 * scaleCanvas);
 			ctx.stroke();
-			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 100, 15, 8, 0);
+			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 100, 10, 8, 0);
 
 			let canH = formingCanvas.height;
 			let canW = formingCanvas.width;
@@ -513,12 +513,12 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x1a, y3 + 25);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, (x1a - x1) / 2, 15, 8, 0);
-			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 15, 8, 1);
-			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 15, 8, 0);
-			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 15, 8, 0);
-			drawDimVer(x6a, y0, x4a, y2, (x6a - x5a) * 1.8, 15, 8, 0);
-			drawDimVer(x6, y0, x3, y4, (x6a - x5a) * 1.8, 15, 8, 1);
+			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, (x1a - x1) / 2, 10, 8, 0);
+			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 10, 8, 1);
+			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 10, 8, 0);
+			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 10, 8, 0);
+			drawDimVer(x6a, y0, x4a, y2, (x6a - x5a) * 1.8, 10, 8, 0);
+			drawDimVer(x6, y0, x3, y4, (x6a - x5a) * 1.8, 10, 8, 1);
 			drawDimRound(x0, y6, gR1, 5, 8, 1);
 			drawDimRound(x1a, y3, gR2, 15, 8, 3);
 			drawDimRound(x1, y3, gR2 - sT, 15, 8, 3);
@@ -654,11 +654,11 @@ const DrawFormingRoll = () => {
 				8,
 				0
 			);
-			drawDimTopHor(x5, y0 + eR, x5a, y0 + eR, eR * 2.5, 15, 8, 0);
-			drawDimVer(x6a + 50, y0, x5a, y0 + dy4, eR, 15, 8, 0);
-			drawDimVer(x6a + 50, y0 - 0.2 * scaleCanvas, x6a + 50, y0, eR, 15, 8, 0);
-			drawDimVer(x6, y0, x0 - 25, y0 + dy1 - dy2, eR, 15, 8, 1);
-			drawDimVer(x7, y0, x1 - 25, y6, eR, 15, 8, 1);
+			drawDimTopHor(x5, y0 + eR, x5a, y0 + eR, eR * 2.5, 10, 8, 0);
+			drawDimVer(x6a + 50, y0, x5a, y0 + dy4, eR, 10, 8, 0);
+			drawDimVer(x6a + 50, y0 - 0.2 * scaleCanvas, x6a + 50, y0, eR, 10, 8, 0);
+			drawDimVer(x6, y0, x0 - 25, y0 + dy1 - dy2, eR, 10, 8, 1);
+			drawDimVer(x7, y0, x1 - 25, y6, eR, 10, 8, 1);
 			drawDimRound(x0, y0 + dy1 - dy2, gR1, 30, 8, 3);
 			drawDimRound(x0, y0 + dy1 - dy2, gR4, 15, 8, 3);
 			drawDimRound(x1a, y6, gR2, 60, 8, 3);
@@ -730,9 +730,9 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x00, formingCanvas.height - 20);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y1, x1a, y1, (x1a - x1) / 2, 15, 8, 0);
-			drawDimTopHor(x2, y2, x2a, y2, (x1a - x1) / 2, 15, 8, 0);
-			drawDimVer(x4a, y2, x2a, y1, eR * 2, 15, 8, 0);
+			drawDimTopHor(x1, y1, x1a, y1, (x1a - x1) / 2, 10, 8, 0);
+			drawDimTopHor(x2, y2, x2a, y2, (x1a - x1) / 2, 10, 8, 0);
+			drawDimVer(x4a, y2, x2a, y1, eR * 2, 10, 8, 0);
 
 			drawDimRound(x00, y00, gR, 35, 8, 3);
 			drawDimRound(x3, y00 + eR, eR, 45, 8, 1);
@@ -784,7 +784,7 @@ const DrawFormingRoll = () => {
 			ctx.moveTo(x00, 30);
 			ctx.lineTo(x00, formingCanvas.height - 5);
 			ctx.stroke();
-			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 15, 8, 0);
+			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 8, 0);
 			drawDimRound(x00, y00, gR, 45, 8, 3);
 			drawDimRound(x1a + eR, y4, eR, 45, 8, 4);
 		}
@@ -894,7 +894,7 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x00, formingCanvas.height - 5);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 15, 8, 0);
+			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 8, 0);
 			drawDimRound(x00, y00, gR, 45, 8, 3);
 			drawDimRound(x1a + eR, y4, eR, 45, 8, 4);
 
@@ -983,7 +983,7 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x4a, y00);
 				ctx.stroke();
 
-				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 15, 8, 0);
+				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 10, 8, 0);
 				drawDimRound(x00, y00, gR, 45, 8, 3);
 				drawDimRound(x3a, y2 - b1, eR, 45, 8, 4);
 			} else {
@@ -1180,7 +1180,7 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x00, y4a);
 				ctx.stroke();
 
-				drawDimTopHor(x1, y4, x1a, y4, eR * 2, 15, 8, 0);
+				drawDimTopHor(x1, y4, x1a, y4, eR * 2, 10, 8, 0);
 				drawDimRound(x00, y00, gR, 45, 8, 3);
 				drawDimRound(x1a + eR, y3, eR, 45, 8, 4);
 			}
@@ -1270,7 +1270,7 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x4a, y00);
 				ctx.stroke();
 
-				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 15, 8, 0);
+				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 10, 8, 0);
 				drawDimRound(x00, y00, gR, 45, 8, 3);
 				drawDimRound(x3a, y2 - b1, eR, 45, 8, 4);
 			} else {

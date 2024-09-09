@@ -23,6 +23,8 @@ export default async function List({searchParams}) {
 		.sort({ _id: -1 })
 		.toArray();
 	const itemCount = await db.collection('post').countDocuments({});
+
+	console.log('----------', result[5].writeDate.substring(0, 6));
 	
 	const totalPages = Math.ceil(itemCount / perPage);
 	const prevPage = page - 1 > 0 ? page - 1 : 1;
@@ -48,7 +50,8 @@ export default async function List({searchParams}) {
 				</header>
 
 				<main>
-					<h3>Forum</h3>
+					<h3 style={{ marginLeft: '300px', marginBottom: '15px' }}>Forum - Post List</h3>
+					<p style={{ fontSize: '14px', marginLeft: '30px' }}>Only the author can edit the post.</p>
 					<div className='list-bg'>
 						<div className='container00 '>
 							<div>
@@ -59,7 +62,10 @@ export default async function List({searchParams}) {
 											<Link prefetch={false} href={`/detail/${result[i]._id}`}>
 												<h4>{result[i].title}</h4>
 											</Link>
-											<span>{result[i].writeDate}</span>
+											<span>{result[i].writeDate.substring(0, 6)}</span>
+											<Link href={`/edit/${result[i]._id}`}>
+												<span>✏️</span>
+											</Link>
 										</div>
 									);
 								})}
@@ -109,6 +115,8 @@ export default async function List({searchParams}) {
 						<Link href='/write' className='writeButton'>
 							Write
 						</Link>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
 					</div>
 				</main>
 
@@ -120,10 +128,7 @@ export default async function List({searchParams}) {
 						<h4>and anything you think,</h4>
 						<h4>POST your opinion!!</h4>
 					</div>
-					
 				</aside>
-
-				
 			</div>
 		);
 	}

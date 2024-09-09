@@ -49,8 +49,11 @@ export default async function Home() {
 					<Link href='/register' className='loginBox'>
 						SIGN UP
 					</Link>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</div>
 			</main>
+
 			<aside className='mainBody' id='asideHome'>
 				<img src='/differentThinking.png' alt='image of different Thinking' className='differentThinking' />
 				<div className='home-side0'>
@@ -67,14 +70,11 @@ export default async function Home() {
 									Controlling Fill Ratio for FCW
 								</Link>
 							</li>
-							
-							
 						</ul>
 					</div>
 					<WeatherBox />
 				</div>
 			</aside>
-			
 		</div>
 	);
 }

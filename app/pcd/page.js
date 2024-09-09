@@ -28,6 +28,8 @@ export default async function DieProfile(req, res) {
 				<main>
 					<h3>Design PCD profile</h3>
 					<Inputs />
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 				</main>
 				<aside className='mainBody' id='asideDie'>
 					<div className='mainBodyUl'>
@@ -45,7 +47,6 @@ export default async function DieProfile(req, res) {
 						</ul>
 					</div>
 				</aside>
-				
 			</div>
 		);
   // }
