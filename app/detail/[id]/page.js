@@ -29,7 +29,10 @@ export default async function Detail(props) {
 				<Comment _id={result._id.toString()} />
 				
 			</main>
-			<aside id='asideDetail'>Side</aside>
+			<aside id='asideDetail'>
+				<p style={{fontSize:'12px'}}>Discuss the agenda with encouragement.</p>
+				<p style={{fontSize:'12px'}}>Without blame, comment your think!!</p>
+			</aside>
 
 		</div>
 	);
