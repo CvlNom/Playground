@@ -70,6 +70,11 @@ export default async function Home() {
 									Controlling Fill Ratio for FCW
 								</Link>
 							</li>
+							<li>
+								<Link href='./differentThinking/feedibility' style={{ color: 'white' }}>
+									Feed Ability of FCW
+								</Link>
+							</li>
 						</ul>
 					</div>
 					<WeatherBox />
