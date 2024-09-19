@@ -45,9 +45,9 @@ export default function FeedAbility() {
           <h4>2. Simple mechanism</h4>
           <div style={{ paddingLeft: "100px" }}>
             <img
-              src="../feedibility.png"
+              src="../feed_ability.png"
               style={{ width: "500px" }}
-              alt="image of principle"
+              alt="image of mechanism"
             />
           </div>
           <p>For constant and stable feed ability on welding</p>
