@@ -24,7 +24,7 @@ export default async function List({searchParams}) {
 		.toArray();
 	const itemCount = await db.collection('post').countDocuments({});
 
-	console.log('----------', result[5].writeDate.substring(0, 6));
+	// console.log('----------', result[5].writeDate.substring(0, 6));
 	
 	const totalPages = Math.ceil(itemCount / perPage);
 	const prevPage = page - 1 > 0 ? page - 1 : 1;
