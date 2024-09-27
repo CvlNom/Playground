@@ -71,35 +71,35 @@ const WireWeight = ({ setCalculatedValue }) => {
 	];
 
 	return (
-		<div className='weightNLength'>
-			<h3>Wire Weight / Meter</h3>
-			<div className='topDropdown'>
-				<div className='wireDiameter'>
-					<label className='input_label'>Wire Diameter:</label>
-					<input type='number' name='input1' step='0.01' value={dia} onChange={handleChange} />
+		<div className='mt-2 py-4 bg-slate-300 rounded-lg shadow-lg'>
+			<h3 className="text-slate-600 test-lg italic text-center font-semibold mb-2">Wire Weight / Meter</h3>
+			<div className='pl-4 text-slate-700 text-sm font-semibold'>
+				<div className='ml-2 mb-2'>
+					<label className='input_label'>1. Wire Diameter:</label>
+					<input className="border-slate-600 border w-14 text-right ml-12" type='number' name='input1' step='0.01' value={dia} onChange={handleChange} />
 				</div>
-				<div className='wireDiameter' id='dropdown'>
-					<label>Type:</label>
-					<select name='dropdownGroup' value={selectedOption} onChange={handleSelectChange}>
+				<div className='ml-2 mb-2' id='dropdown'>
+					<label>2. Material:</label>
+					<select className="w-30 ml-2" name='dropdownGroup' value={selectedOption} onChange={handleSelectChange}>
 						{wireTypeOptions.map((option) => (
 							<option key={option.id} value={option.value}>
 								{option.label}
 							</option>
 						))}
 					</select>
-					<p style={{ color: 'blue' }}>Weight (g/m): {weight}</p>
+					<p className='my-2 text-blue-700'>3. Weight (g/m): {weight}</p>
 				</div>
 
-				<div className='wireDiameter1' id='dropdown1'>
-					<label>Package Weight:</label>
-					<select name='dropdownGroup1' value={selectedPackage} onChange={handleSelectChangePackage}>
+				<div className='ml-2 mb-1' id='dropdown1'>
+					<label>4. Package Weight:</label>
+					<select className="w-18 ml-4" name='dropdownGroup1' value={selectedPackage} onChange={handleSelectChangePackage}>
 						{packageOptions.map((option) => (
 							<option key={option.id} value={option.value}>
 								{option.label}
 							</option>
 						))}
 					</select>
-					<p style={{ color: 'blue' }}>Length (meters): {length}</p>
+					<p className='my-2 text-blue-700'>5. Length (meters): {length}</p>
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,7 @@ import CheckTable from '../byReduction/table01';
 
 const Sequence = () => {
 	const [inputValues, setInputValues] = useState({
-		startDia: '4.700',
+		startDia: '3.026',
 		finalDia: '1.180',
 	});
 	const [inputRate, setInputRate] = useState({
@@ -88,79 +88,115 @@ const Sequence = () => {
 	}
 
 	return (
-		<div className='sequence-body'>
-			<div className='sequence-input'>
-				<div className='sequence-start'>
-					<label>Start Size:</label>
-					<input type='number' step='0.01' name='startDia' value={inputValues.startDia} onChange={handleChange} />
-				</div>
-				<div className='sequence-final'>
-					<label>Final Size:</label>
-					<input type='number' step='0.01' name='finalDia' value={inputValues.finalDia} onChange={handleChange} />
-				</div>
-			</div>
+		<div className="m-6">
+      <h4 className="my-2 text-slate-600 text-base font-semibold">
+        1. Input the start size and final size
+      </h4>
+      <div className="flex">
+        <div className="mb-2 w-52 pl-2">
+          <label className="text-slate-500 text-sm mr-2.5">Start Size:</label>
+          <input
+            className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+            type="number"
+            step="0.001"
+            name="startDia"
+            value={inputValues.startDia}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="sequence-final">
+          <label className="text-slate-500 text-sm mr-2.5">Final Size:</label>
+          <input
+            className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+            type="number"
+            step="0.001"
+            name="finalDia"
+            value={inputValues.finalDia}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
 
-			<h4>Selection CRD or PCD according to detailed engineering</h4>
-			<div className='sequence-table'>
-				<div className='columns'>
-					<p>#Start</p>
-					<p>#1</p>
-					<p>#2</p>
-					<p>#3</p>
-					<p>#4</p>
-					<p>#5</p>
-					<p>#6</p>
-					<p>#7</p>
-					<p>#8</p>
-					<p>#9</p>
-					<p>#10</p>
-					<p>#11</p>
-					<p>#12</p>
-				</div>
-				<div className='columns'>
-					<input type='text' value='E-Rate(%)' readOnly />
-					<input type='number' step='0.1' name='block1' value={inputRate.block1} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block2' value={inputRate.block2} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block3' value={inputRate.block3} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block4' value={inputRate.block4} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block5' value={inputRate.block5} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block6' value={inputRate.block6} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block7' value={inputRate.block7} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block8' value={inputRate.block8} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block9' value={inputRate.block9} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block10' value={inputRate.block10} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block11' value={inputRate.block11} onChange={handleChange0} />
-					<input type='number' step='0.1' name='block12' value={inputRate.block12} onChange={handleChange0} />
-				</div>
-				<div className='columns'>
-					<p
-						style={{
-							backgroundColor:
-								calSize[0] <= inputValues.startDia + 0.001 && calSize[0] >= inputValues.startDia - 0.001
-									? 'lightgreen'
-									: 'orange',
-						}}
-					>
-						{calSize[0]}
-					</p>
-					<p>{calSize[1]}</p>
-					<p>{calSize[2]}</p>
-					<p>{calSize[3]}</p>
-					<p>{calSize[4]}</p>
-					<p>{calSize[5]}</p>
-					<p>{calSize[6]}</p>
-					<p>{calSize[7]}</p>
-					<p>{calSize[8]}</p>
-					<p>{calSize[9]}</p>
-					<p>{calSize[10]}</p>
-					<p>{calSize[11]}</p>
-					<p>{inputValues.finalDia}</p>
-				</div>
-			</div>
-			<hr />
-			<h4>Design Die Sequence by area reduction rate</h4>
-			<CheckTable data={calSize} data1={red} data2={elo} />
-		</div>
+      <h4 className="mt-4 text-slate-600 text-base font-semibold">
+        2. Design the drawing sequence by elongation rate
+      </h4>
+      <div className="flex flex-col mt-3 pl-2">
+        {/* 헤더 섹션 */}
+        <div className="flex">
+          {[
+            "#Start",
+            "#1",
+            "#2",
+            "#3",
+            "#4",
+            "#5",
+            "#6",
+            "#7",
+            "#8",
+            "#9",
+            "#10",
+            "#11",
+            "#12",
+          ].map((text, index) => (
+            <p key={index} className="cell">
+              {text}
+            </p>
+          ))}
+        </div>
+
+        {/* 입력 섹션 */}
+        <div className="flex">
+          <input
+            className="input-cell"
+            type="text"
+            value="E-Rate(%)"
+            readOnly
+          />
+          {Object.keys(inputRate).map((block, index) => (
+            <input
+              key={index}
+              className="input-cell"
+              type="number"
+              step="0.1"
+              name={block}
+              value={inputRate[block]}
+              onChange={handleChange0}
+            />
+          ))}
+        </div>
+
+        {/* Diameter 섹션 */}
+        <div className="flex">
+          <p
+            className="cell"
+            style={{
+              backgroundColor:
+                calSize[0] <= inputValues.startDia + 0.001 &&
+                calSize[0] >= inputValues.startDia - 0.001
+                  ? "lightgreen"
+                  : "orange",
+            }}
+          >
+            ⌀{calSize[0]}
+          </p>
+          {calSize.slice(1, 12).map((size, index) => (
+            <p key={index} className="cell">
+              {size}
+            </p>
+          ))}
+          <p className="cell">{inputValues.finalDia}</p>
+        </div>
+      </div>
+
+      <hr />
+
+      <h4 className="mt-6 mb-2 text-slate-600 text-base font-semibold">
+        3. Select CRD or PCD and its spec. according to detailed engineering
+      </h4>
+      <div className="pl-2">
+        <CheckTable data={calSize} data1={red} data2={elo} />
+      </div>
+    </div>
 	);
 };
 

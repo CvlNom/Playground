@@ -43,26 +43,26 @@ export default async function List({searchParams}) {
 		return <LoginSignup />;
 	} else {
 		return (
-			<div className='pageBody'>
+			<div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
 				<header>
 					<title>Forum: Engineering Discussion</title>
 					<link rel='icon' href='/logo.png' />
 				</header>
 
-				<main>
-					<h3 style={{ marginLeft: '300px', marginBottom: '15px' }}>Forum - Post List</h3>
-					<p style={{ fontSize: '14px', marginLeft: '30px' }}>Only the author can edit the post.</p>
-					<div className='list-bg'>
-						<div className='container00 '>
+				<main className="flex-grow order-2 bg-slate-200 pl-4 pt-2">
+					<h3 className="text-slate-500 text-xl font-bold ml-0 mb-4">Forum - Post List</h3>
+					<p className="text-slate-600 text-sm italic ml-10 mb-2">Only the author can edit the post.</p>
+					<div className='px-4 w-[900px] justify-center'>
+						<div className=''>
 							<div>
 								{result.map((a, i) => {
 									return (
-										<div key={i} className='list-item'>
-											<span>{result[i].userID}</span>
+										<div key={i} className='flex flex-row bg-slate-100 rounded-md mb-1 p-0.5 shadow-md w-[800px] items-center'>
+											<span className='w-24 text-slate-500 text-xs pl-0.5'>{result[i].userID}</span>
 											<Link prefetch={false} href={`/detail/${result[i]._id}`}>
-												<h4>{result[i].title}</h4>
+												<h4 className='w-[620px] text-blue-600 text-sm'>{result[i].title}</h4>
 											</Link>
-											<span>{result[i].writeDate.substring(0, 6)}</span>
+											<span className='w-16 text-slate-500 text-xs'>{result[i].writeDate.substring(0, 6)}</span>
 											<Link href={`/edit/${result[i]._id}`}>
 												<span>✏️</span>
 											</Link>
@@ -120,13 +120,13 @@ export default async function List({searchParams}) {
 					</div>
 				</main>
 
-				<aside id='asideForum'>
-					<div>
-						<h4>Question,</h4>
-						<h4>Advice,</h4>
-						<h4>Share Experience,</h4>
-						<h4>and anything you think,</h4>
-						<h4>POST your opinion!!</h4>
+				<aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100" id='asideForum'>
+					<div className="m-4">
+						<h4 className='text-red-600 text-2xl italic font-bold'>Question?</h4>
+						<h4 className='text-blue-600 text-2xl italic font-bold'>Need Advice?</h4>
+						<h4 className='text-orange-600 text-2xl italic font-bold'>Share Experience?</h4>
+						<h4 className='text-slate-600 text-xl font-semibold'>Anything you think,</h4>
+						<h4 className='text-slate-700 text-2xl font-bold mt-2'>POST YOUR OPINION</h4>
 					</div>
 				</aside>
 			</div>

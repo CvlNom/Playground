@@ -3,7 +3,7 @@ import './globals.css';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 import NavBar from './component/NavBar'; // NavBar 컴포넌트를 불러옵니다.
-import Footer from './component/Footer'; // NavBar 컴포넌트를 불러옵니다.
+import Footer from './component/Footer'; 
 
 const inter = Inter({ subsets: ['latin'] });
 

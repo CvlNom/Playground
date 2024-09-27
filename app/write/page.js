@@ -20,27 +20,28 @@ export default async function Write(req, res) {
 
 	} else {
 		return (
-			<div className='pageBody'>
+			<div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
 				<header>
-					<title>Post your Agenda</title>
-					<h2>Posting Agenda</h2>
+					<title>Post-Writing: wire-lab</title>
+					{/* <h2>Posting Agenda</h2> */}
 					<link rel="icon" href="/logo.png" />
 				</header>
 
-				<main>
+				<main className="flex-grow order-2 bg-slate-200 pl-12 pt-2">
 					<div className="p-20">
-						<h3>Post your Agenda or Opinion</h3>
+						<h3 className="text-slate-500 font-bold p-2">Post your Agenda or Opinion</h3>
 						<form action="/api/post/new" method="POST">
 							{/* action 이 서버에 처리를 요청함, 방법은 Post 와 get */}
 							<input name="title" placeholder="Title" required /> <br />
 							<textarea name="content" placeholder="Content"  /><br />
 							{/* <WriteDate name="writeDate" /> */}
-							<button type="submit">POST</button>
+							<button className="bg-green-200 border-red-700 border-4 rounded-lg hover:bg-green-300" type="submit">POST</button>
 						</form>
 					</div>
 
 				</main>
-				<aside id='asideWrite'>Side</aside>
+				<aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100"
+				id='asideWrite'></aside>
 				
 			</div>
 		)

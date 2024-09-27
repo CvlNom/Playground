@@ -671,46 +671,53 @@ const InputSpool = ({ calculatedValue }) => {
 
 	return (
 		<div>
-			<div className='spool_container'>
-				<div className='spool_input_container'>
-					<div className='ref_image'>
-						<img src='./spool_page.png' alt='drawing of spool section' className='spoolSection' />
+			<div className='pl-4 py-2'>
+				<div className="flex flex-row justify-stretch py-1">
+					<div className="w-[480px]">
+						<img src='./spool_page.png' alt='drawing of spool section' className='border-slate-600 rounded-lg w-[350px] border' />
 					</div>
-					<div className='input_spool'>
-						<div className='spool_input'>
+					<div className="w-[300px] text-slate-500 text-sm ">
+						<div className='flex justify-end mb-2'>
 							<label>Wire diameter(mm):</label>
-							<input type='number' name='input1' step='0.01' value={inputValues.input1} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input1' step='0.01' value={inputValues.input1} onChange={handleChange} />
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>Wire weight (g/M):</label>
-							<input type='number' name='input2' step='0.1' value={inputValues.input2} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input2' step='0.1' value={inputValues.input2} onChange={handleChange} />
 							{/* <label>Wire weight (g/M):</label>
 							<input type='number' name='input2' step='0.1' value={calculatedValue}  /> */}
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>Winding weight (kg):</label>
-							<input type='number' name='input7' value={inputValues.input7} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input7' value={inputValues.input7} onChange={handleChange} />
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>Spool Width(mm):</label>
-							<input type='number' name='input3' value={inputValues.input3} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input3' value={inputValues.input3} onChange={handleChange} />
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>Flange Thickness(mm):</label>
-							<input type='number' name='input4' step='0.1' value={inputValues.input4} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input4' step='0.1' value={inputValues.input4} onChange={handleChange} />
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>Spool Diameter(mm):</label>
-							<input type='number' name='input5' value={inputValues.input5} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input5' value={inputValues.input5} onChange={handleChange} />
 						</div>
-						<div className='spool_input'>
+						<div className='flex justify-end my-2'>
 							<label>*Needed Dist.(mm):</label>
-							<input type='number' name='input6' value={inputValues.input6} onChange={handleChange} />
+							<input className="w-16 text-slate-700 ml-2 text-right border-slate-600 border"
+							type='number' name='input6' value={inputValues.input6} onChange={handleChange} />
 						</div>
 
-						<fieldset id='selectLapCount'>
-							<legend>Select Layer Lap </legend>
-							<input
+						<fieldset className="border-gray-700 border rounded-md flex flex-row justify-left h-14 items-center pb-2 mb-2">
+							<legend className="m-2 pl-2 text-slate-500 text-sm ">Select Layer Lap </legend>
+							<input className="ml-4 mr-1"
 								type='radio'
 								id='choice1'
 								name='radioGroup'
@@ -718,13 +725,13 @@ const InputSpool = ({ calculatedValue }) => {
 								checked={selectedRadio === 'option1'}
 								onChange={handleRadioChange}
 							/>
-							<label htmlFor='choice1'>Thinner Flange</label>
-							<input type='radio' id='choice2' name='radioGroup' value='option2' onChange={handleRadioChange} />
+							<label htmlFor='choice1' className="">Thinner Flange</label>
+							<input className="ml-4 mr-1 " type='radio' id='choice2' name='radioGroup' value='option2' onChange={handleRadioChange} />
 							<label htmlFor='choice2'>Thicker Flange</label>
 						</fieldset>
-						<fieldset id='selectLapCount'>
-							<legend>Show Details of </legend>
-							<input
+						<fieldset className="border-gray-700 border rounded-md flex flex-row justify-left h-14 items-center pb-2">
+							<legend className="m-2 pl-2 text-slate-500 text-sm ">Show Details of </legend>
+							<input className="ml-4 mr-1"
 								type='radio'
 								id='detail1'
 								name='draft'
@@ -732,8 +739,8 @@ const InputSpool = ({ calculatedValue }) => {
 								checked={selDetail === 'option1'}
 								onChange={handleRadioChange1}
 							/>
-							<label htmlFor='detail1'>Spool Flange</label>
-							<input type='radio' id='detail2' name='draft' value='option2' onChange={handleRadioChange1} />
+							<label htmlFor='detail1' className="mr-2">Spool Flange</label>
+							<input className="ml-4 mr-1 " type='radio' id='detail2' name='draft' value='option2' onChange={handleRadioChange1} />
 							<label htmlFor='detail2'>Bottom Groove</label>
 						</fieldset>
 					</div>
@@ -744,8 +751,8 @@ const InputSpool = ({ calculatedValue }) => {
 				</div> */}
 				<br />
 			</div>
-			<div className='spoolCanvas'>
-				<canvas id='spoolCanvas' width='800' height='680'></canvas>
+			<div className='mt-1 ml-2'>
+				<canvas className="bg-slate-100 rounded-xl shadow-lg"  id='spoolCanvas' width='800' height='680'></canvas>
 			</div>
 		</div>
 	);

@@ -4,6 +4,6 @@ import { signIn, signOut } from 'next-auth/react'
 
 export default function LoginBtn() {
     return (
-        <button className='loginButton' onClick={() => { signOut() }}>LOG OUT</button>
+        <button className='w-32 font-semibold py-1 bg-green-400 rounded-full' onClick={() => { signOut() }}>LOG OUT</button>
     )
 }

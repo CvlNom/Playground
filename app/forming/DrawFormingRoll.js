@@ -28,26 +28,24 @@ const DrawFormingRoll = () => {
 	}, [inputValues, selectedRadio]);
 
 	return (
-		<div>
-			<div className='container'>
-				<div className='input-container'>
-					<div className='input-thk'>
-						<label htmlFor='StripThickness'>Thickness(mm):</label>
-						<input
+		<div >
+			<div className="pl-4 py-1">
+				<div className="flex flex-row justify-stretch py-1">
+					<div className="w-60">
+						<label className="text-slate-500 text-sm mr-2.5">Thickness(mm):</label>
+						<input className="w-16 border-gray-700 border text-center text-sm text-slate-600"
 							type='number'
 							name='input1'
-							id='StripThickness'
 							step='0.1'
 							value={inputValues.input1}
 							onChange={handleChange}
 						/>
 					</div>
-					<div className='input-width'>
-						<label htmlFor='StripWidth'>Width(mm):</label>
-						<input
+					<div className="w-48">
+						<label className="text-slate-500 text-sm mr-2.5">Width(mm):</label>
+						<input className="w-16 border-gray-700 border text-center text-sm text-slate-600"
 							type='number'
 							name='input2'
-							id='StripWidth'
 							step='0.1'
 							value={inputValues.input2}
 							min='8'
@@ -56,10 +54,11 @@ const DrawFormingRoll = () => {
 						/>
 					</div>
 				</div>
-				<div className='radioButton'>
-					<fieldset>
-						<legend>Choose Forming Stand</legend>
-						<input
+
+				<div className="pl-0 pt-0 mt-1 w-96">
+					<fieldset className="border-gray-700 border rounded-md flex flex-row justify-left h-14 items-center pb-2">
+						<legend className="m-2 pl-2 text-slate-500 text-sm ">Choose Forming Stand</legend>
+						<input className="ml-2 mr-1 "
 							type='radio'
 							id='radio_F1'
 							name='myRadio'
@@ -67,29 +66,29 @@ const DrawFormingRoll = () => {
 							checked={selectedRadio === 'option1'}
 							onChange={handleRadioChange}
 						/>
-						<label htmlFor='radio_F1'>F1</label>
-						<input type='radio' id='radio_F2' name='myRadio' value='option2' onChange={handleRadioChange} />
-						<label htmlFor='radio_F2'>F2</label>
-						<input type='radio' id='radio_FG1' name='myRadio' value='option3' onChange={handleRadioChange} />
-						<label htmlFor='radio_FG1'>FG1</label>
-						<input type='radio' id='radio_FG2' name='myRadio' value='option4' onChange={handleRadioChange} />
-						<label htmlFor='radio_FG2'>FG2</label>
-						<input type='radio' id='radio_C1' name='myRadio' value='option5' onChange={handleRadioChange} />
-						<label htmlFor='radio_C1'>C1</label>
-						<input type='radio' id='radio_C2' name='myRadio' value='option6' onChange={handleRadioChange} />
-						<label htmlFor='radio_C2'>C2</label>
-						<input type='radio' id='radio_C3' name='myRadio' value='option7' onChange={handleRadioChange} />
-						<label htmlFor='radio_C3'>C3</label>
-						<input type='radio' id='radio_C4' name='myRadio' value='option8' onChange={handleRadioChange} />
-						<label htmlFor='radio_C4'>C4</label>
-						<input type='radio' id='radio_C5' name='myRadio' value='option9' onChange={handleRadioChange} />
-						<label htmlFor='radio_C5'>C5</label>
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_F1'>F1</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_F2' name='myRadio' value='option2' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_F2'>F2</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_FG1' name='myRadio' value='option3' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_FG1'>FG1</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_FG2' name='myRadio' value='option4' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_FG2'>FG2</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_C1' name='myRadio' value='option5' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C1'>C1</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_C2' name='myRadio' value='option6' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C2'>C2</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_C3' name='myRadio' value='option7' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C3'>C3</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_C4' name='myRadio' value='option8' onChange={handleRadioChange} />
+						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C4'>C4</label>
+						<input className="ml-4 mr-1 " type='radio' id='radio_C5' name='myRadio' value='option9' onChange={handleRadioChange} />
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C5'>C5</label>
 					</fieldset>
 				</div>
 				<br />
 			</div>
-			<div className='canvas'>
-				<canvas id='formingCanvas' width='800' height='650'></canvas>
+			<div className='ml-4'>
+				<canvas className="bg-slate-100 rounded-xl shadow-lg" id='formingCanvas' width='800' height='650'></canvas>
 			</div>
 			<br></br>
 		</div>
@@ -399,8 +398,8 @@ const DrawFormingRoll = () => {
 		function drawF1() {
 			let gR1, gR2, eR, d1;
 			let x1, x1a, x2, x3, x3a, x4, x4a, x5, x5a, x6, x6a, y1, y2, y3, y4, y5, y6;
-			// let x0 = 450;
-			// let y0 = 150; // canvas.height: 630
+			// let x0 = 400;
+			// let y0 = 160; // canvas.height: 630
 			gR1 = sW * 0.575;
 			gR2 = sW / PI / 2 + sT / 2.65;
 			d1 = sW - 0.2 * scaleCanvas; // y0 to y6 dist
@@ -471,7 +470,7 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x6a, y0);
 			ctx.stroke();
 
-			drawDimTopHor(x4, y1, x4a, y1, 140, 10, 8, 0);
+			drawDimTopHor(x4, y1, x4a, y1, 110, 10, 8, 0);
 
 			// Top Roll Profile
 			ctx.lineWidth = 2;
@@ -493,7 +492,7 @@ const DrawFormingRoll = () => {
 			ctx.arc(tx4a, y1 - 0.2 * scaleCanvas, eR, (180 * PI) / 180, (270 * PI) / 180, false);
 			ctx.lineTo(x6a, y0 - 0.2 * scaleCanvas);
 			ctx.stroke();
-			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 100, 10, 8, 0);
+			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 74, 10, 8, 0);
 
 			let canH = formingCanvas.height;
 			let canW = formingCanvas.width;
@@ -513,7 +512,7 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x1a, y3 + 25);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, (x1a - x1) / 2, 10, 8, 0);
+			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, 130, 10, 8, 0);
 			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 10, 8, 1);
 			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 10, 8, 0);
 			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 10, 8, 0);
