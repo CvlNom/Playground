@@ -6,6 +6,7 @@ import Link from 'next/link';
 import LoginSignup from '../component/LoginSignup';
 export const dynamic = 'force-dynamic';
 import Footer from '../component/Footer';
+import AD_side from '../component/AD_side';
 
 
 export default async function List({searchParams}) {
@@ -128,6 +129,7 @@ export default async function List({searchParams}) {
 						<h4 className='text-slate-600 text-xl font-semibold'>Anything you think,</h4>
 						<h4 className='text-slate-700 text-2xl font-bold mt-2'>POST YOUR OPINION</h4>
 					</div>
+					<AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/>
 				</aside>
 			</div>
 		);

@@ -75,7 +75,7 @@ export default async function CRD(req, res) {
             </ul>
           </div>
 
-          <AD_side company={['./hanil-logo.png', '한일 정공', '(82)-010-5414-4974', 'gawonjo@naver.com']} deal={['Tools for wear resist', 'Tube Forming & Drawing Roll', 'Precision Groove Profile Processing']}/>
+          <AD_side company={['./hanil-logo.png', '한일 정공', '(82)-010-5414-4974', 'gawonjo@naver.com']} deal={['Ultra Fine Equipment for Semiconductor', 'Tube Forming & Drawing Roll', 'Precision Groove Profile Processing']}/>
 
           <div className="mt-6">
             <ImgCard

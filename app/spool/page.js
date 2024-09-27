@@ -55,7 +55,7 @@ export default function designSpool(req, res) {
 							</li>
 						</ul>
 					</div>
-					<AD_side company={['./bogang-logo.png', '보강 정밀', '(82)-010-9397-9652', 'bogang-mould@gmail.com']} deal={['50 to 150ton Extruder', 'Plastic Spool Mound for welding wire', 'Secure High Productivity']}/>
+					<AD_side company={['./bogang-logo.png', '보강 정밀', '(82)-010-9397-9652', 'bkng1209@daum.net']} deal={['50 to 150ton Extruder', 'Plastic Spool Mound for welding wire', 'Secure High Productivity']}/>
 
 					<div>
 					<WireWeight setCalculatedValue={setCalculatedValue} />

@@ -4,6 +4,7 @@ import Link from "next/link";
 import WeatherBox from "./component/WeatherBox";
 import Footer from "./component/Footer";
 import AD_side from "./component/AD_side";
+import AD2_side from "./component/AD2_side";
 
 export default async function Home() {
   // const client = await connectDB;
@@ -57,7 +58,8 @@ export default async function Home() {
             </ol>
           </div>
           <WeatherBox />
-          <AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/>
+          <AD2_side company={['./dbx-logo.png', '디빅스웰딩', '(82)-010-9316-8171', 'jasonshim7@naver.com',  'http://www.dbxwelding.com/']} deal={['Welding Electrode, Wire & TIG', 'Special Welding Material & Aluminum', 'Welding Equip and Consumable']}/>
+          {/* <AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/> */}
 
           <div className="mt-4 mb-10 bg-slate-50 rounded-2xl shadow-lg">
             <img

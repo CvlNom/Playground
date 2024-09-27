@@ -52,6 +52,9 @@
 }
 
 
+html {
+  font-size: 14px; /* 기본 폰트 크기를 14px로 변경 */
+}
 
 
 .list-bg {
