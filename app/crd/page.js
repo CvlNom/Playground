@@ -16,7 +16,7 @@ export default async function CRD(req, res) {
     return <LoginSignup />;
   } else {
     return (
-      <div className="flex">
+      <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
         <header>
           <title>Design CRD profile</title>
           <link rel="icon" href="/logo.png" />

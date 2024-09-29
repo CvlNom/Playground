@@ -36,7 +36,7 @@ export default function designSpool(req, res) {
 
 				<aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100">
 					<div className='p-6'>
-					<h4 className="text-slate-500 font-bold p-2">Further Design Tips</h4>
+					<h4 className="text-orange-600 text-xl font-bold p-1 pb-4">** Spool decides the productivity of the rewinding process!!</h4>
 						<ul className="sideUl space-y-2">
 							<li className="relative group">
 								<Link href='./spool/principle' className="text-slate-100 ml-4 text-sm">

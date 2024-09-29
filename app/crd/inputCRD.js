@@ -73,7 +73,7 @@ const InputCRD = () => {
     let x1, x2, x3, x4, x5, x6, x7, x8, y1, y2, y3, y4, y5, y6;
     let h, hx1, hy1, hx2, hy2;
     // Center Point Co-ordinate
-    x0 = 400;
+    x0 = 350;
     y0 = 250;
     let spanX = crdCanvas.width / 10;
     let spanY = crdCanvas.height * 0.8;
@@ -656,7 +656,7 @@ const InputCRD = () => {
         <canvas
           className="bg-slate-100 rounded-xl shadow-lg"
           id="crdCanvas"
-          width="800"
+          width="700"
           height="600"
         ></canvas>
       </div>

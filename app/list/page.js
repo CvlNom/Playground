@@ -129,7 +129,9 @@ export default async function List({searchParams}) {
 						<h4 className='text-slate-600 text-xl font-semibold'>Anything you think,</h4>
 						<h4 className='text-slate-700 text-2xl font-bold mt-2'>POST YOUR OPINION</h4>
 					</div>
-					<AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/>
+
+					<AD_side company={['./tig.png', 'Consulting?', '(82)-010-8641-4609', 'alexkwak24@gmail.com']} deal={['FCW, Aluminum Plant', 'Tube Forming & Filling', 'Application of Cassette Roller Die']}/>
+					
 				</aside>
 			</div>
 		);

@@ -11,7 +11,7 @@ const InputSpool = ({ calculatedValue }) => {
 		input6: 10.0,
 		input7: 15.0,
 	});
-  console.log('-----------', calculatedValue)
+//   console.log('-----------', calculatedValue)
 	
 	const [selectedRadio, setSelectedRadio] = useState('option1');
 
@@ -209,14 +209,14 @@ const InputSpool = ({ calculatedValue }) => {
 			ctx.setLineDash([]);
 			ctx.beginPath();
 			ctx.moveTo(x4a + 5, y8);
-			ctx.lineTo(x4a + 12 * needDist, y8);
+			ctx.lineTo(x4a + 8 * needDist, y8);
 			ctx.moveTo(x2a + 5, y6);
-			ctx.lineTo(x2a + 10 * needDist, y6);
+			ctx.lineTo(x2a + 7 * needDist, y6);
 			ctx.stroke();
 
-			drawDimLead(x4a + 11.5 * needDist, y0 - spDia, spDia, 0, 1, `ø${spDia.toFixed(1)}`, 0, scaleCanvas);
-			drawDimLead(x3a + 7.5 * needDist, y0 - startDia, startDia, 0, 1, `ø${startDia.toFixed(1)}`, 0, scaleCanvas);
-			console.log('---------------????', startDia, scaleCanvas);
+			drawDimLead(x4a + 7 * needDist, y0 - spDia, spDia, 0, 1, `ø${spDia.toFixed(1)}`, 0, scaleCanvas);
+			drawDimLead(x3a + 4 * needDist, y0 - startDia, startDia, 0, 1, `ø${startDia.toFixed(1)}`, 0, scaleCanvas);
+			// console.log('---------------????', startDia, scaleCanvas);
 
 			ctx.font = '15px Arial';
 			ctx.fillStyle = 'black';
@@ -338,7 +338,7 @@ const InputSpool = ({ calculatedValue }) => {
 
 			drawDimHor(x0, y0, x0 + gP, y0, gP * 2, 3, '', 0, scaleCanvas);
 			drawDimHor(x0 + gP, y0, x0 + 2 * gP, y0, gP * 2, 3, '', 0, scaleCanvas);
-			let layerWidth = (gP * lapNo + gP / 2) / scaleCanvas;
+			let layerWidth = ((gP * lapNo + gP / 2) / scaleCanvas).toFixed(2);
 			drawDimHor(x0, 100, x00, 100, gP, 1, `Layer Width: ${layerWidth}`, 0, scaleCanvas);
 			drawDimVer(x0, y0, x0 + ee + ff, y0 + dd, gP / 2, 1, ``, 1, scaleCanvas);
 			drawDimVer(x00, y0 - gP / 1.5, x00 - gP / 2, y0, gP / 2, 1, ``, 0, scaleCanvas);
@@ -673,8 +673,8 @@ const InputSpool = ({ calculatedValue }) => {
 		<div>
 			<div className='pl-4 py-2'>
 				<div className="flex flex-row justify-stretch py-1">
-					<div className="w-[480px]">
-						<img src='./spool_page.png' alt='drawing of spool section' className='border-slate-600 rounded-lg w-[350px] border' />
+					<div className="w-[400px]">
+						<img src='./spool_page.png' alt='drawing of spool section' className='border-slate-600 rounded-lg w-[320px] border' />
 					</div>
 					<div className="w-[300px] text-slate-500 text-sm ">
 						<div className='flex justify-end mb-2'>
@@ -752,7 +752,7 @@ const InputSpool = ({ calculatedValue }) => {
 				<br />
 			</div>
 			<div className='mt-1 ml-2'>
-				<canvas className="bg-slate-100 rounded-xl shadow-lg"  id='spoolCanvas' width='800' height='680'></canvas>
+				<canvas className="bg-slate-100 rounded-xl shadow-lg ml-2"  id='spoolCanvas' width='700' height='680'></canvas>
 			</div>
 		</div>
 	);

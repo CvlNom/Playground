@@ -50,6 +50,7 @@ export default async function forming(req, res) {
 					<div>
 						<TubeInfo />
 					</div>
+					<AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/>
 				</aside>
 			</div>
 		);

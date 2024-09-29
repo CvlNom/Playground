@@ -58,7 +58,7 @@ const DrawFormingRoll = () => {
 				<div className="pl-0 pt-0 mt-1 w-96">
 					<fieldset className="border-gray-700 border rounded-md flex flex-row justify-left h-14 items-center pb-2">
 						<legend className="m-2 pl-2 text-slate-500 text-sm ">Choose Forming Stand</legend>
-						<input className="ml-2 mr-1 "
+						<input className="ml-4 mr-1 "
 							type='radio'
 							id='radio_F1'
 							name='myRadio'
@@ -66,29 +66,29 @@ const DrawFormingRoll = () => {
 							checked={selectedRadio === 'option1'}
 							onChange={handleRadioChange}
 						/>
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_F1'>F1</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_F1'>F1</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_F2' name='myRadio' value='option2' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_F2'>F2</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_F2'>F2</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_FG1' name='myRadio' value='option3' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_FG1'>FG1</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_FG1'>FG1</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_FG2' name='myRadio' value='option4' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_FG2'>FG2</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_FG2'>FG2</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_C1' name='myRadio' value='option5' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C1'>C1</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C1'>C1</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_C2' name='myRadio' value='option6' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C2'>C2</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C2'>C2</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_C3' name='myRadio' value='option7' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C3'>C3</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C3'>C3</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_C4' name='myRadio' value='option8' onChange={handleRadioChange} />
-						<label className="ml-1 mr-2 text-sm" htmlFor='radio_C4'>C4</label>
+						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C4'>C4</label>
 						<input className="ml-4 mr-1 " type='radio' id='radio_C5' name='myRadio' value='option9' onChange={handleRadioChange} />
-						<label className="ml-1 mr-4 text-sm" htmlFor='radio_C5'>C5</label>
+						<label className="ml-1 mr-6 text-sm" htmlFor='radio_C5'>C5</label>
 					</fieldset>
 				</div>
 				<br />
 			</div>
 			<div className='ml-4'>
-				<canvas className="bg-slate-100 rounded-xl shadow-lg" id='formingCanvas' width='800' height='650'></canvas>
+				<canvas className="bg-slate-100 rounded-xl shadow-lg" id='formingCanvas' width='700' height='550'></canvas>
 			</div>
 			<br></br>
 		</div>
@@ -98,7 +98,7 @@ const DrawFormingRoll = () => {
 		const formingCanvas = document.getElementById('formingCanvas');
 		const ctx = formingCanvas.getContext('2d');
 		const PI = Math.PI;
-		const scaleCanvas = 35;
+		const scaleCanvas = 30;
 		const sT = inputValues.input1 * scaleCanvas;
 		let sW;
 		if (inputValues.input2 < 8 || inputValues.input2 == '' || inputValues.input2 == 'null') {
@@ -109,7 +109,7 @@ const DrawFormingRoll = () => {
 			sW = inputValues.input2 * scaleCanvas;
 		}
 		console.log(sW);
-		const x0 = 400;
+		const x0 = 350;
 		const y0 = 125;
 
 		switch (selectedRadio) {
@@ -203,7 +203,7 @@ const DrawFormingRoll = () => {
 					ctx.fill();
 				}
 
-				ctx.font = '14px Arial';
+				ctx.font = '11px Arial';
 				ctx.fillStyle = 'blue';
 				ctx.textAlign = 'center';
 				ctx.fillText(((dx2 - dx1) / scaleCanvas).toFixed(3), x0, dy1 - l0 - g0 / 1.5);
@@ -228,7 +228,7 @@ const DrawFormingRoll = () => {
 				ctx.fillStyle = 'blue';
 				ctx.fill();
 
-				ctx.font = '14px Arial';
+				ctx.font = '11px Arial';
 				ctx.fillStyle = 'blue';
 				ctx.textAlign = 'center';
 				ctx.fillText(((dx2 - dx1) / scaleCanvas).toFixed(3), x0, dy1 + l0 + g0 / 1.5 - 16);
@@ -287,7 +287,7 @@ const DrawFormingRoll = () => {
 					ctx.fillStyle = 'blue';
 					ctx.fill();
 				}
-				ctx.font = '14px Arial';
+				ctx.font = '11px Arial';
 				ctx.fillStyle = 'blue';
 				// ctx.textAlign = 'center';
 				ctx.save(); // 현재 상태 저장
@@ -317,7 +317,7 @@ const DrawFormingRoll = () => {
 				ctx.closePath();
 				ctx.fillStyle = 'blue';
 				ctx.fill();
-				ctx.font = '14px Arial';
+				ctx.font = '11px Arial';
 				ctx.fillStyle = 'blue';
 				ctx.save(); // 현재 상태 저장
 				ctx.translate(dx1 - l0 - g0 / 2, (dy2 - dy1) / 2 + dy1); // 회전 중심을 텍스트 위치로 이동
@@ -351,7 +351,7 @@ const DrawFormingRoll = () => {
 					ctx.closePath();
 					ctx.fillStyle = 'blue';
 					ctx.fill();
-					ctx.font = '14px Arial';
+					ctx.font = '11px Arial';
 					ctx.fillStyle = 'blue';
 					ctx.textAlign = 'center';
 					ctx.fillText('r: ' + (dR / scaleCanvas).toFixed(3), dx1 + 40, dy1 - dR / 3);
@@ -369,7 +369,7 @@ const DrawFormingRoll = () => {
 					ctx.closePath();
 					ctx.fillStyle = 'blue';
 					ctx.fill();
-					ctx.font = '14px Arial';
+					ctx.font = '11px Arial';
 					ctx.fillStyle = 'blue';
 					ctx.textAlign = 'center';
 					ctx.fillText('r: ' + (dR / scaleCanvas).toFixed(3), dx1 + b1 + 20, dy1 + c1 + 20);
@@ -386,7 +386,7 @@ const DrawFormingRoll = () => {
 					ctx.closePath();
 					ctx.fillStyle = 'blue';
 					ctx.fill();
-					ctx.font = '14px Arial';
+					ctx.font = '11px Arial';
 					ctx.fillStyle = 'blue';
 					ctx.textAlign = 'center';
 					ctx.fillText('r: ' + (dR / scaleCanvas).toFixed(3), dx1 + 10, dy1 - 10);
@@ -428,7 +428,7 @@ const DrawFormingRoll = () => {
 			b1 = (sW + 0.15 * scaleCanvas - sW * 0.6) / 2;
 			a1 = Math.sqrt(Math.pow(c1, 2) + Math.pow(b1, 2));
 
-			// Make Deatil for the calculation
+			// Make Detail for the calculation
 			let angle1, angle2, angle3;
 			angle1 = 0.7071; //?? from where
 			angle2 = Math.asin(c1 / a1);
@@ -469,9 +469,7 @@ const DrawFormingRoll = () => {
 			ctx.arc(x5a, y1, eR, (180 * PI) / 180, (270 * PI) / 180, false);
 			ctx.lineTo(x6a, y0);
 			ctx.stroke();
-
-			drawDimTopHor(x4, y1, x4a, y1, 110, 10, 8, 0);
-
+			
 			// Top Roll Profile
 			ctx.lineWidth = 2;
 			ctx.strokeStyle = '#000000';
@@ -492,8 +490,7 @@ const DrawFormingRoll = () => {
 			ctx.arc(tx4a, y1 - 0.2 * scaleCanvas, eR, (180 * PI) / 180, (270 * PI) / 180, false);
 			ctx.lineTo(x6a, y0 - 0.2 * scaleCanvas);
 			ctx.stroke();
-			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 74, 10, 8, 0);
-
+			
 			let canH = formingCanvas.height;
 			let canW = formingCanvas.width;
 			// Draw Center line
@@ -503,7 +500,7 @@ const DrawFormingRoll = () => {
 			ctx.beginPath();
 			ctx.moveTo(x0, y0);
 			ctx.lineTo(x0, canH);
-
+			
 			ctx.moveTo(x1 - 25, y3);
 			ctx.lineTo(x1a + 25, y3);
 			ctx.moveTo(x1, y3 - 25);
@@ -511,16 +508,18 @@ const DrawFormingRoll = () => {
 			ctx.moveTo(x1a, y3 - 25);
 			ctx.lineTo(x1a, y3 + 25);
 			ctx.stroke();
-
-			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, 130, 10, 8, 0);
-			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 10, 8, 1);
-			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 10, 8, 0);
-			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 10, 8, 0);
-			drawDimVer(x6a, y0, x4a, y2, (x6a - x5a) * 1.8, 10, 8, 0);
-			drawDimVer(x6, y0, x3, y4, (x6a - x5a) * 1.8, 10, 8, 1);
-			drawDimRound(x0, y6, gR1, 5, 8, 1);
-			drawDimRound(x1a, y3, gR2, 15, 8, 3);
-			drawDimRound(x1, y3, gR2 - sT, 15, 8, 3);
+			
+			drawDimTopHor(x4, y1, x4a, y1, 125, 10, 6, 0);
+			drawDimTopHor(tx3, y0 + eR - 0.2 * scaleCanvas, tx3a, y0 + eR - 0.2 * scaleCanvas, 95, 10, 6, 0);
+			drawDimTopHor(x1, y3 - 25, x1a, y3 - 25, 130, 10, 6, 0);
+			drawDimTopHor(x3, y4, x3a, y4, (x1a - x1) / 2, 10, 6, 1);
+			drawDimVer(x6a, y0, x1a + 24, y3, (x6a - x5a) * 3.2, 10, 6, 0);
+			drawDimVer(x6a, y0 - 0.2 * scaleCanvas, x6a, y0, (x6a - x5a) * 3.2, 10, 6, 0);
+			drawDimVer(x6a, y0, x4a, y2, (x6a - x5a) * 1.8, 10, 6, 0);
+			drawDimVer(x6, y0, x3, y4, (x6a - x5a) * 1.8, 10, 6, 1);
+			drawDimRound(x0, y6, gR1, 5, 6, 1);
+			drawDimRound(x1a, y3, gR2, 15, 6, 3);
+			drawDimRound(x1, y3, gR2 - sT, 15, 6, 3);
 
 			// console.log("SIN??", Math.sin(30 * (Math.PI / 180)))
 		}
@@ -642,33 +641,33 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x0 + 25, y0 + dy1 - dy2);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y6 - 25, x1a, y6 - 25, x1a - x1, 15, 8, 0);
+			drawDimTopHor(x1, y6 - 25, x1a, y6 - 25, x1a - x1, 6, 6, 0);
 			drawDimTopHor(
 				x0 - trW / 2,
 				y0 - 0.2 * scaleCanvas + eR,
 				x0 + trW / 2,
 				y0 - 0.2 * scaleCanvas + eR,
-				eR * 1.5,
-				15,
-				8,
+				eR * 3,
+				6,
+				6,
 				0
 			);
-			drawDimTopHor(x5, y0 + eR, x5a, y0 + eR, eR * 2.5, 10, 8, 0);
-			drawDimVer(x6a + 50, y0, x5a, y0 + dy4, eR, 10, 8, 0);
-			drawDimVer(x6a + 50, y0 - 0.2 * scaleCanvas, x6a + 50, y0, eR, 10, 8, 0);
-			drawDimVer(x6, y0, x0 - 25, y0 + dy1 - dy2, eR, 10, 8, 1);
-			drawDimVer(x7, y0, x1 - 25, y6, eR, 10, 8, 1);
-			drawDimRound(x0, y0 + dy1 - dy2, gR1, 30, 8, 3);
-			drawDimRound(x0, y0 + dy1 - dy2, gR4, 15, 8, 3);
-			drawDimRound(x1a, y6, gR2, 60, 8, 3);
-			drawDimRound(refCx, refCy, gR3, 45, 8, 1);
-			// drawDimRound(x1, y3, gR2 - sT, 45, 8, 4)
+			drawDimTopHor(x5, y0 + eR, x5a, y0 + eR, eR * 4, 6, 6, 0);
+			drawDimVer(x6a + 50, y0, x5a, y0 + dy4, eR, 6, 6, 0);
+			drawDimVer(x6a + 50, y0 - 0.2 * scaleCanvas, x6a + 50, y0, eR, 6, 6, 0);
+			drawDimVer(x6, y0, x0 - 25, y0 + dy1 - dy2, eR, 6, 6, 1);
+			drawDimVer(x7, y0, x1 - 25, y6, eR, 6, 6, 1);
+			drawDimRound(x0, y0 + dy1 - dy2, gR1, 30, 6, 3);
+			drawDimRound(x0, y0 + dy1 - dy2, gR4, 15, 6, 3);
+			drawDimRound(x1a, y6, gR2, 60, 6, 3);
+			drawDimRound(refCx, refCy, gR3, 45, 6, 1);
+			// drawDimRound(x1, y3, gR2 - sT, 45, 6, 4)
 
 			ctx.save(); // 현재 상태 저장
 			ctx.translate(x5a, y0 + dy4 - 3); // 회전 중심을 텍스트 위치로 이동
 			ctx.rotate(325 * (Math.PI / 180)); // 90도 회전 (라디안 단위로)
 
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'right';
 			ctx.fillText(`Shoulder 35°`, 0, 0);
@@ -729,12 +728,11 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x00, formingCanvas.height - 20);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y1, x1a, y1, (x1a - x1) / 2, 10, 8, 0);
-			drawDimTopHor(x2, y2, x2a, y2, (x1a - x1) / 2, 10, 8, 0);
-			drawDimVer(x4a, y2, x2a, y1, eR * 2, 10, 8, 0);
-
-			drawDimRound(x00, y00, gR, 35, 8, 3);
-			drawDimRound(x3, y00 + eR, eR, 45, 8, 1);
+			drawDimTopHor(x1, y1, x1a, y1, (x1a - x1) / 2, 6, 6, 0);
+			drawDimTopHor(x2, y2, x2a, y2, (x1a - x1) / 2, 6, 6, 0);
+			drawDimVer(x4a, y2, x2a, y1, eR * 2, 6, 6, 0);
+			drawDimRound(x00, y00, gR, 35, 6, 3);
+			drawDimRound(x3, y00 + eR, eR, 45, 6, 1);
 		}
 
 		function drawFG2() {
@@ -783,9 +781,9 @@ const DrawFormingRoll = () => {
 			ctx.moveTo(x00, 30);
 			ctx.lineTo(x00, formingCanvas.height - 5);
 			ctx.stroke();
-			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 8, 0);
-			drawDimRound(x00, y00, gR, 45, 8, 3);
-			drawDimRound(x1a + eR, y4, eR, 45, 8, 4);
+			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 6, 0);
+			drawDimRound(x00, y00, gR, 45, 6, 3);
+			drawDimRound(x1a + eR, y4, eR, 45, 6, 4);
 		}
 		function drawC1() {
 			let x00, y00, x1, x1a, x2, x2a, x3, x3a, x4, x4a, y1, y2;
@@ -837,10 +835,10 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x00, formingCanvas.height - 20);
 			ctx.stroke();
 			// drawDimTopHor(x1, y6, x1a, y6, eR * 2, 15, 8, 0)
-			drawDimRound(x0, y00, gR, 45, 8, 3);
-			drawDimRound(x3, y00 + eR, eR, 45, 8, 1);
+			drawDimRound(x0, y00, gR, 45, 6, 3);
+			drawDimRound(x3, y00 + eR, eR, 45, 6, 1);
 
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'left';
 			ctx.fillText(`IMPORTANT! A CRD Block contain C1 to C5 to make a simple closing stage.`, 40, 600);
@@ -893,11 +891,11 @@ const DrawFormingRoll = () => {
 			ctx.lineTo(x00, formingCanvas.height - 5);
 			ctx.stroke();
 
-			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 8, 0);
-			drawDimRound(x00, y00, gR, 45, 8, 3);
-			drawDimRound(x1a + eR, y4, eR, 45, 8, 4);
+			drawDimTopHor(x1, y6, x1a, y6, eR * 2, 10, 6, 0);
+			drawDimRound(x00, y00, gR, 45, 6, 3);
+			drawDimRound(x1a + eR, y4, eR, 45, 6, 4);
 
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'left';
 			ctx.fillText(`IMPORTANT! For Better Profile, Apply CRD Design of "Sizing" Profile.`, 40, 600);
@@ -982,9 +980,9 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x4a, y00);
 				ctx.stroke();
 
-				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 10, 8, 0);
-				drawDimRound(x00, y00, gR, 45, 8, 3);
-				drawDimRound(x3a, y2 - b1, eR, 45, 8, 4);
+				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 6, 6, 0);
+				drawDimRound(x00, y00, gR, 45, 6, 3);
+				drawDimRound(x3a, y2 - b1, eR, 45, 6, 4);
 			} else {
 				y1 = y00 - c0;
 				y1a = y00 + c0;
@@ -1040,7 +1038,7 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x00, y4a);
 				ctx.stroke();
 			}
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'left';
 			ctx.fillText(`IMPORTANT! For Better Profile, Apply CRD Design of "Sizing" Profile.`, 40, 600);
@@ -1179,11 +1177,11 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x00, y4a);
 				ctx.stroke();
 
-				drawDimTopHor(x1, y4, x1a, y4, eR * 2, 10, 8, 0);
-				drawDimRound(x00, y00, gR, 45, 8, 3);
-				drawDimRound(x1a + eR, y3, eR, 45, 8, 4);
+				drawDimTopHor(x1, y4, x1a, y4, eR * 2, 6, 6, 0);
+				drawDimRound(x00, y00, gR, 45, 6, 3);
+				drawDimRound(x1a + eR, y3, eR, 45, 6, 4);
 			}
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'left';
 			ctx.fillText(`IMPORTANT! For Better Profile, Apply CRD Design of "Sizing" Profile.`, 40, 600);
@@ -1269,9 +1267,9 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x4a, y00);
 				ctx.stroke();
 
-				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 10, 8, 0);
-				drawDimRound(x00, y00, gR, 45, 8, 3);
-				drawDimRound(x3a, y2 - b1, eR, 45, 8, 4);
+				drawDimVer(x4a, y1, x4a, y1a, eR * 2, 6, 6, 0);
+				drawDimRound(x00, y00, gR, 45, 6, 3);
+				drawDimRound(x3a, y2 - b1, eR, 45, 6, 4);
 			} else {
 				y1 = y00 - c0;
 				y1a = y00 + c0;
@@ -1327,7 +1325,7 @@ const DrawFormingRoll = () => {
 				ctx.lineTo(x00, y4a);
 				ctx.stroke();
 			}
-			ctx.font = '14px Arial';
+			ctx.font = '11px Arial';
 			ctx.fillStyle = 'black';
 			ctx.textAlign = 'left';
 			ctx.fillText(`IMPORTANT! For Better Profile, Apply CRD Design of "Sizing" Profile.`, 40, 600);

@@ -13,7 +13,7 @@ export default function blockAssemble() {
   };
 
   return (
-    <div className="flex">
+    <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
       <header>
         <title>How to Assemble CRD Block</title>
         <link rel="icon" href="/logo.png" />

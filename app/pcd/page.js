@@ -18,16 +18,14 @@ export default async function DieProfile(req, res) {
 
   // } else {
   return (
-    <div className="flex">
+    <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
       <header>
         <title>Design PCD profile</title>
         <link rel="icon" href="/logo.png" />
       </header>
 
-      <main className="flex-grow order-2 bg-slate-200 pl-12 pt-2">
-        <h3 className="px-4 text-xl text-slate-600 font-semibold pb-1">
-          Design PCD profile
-        </h3>
+      <main className="flex-grow order-2 bg-slate-200 pl-12 py-2">
+        
         <Inputs />
         <p>&nbsp;</p>
         

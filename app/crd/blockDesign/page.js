@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function blockDesign() {
   return (
-    <div className="flex">
+    <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
       <header>
         <title>Design CRD Block</title>
         <link rel="icon" href="/logo.png" />

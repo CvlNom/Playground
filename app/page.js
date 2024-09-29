@@ -15,10 +15,10 @@ export default async function Home() {
   // console.log(result)
 
   return (
-    <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
-      {/* <header>
-        <title>HOME: FCW Design Tool</title>
-		</header> */}
+    <div
+      className="flex flex-grow"
+      style={{ minHeight: "calc(100vh - 112px)" }}
+    >
       <aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100">
         <Link href="./differentThinking">
           <img
@@ -58,7 +58,20 @@ export default async function Home() {
             </ol>
           </div>
           <WeatherBox />
-          <AD2_side company={['./dbx-logo.png', '디빅스웰딩', '(82)-010-9316-8171', 'jasonshim7@naver.com',  'http://www.dbxwelding.com/']} deal={['Welding Electrode, Wire & TIG', 'Special Welding Material & Aluminum', 'Welding Equip and Consumable']}/>
+          <AD2_side
+            company={[
+              "./dbx-logo.png",
+              "디빅스웰딩",
+              "(82)-010-9316-8171",
+              "jasonshim7@naver.com",
+              "http://www.dbxwelding.com/",
+            ]}
+            deal={[
+              "Welding Electrode, Wire & TIG",
+              "Special Welding Material & Aluminum",
+              "Welding Equip and Consumable",
+            ]}
+          />
           {/* <AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/> */}
 
           <div className="mt-4 mb-10 bg-slate-50 rounded-2xl shadow-lg">
@@ -75,7 +88,10 @@ export default async function Home() {
       </aside>
 
       <main className="flex-grow order-2 bg-slate-200">
-        <link rel="icon" href="/logo.png" />
+        <header>
+          <title>FCW Factory: wire-lab</title>
+          <link rel="icon" href="/logo.png" />
+        </header>
         <div className="flex flex-col justify-center items-center my-5">
           <h1 className="text-2xl font-bold text-slate-600 mt-4 mb-6">
             Welcome to wire-lab.net
@@ -166,7 +182,9 @@ export default async function Home() {
 					<WeatherBox />
 				</div> */}
         <div className="flex flex-col items-center py-2">
-          <p className="text-slate-500 text-sm">To get full access, Log In here.</p>
+          <p className="text-slate-500 text-sm">
+            To get full access, Log In here.
+          </p>
           <Link
             href="/api/auth/signin"
             className="my-6 flex text-lg font-semibold text-slate-700 bg-green-200 hover:font-bold hover:bg-green-400 px-10 py-2 rounded-full border-red-500 border-2"

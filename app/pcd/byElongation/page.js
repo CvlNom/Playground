@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function byElongation() {
   return (
-    <div className="flex">
+    <div className='flex flex-grow' style={{minHeight: 'calc(100vh - 112px)'}}>
       <header>
         <title>Sequence by elongation</title>
         <link rel="icon" href="/logo.png" />

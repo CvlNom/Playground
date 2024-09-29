@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const dieDesign = () => {
+const Inputs = () => {
   const [inputValues, setInputValues] = useState({
-    input1: "1.35",
-    input2: "1.18",
-    input3: "12",
+    input1: "2.2",
+    input2: "2.0",
+    input3: "14",
     input4: "30",
     input5: "25",
     input6: "25",
@@ -15,7 +15,7 @@ const dieDesign = () => {
     input2: "8.0",
   });
 
-  const [selectedRadio, setSelectedRadio] = useState("option1");
+  const [selectedRadio, setSelectedRadio] = useState("option2");
   const [selectedRadio0, setSelectedRadio0] = useState("option1");
 
   const handleChange = (event) => {
@@ -36,9 +36,10 @@ const dieDesign = () => {
   const handleRadioChange0 = (event) => {
     setSelectedRadio0(event.target.value);
     // console.log('selection', selectedRadio0);
+    
   };
 
-  const handleRadioChange = (event) => {
+  const handleBlankSize = (event) => {
     setSelectedRadio(event.target.value);
   };
 
@@ -48,20 +49,62 @@ const dieDesign = () => {
   }, [inputValues, selectedRadio, selectedRadio0, inputBlank]);
 
   function drawProfile() {
-    let scale = 80;
-    if (selectedRadio0 === "option2" && inputBlank.input1 > 5.3) {
-      scale = 60;
-      console.log("true");
+    let scale, iW, hD;
+    let dieH, dieOD;
+
+    // 선택된 값에 따라 콘솔에 문자 출력
+    if (selectedRadio0 === "option1") {
+      switch (selectedRadio) {
+        case "option1":
+          scale = 80;
+          dieH = 2.5 * scale;
+          dieOD = 5.2 * scale;
+          iW = (inputValues.input1 / 2) * scale;
+          hD = (inputValues.input2 / 2) * scale;
+          break;
+        case "option2":
+          scale = 80;
+          dieH = 3.5 * scale;
+          dieOD = 5.2 * scale;
+          iW = (inputValues.input1 / 2) * scale;
+          hD = (inputValues.input2 / 2) * scale;
+          break;
+        case "option3":
+          scale = 60;
+          dieH = 3.86 * scale;
+          dieOD = 6.8 * scale;
+          iW = (inputValues.input1 / 2) * scale;
+          hD = (inputValues.input2 / 2) * scale;
+          break;
+        case "option4":
+          scale = 60;
+          dieH = 5.3 * scale;
+          dieOD = 6.8 * scale;
+          iW = (inputValues.input1 / 2) * scale;
+          hD = (inputValues.input2 / 2) * scale;
+          break;
+        case "option5":
+          scale = 40;
+          dieH = 8.7 * scale;
+          dieOD = 12.5 * scale;
+          iW = (inputValues.input1 / 2) * scale;
+          hD = (inputValues.input2 / 2) * scale;
+          break;
+      }
+    } else {
+      scale = 50;
+      dieH = inputBlank.input1 * scale;
+      dieOD = inputBlank.input2 * scale;
+      iW = (inputValues.input1 / 2) * scale;
+      hD = (inputValues.input2 / 2) * scale;
     }
 
-    const iW = (inputValues.input1 / 2) * scale;
-    const hD = (inputValues.input2 / 2) * scale;
+    // const iW = (inputValues.input1 / 2) * scale;
+    // const hD = (inputValues.input2 / 2) * scale;
     const rAngle = inputValues.input3 / 2;
     const bL = (inputValues.input4 / 100) * hD * 2;
     const brL = (inputValues.input5 / 100) * hD * 2;
     const aL = (inputValues.input6 / 100) * hD * 2;
-
-    let dieH, dieOD;
 
     // Define constants used in calculations
     const PI = Math.PI;
@@ -71,31 +114,6 @@ const dieDesign = () => {
     const ctx = dieCanvas.getContext("2d");
 
     // console.log(selectedRadio0);
-
-    // 선택된 값에 따라 콘솔에 문자 출력
-    if (selectedRadio0 === "option1") {
-      switch (selectedRadio) {
-        case "option1":
-          dieH = 2.5 * scale;
-          dieOD = 5.2 * scale;
-          break;
-        case "option2":
-          dieH = 3.5 * scale;
-          dieOD = 5.2 * scale;
-          break;
-        case "option3":
-          dieH = 3.86 * scale;
-          dieOD = 6.8 * scale;
-          break;
-        case "option4":
-          dieH = 5.3 * scale;
-          dieOD = 6.8 * scale;
-          break;
-      }
-    } else {
-      dieH = inputBlank.input1 * scale;
-      dieOD = inputBlank.input2 * scale;
-    }
 
     // console.log('dieH', dieH);
 
@@ -230,12 +248,12 @@ const dieDesign = () => {
     ctx.moveTo(contactX11, contactY1);
     ctx.lineTo(contactX11 + 15, contactY1);
     ctx.stroke();
-    ctx.font = "12px Arial";
+    ctx.font = "11px Arial";
     ctx.fillStyle = "red";
     ctx.textAlign = "left";
     ctx.fillText(
       `Contact Point: ${contactPoint.toFixed(1)}%`,
-      contactX11 + 20,
+      contactX11 + 10,
       contactY1
     );
 
@@ -250,21 +268,21 @@ const dieDesign = () => {
 
     //Write contact point Text
 
-    ctx.font = "12px Arial";
+    ctx.font = "11px Arial";
     ctx.fillStyle = "black";
     ctx.textAlign = "left";
     ctx.fillText(`Reduction Rate: ${rRate(iW, hD).toFixed(1)}%`, 500, 50);
-    ctx.fillText(`Elongation Rate: ${eRate(iW, hD).toFixed(1)}%`, 500, 75);
+    ctx.fillText(`Elongation Rate: ${eRate(iW, hD).toFixed(1)}%`, 500, 65);
     ctx.fillText(
       `Delta Factor: ${deltaF(rRate(iW, hD), rAngle).toFixed(2)}`,
       500,
-      100
+      80
     );
 
-    ctx.fillText(`Back Relief Area (60°)`, x5 + 1, Y0 - (Y0 - y1) / 2 + 3);
-    ctx.fillText(`Bearing Area`, x5 + 1, y1 - (y1 - y2) / 2 + 3);
-    ctx.fillText(`Reduction Area`, x5 + 1, y2 - (y2 - y3) / 2 + 3);
-    ctx.fillText(`Approach Area (80°)`, x5 + 1, y3 - (y3 - y4) / 2 + 3);
+    ctx.fillText(`Back Length (⍺:60°)`, x5 + 1, Y0 - (Y0 - y1) / 2 + 3);
+    ctx.fillText(`Bearing Length`, x5 + 1, y1 - (y1 - y2) / 2 + 3);
+    ctx.fillText(`Reduction Length`, x5 + 1, y2 - (y2 - y3) / 2 + 3);
+    ctx.fillText(`Approach L (⍺:80°)`, x5 + 1, y3 - (y3 - y4) / 2 + 3);
 
     // console.log(rRate(iW, hD).toFixed(1));
     // console.log(eRate(iW, hD).toFixed(1));
@@ -273,11 +291,141 @@ const dieDesign = () => {
     // 컨택트 포인트와 델타변수에 의한 다이스 내부 색상 변화 (Good, not good, Bad)
     // 감면율, 연신율, 델타변수 캔버스 우측 상단에 텍스트로 표시
     // 다이스의 구간 표시 및 치수?
+    drawDimVer(x15, y4, x15, Y0, dieH*0.15, 10, 6, 0)
+    function drawDimVer(dx1, dy1, dx2, dy2, l0, g0, l1, pos) {
+			// x값이 큰쪽을 먼저 지정
+			ctx.lineWidth = 0.5;
+			ctx.strokeStyle = 'blue';
+			ctx.setLineDash([]);
+			ctx.beginPath();
+			if (pos == 0) {
+				ctx.moveTo(dx1 + g0, dy1);
+				ctx.lineTo(dx1 + g0 + l0, dy1); //어느 x가 더 큰지 확인하여 선택
+				ctx.moveTo(dx2 + g0, dy2);
+				ctx.lineTo(dx1 + g0 + l0, dy2);
+				// ctx.moveTo(dx1 + l0, dy1)
+				// ctx.lineTo(dx1 + l0, dy2)
+				ctx.stroke();
+				// draw arrow
+				if ((dy2 - dy1) / 2 < 3 * l1) {
+					console.log('small');
+					ctx.beginPath();
+					ctx.moveTo(dx1 + l0, dy1 - 3 * l1);
+					ctx.lineTo(dx1 + l0, dy2 + 3 * l1);
+					ctx.stroke();
+
+					ctx.moveTo(dx1 + l0, dy1);
+					ctx.lineTo(dx1 + l0 - l1 / 2, dy1 - l1);
+					ctx.lineTo(dx1 + l0 + l1 / 2, dy1 - l1);
+					ctx.closePath();
+					ctx.fillStyle = 'blue';
+					ctx.fill();
+					ctx.moveTo(dx1 + l0, dy2);
+					ctx.lineTo(dx1 + l0 - l1 / 2, dy2 + l1);
+					ctx.lineTo(dx1 + l0 + l1 / 2, dy2 + l1);
+					ctx.closePath();
+					ctx.fillStyle = 'blue';
+					ctx.fill();
+				} else {
+					console.log('big');
+					ctx.moveTo(dx1 + l0, dy1);
+					ctx.lineTo(dx1 + l0, dy2);
+					ctx.stroke();
+					ctx.moveTo(dx1 + l0, dy1);
+					ctx.lineTo(dx1 + l0 - l1 / 2, dy1 + l1);
+					ctx.lineTo(dx1 + l0 + l1 / 2, dy1 + l1);
+					ctx.closePath();
+					ctx.fillStyle = 'blue';
+					ctx.fill();
+					ctx.moveTo(dx1 + l0, dy2);
+					ctx.lineTo(dx1 + l0 - l1 / 2, dy2 - l1);
+					ctx.lineTo(dx1 + l0 + l1 / 2, dy2 - l1);
+					ctx.closePath();
+					ctx.fillStyle = 'blue';
+					ctx.fill();
+				}
+				ctx.font = '12px Arial';
+				ctx.fillStyle = 'blue';
+				// ctx.textAlign = 'center';
+				ctx.save(); // 현재 상태 저장
+				ctx.translate(dx1 + l0 - g0 / 2, (dy2 - dy1) / 2 + dy1); // 회전 중심을 텍스트 위치로 이동
+				ctx.rotate(Math.PI / -2); // 90도 회전 (라디안 단위로)
+				ctx.textAlign = 'center';
+				ctx.fillText(((dy2 - dy1) / scale).toFixed(2), 0, 0);
+				ctx.restore();
+				// ctx.fillText(((dy2 - dy1) / scaleCanvas).toFixed(3), dx1 + l0 + (g0 / 4), ((dy2 - dy1) / 2) + dy1);
+			} else {
+				ctx.moveTo(dx1 - g0, dy1);
+				ctx.lineTo(dx1 - g0 - l0, dy1); //어느 x가 더 큰지 확인하여 선택
+				ctx.moveTo(dx2 - g0, dy2);
+				ctx.lineTo(dx1 - g0 - l0, dy2);
+				ctx.moveTo(dx1 - l0, dy1);
+				ctx.lineTo(dx1 - l0, dy2);
+				ctx.stroke();
+				ctx.moveTo(dx1 - l0, dy1);
+				ctx.lineTo(dx1 - l0 - l1 / 2, dy1 + l1);
+				ctx.lineTo(dx1 - l0 + l1 / 2, dy1 + l1);
+				ctx.closePath();
+				ctx.fillStyle = 'blue';
+				ctx.fill();
+				ctx.moveTo(dx1 - l0, dy2);
+				ctx.lineTo(dx1 - l0 - l1 / 2, dy2 - l1);
+				ctx.lineTo(dx1 - l0 + l1 / 2, dy2 - l1);
+				ctx.closePath();
+				ctx.fillStyle = 'blue';
+				ctx.fill();
+				ctx.font = '14px Arial';
+				ctx.fillStyle = 'blue';
+				ctx.save(); // 현재 상태 저장
+				ctx.translate(dx1 - l0 - g0 / 2, (dy2 - dy1) / 2 + dy1); // 회전 중심을 텍스트 위치로 이동
+				ctx.rotate(Math.PI / -2); // 90도 회전 (라디안 단위로)
+				ctx.textAlign = 'center';
+				ctx.fillText(((dy2 - dy1) / scale).toFixed(3), 0, 0);
+				ctx.restore();
+			}
+		}
   }
 
   return (
     <div>
-      <div className="">
+      <div className="w-[700px]">
+        <div className="flex flex-row items-center">
+          <div>
+            <h3 className="px-4 text-2xl text-slate-600 font-bold py-4">
+              Design PCD profile By
+            </h3>
+          </div>
+          <div className="pl-2 pt-1 w-96 text-slate-600 font-semibold" id="radioChoice">
+          
+            <input
+              className="ml-4 mr-1 "
+              type="radio"
+              id="selection1"
+              name="radioGroup2"
+              value="option1"
+              checked={selectedRadio0 === "option1"}
+              onChange={handleRadioChange0}
+            />
+            <label htmlFor="selection1" className="text-blue-500 ml-1 mr-8 text-lg">
+              Blank Type
+            </label>
+            <input
+              className="ml-4 mr-1 "
+              type="radio"
+              id="selection2"
+              name="radioGroup2"
+              value="option2"
+              checked={selectedRadio0 === "option2"}
+              onChange={handleRadioChange0}
+            />
+            <label htmlFor="selection2" className="text-blue-500 ml-1 mr-8 text-lg">
+              User Input
+            </label>
+            <br />
+          
+        </div>
+        </div>
+
         <div className="pl-4 py-2">
           <div className="flex flex-row justify-stretch py-1">
             <div className="w-52">
@@ -362,41 +510,19 @@ const dieDesign = () => {
           {/* <p> note: L of Bearing, Back and Approach are a length ratio of hole diameter.</p> */}
         </div>
 
-        <div className="pl-4 pt-1 w-96" id="radioChoice">
-          <fieldset className="border-gray-700 border flex flex-row justify-left h-14 items-center pb-2">
-            <legend className="m-2 pl-2 text-slate-500 text-sm ">Blank Size Selection</legend>
-            <input className="ml-4 mr-2 "
-              type="radio"
-              id="selection1"
-              name="radioGroup2"
-              value="option1"
-              checked={selectedRadio0 === "option1"}
-              onChange={handleRadioChange0}
-            />
-            <label htmlFor="selection1" className="ml-1 mr-8 text-sm">By Blank Type</label>
-            <input className="ml-4 mr-2 "
-              type="radio"
-              id="selection2"
-              name="radioGroup2"
-              value="option2"
-              checked={selectedRadio0 === "option2"}
-              onChange={handleRadioChange0}
-            />
-            <label htmlFor="selection2" className="ml-1 mr-8 text-sm">By User Input</label>
-            <br />
-          </fieldset>
-        </div>
-
-        <br />
+        {/* <hr className="border-1 border-gray-400"/> */}
 
         {selectedRadio0 === "option2" ? (
-          <div className="pl-4">
-            <fieldset className="">
-              {/* <legend>User Input Size</legend> */}
-              <div className="flex flex-row justify-stretch">
+          <div className="pl-4 pt-2 pb-2 w-[400px]">
+            <fieldset className="border-gray-700 border flex flex-row justify-center h-14 items-center pb-2 rounded-md">
+              <legend className="mx-2 px-2 ">User Input</legend>
+              {/* <div className="flex flex-row justify-stretch"> */}
                 <div className="w-52">
-                  <label className="text-slate-500 text-sm mr-2.5">Height(mm):</label>
-                  <input className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                  <label className="text-slate-500 text-sm mr-2.5">
+                    Height(mm):
+                  </label>
+                  <input
+                    className="w-16 border-gray-700 border text-center text-sm text-slate-600"
                     type="number"
                     name="input1"
                     step="0.1"
@@ -405,8 +531,11 @@ const dieDesign = () => {
                   />
                 </div>
                 <div className="w-50">
-                  <label className="text-slate-500 text-sm mr-2.5">Diameter(mm):</label>
-                  <input className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                  <label className="text-slate-500 text-sm mr-2.5">
+                    Diameter(mm):
+                  </label>
+                  <input
+                    className="w-16 border-gray-700 border text-center text-sm text-slate-600"
                     type="number"
                     name="input2"
                     step="0.1"
@@ -414,59 +543,87 @@ const dieDesign = () => {
                     onChange={handleChange0}
                   />
                 </div>
-              </div>
+              {/* </div> */}
             </fieldset>
           </div>
         ) : (
-          <div className="ml-4 pl-4 items-center" id="radio">
-            <fieldset className="flex items-center">
-              {/* <legend>Blank Type</legend> */}
-              <input className="ml-4 mr-1 "
+          <div className="pl-4 ml-4 mt-2 mb-4 py-4 " id="radio">
+            <fieldset className="border-gray-700 border flex flex-row justify-left h-14 items-center pb-2 rounded-md">
+              <legend className="mx-2 px-2 ">Blank Type</legend>
+              <input
+                className="ml-2 mr-1 "
                 type="radio"
                 id="choice1"
                 name="radioGroup"
                 value="option1"
                 checked={selectedRadio === "option1"}
-                onChange={handleRadioChange}
+                onChange={handleBlankSize}
               />
-              <label htmlFor="choice1" className="ml-1 mr-2 text-sm">D15 (ø5.2 - 2.5)</label>
-              <input className="ml-4 mr-1 "
+              <label htmlFor="choice1" className="ml-1 mr-2 text-sm">
+                D15 (ø5.2 - 2.5)
+              </label>
+              <input
+                className="ml-2 mr-1 "
                 type="radio"
                 id="choice2"
                 name="radioGroup"
                 value="option2"
                 checked={selectedRadio === "option2"}
-                onChange={handleRadioChange}
+                onChange={handleBlankSize}
               />
-              <label htmlFor="choice2" className="ml-1 mr-2 text-sm">D18 (ø5.2 - 3.5)</label>
-              <input className="ml-4 mr-1 "
+              <label htmlFor="choice2" className="ml-1 mr-2 text-sm">
+                D18 (ø5.2 - 3.5)
+              </label>
+              <input
+                className="ml-2 mr-1 "
                 type="radio"
                 id="choice3"
                 name="radioGroup"
                 value="option3"
                 checked={selectedRadio === "option3"}
-                onChange={handleRadioChange}
+                onChange={handleBlankSize}
               />
-              <label htmlFor="choice3" className="ml-1 mr-2 text-sm">D21 (ø6.8 - 3.86)</label>
-              <input className="ml-4 mr-1 "
+              <label htmlFor="choice3" className="ml-1 mr-2 text-sm">
+                D21 (ø6.8 - 3.86)
+              </label>
+              <input
+                className="ml-2 mr-1 "
                 type="radio"
                 id="choice4"
                 name="radioGroup"
                 value="option4"
                 checked={selectedRadio === "option4"}
-                onChange={handleRadioChange}
+                onChange={handleBlankSize}
               />
-              <label htmlFor="choice4" className="ml-1 mr-2 text-sm">D24 (ø6.8 - 5.3)</label>
-              <br />
+              <label htmlFor="choice4" className="ml-1 mr-2 text-sm">
+                D24 (ø6.8 - 5.3)
+              </label>
+              <input
+                className="ml-2 mr-1 "
+                type="radio"
+                id="choice5"
+                name="radioGroup"
+                value="option5"
+                checked={selectedRadio === "option5"}
+                onChange={handleBlankSize}
+              />
+              <label htmlFor="choice5" className="ml-1 mr-4 text-sm">
+                D27 (ø12.5 - 8.7)
+              </label>
             </fieldset>
           </div>
         )}
       </div>
       <div className="m-2 p-1">
-        <canvas className="bg-slate-100 rounded-xl shadow-lg" id="dieCanvas" width="700" height="600"></canvas>
+        <canvas
+          className="bg-slate-100 rounded-xl shadow-lg"
+          id="dieCanvas"
+          width="650"
+          height="600"
+        ></canvas>
       </div>
     </div>
   );
 };
 
-export default dieDesign;
+export default Inputs;
