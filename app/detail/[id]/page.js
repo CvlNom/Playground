@@ -42,11 +42,11 @@ export default async function Detail(props) {
 		
       </main>
       <aside
-        cclassName="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100" 
+        className="w-80 min-w-[20rem] order-1 m-0 p-4 bg-slate-100" 
         id="asideDetail"
       >
         <h4 className='text-blue-600 text-2xl italic font-bold'>격려와 용기의 코멘트를..</h4>
-        <h4 className='text-blue-600 text-xl italic font-bold'>SEND Encourage and Support</h4>
+        <h4 className='text-blue-600 text-xl italic font-bold'>Give Encourage and Support</h4>
       </aside>
     </div>
   );

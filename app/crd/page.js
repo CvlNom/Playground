@@ -83,6 +83,17 @@ export default async function CRD(req, res) {
               description="A type of drawing CRD"
             />
           </div>
+          <div className="mt-4 mb-10 bg-slate-50 rounded-2xl shadow-lg">
+            <img
+              src="/roll_reducing.png"
+              alt="image of roll drawing"
+              className="w-['300px'] h=['300px'] rounded-xl"
+            />
+            <p className="p-2 font-semibold text-xs text-slate-500">
+              <sup>**</sup>image shows how rolls contact wire.
+            </p>
+          </div>
+
         </aside>
       </div>
     );

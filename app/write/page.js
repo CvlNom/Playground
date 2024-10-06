@@ -2,7 +2,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import Link from 'next/link';
-import Footer from '../component/Footer';
+
 
 
 export default async function Write(req, res) {

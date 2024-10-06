@@ -72,18 +72,18 @@ export default async function Home() {
               "Welding Equip and Consumable",
             ]}
           />
-          {/* <AD_side company={['./as-logo.png', '아성 정밀', '(82)-010-3554-5557', 'asalloy@naver.com']} deal={['Carbide Drawing Die', 'Tube Forming & Drawing Roll', 'Carbide Sintering']}/> */}
-
-          <div className="mt-4 mb-10 bg-slate-50 rounded-2xl shadow-lg">
-            <img
-              src="/roll_reducing.png"
-              alt="image of roll drawing"
-              className="w-['300px'] h=['300px'] rounded-xl"
-            />
-            <p className="p-2 font-semibold text-xs text-slate-500">
-              <sup>**</sup>image shows how rolls contact wire.
+          <div className="text-slate-200 bg-slate-800 text-sm mt-0 p-4">
+            <p className="text-lg italic font-semibold text-center">
+              Articles, Patents and Books
             </p>
+            <Link href="/techArticle">
+              <button className="text-lg ml-12 my-2 py-1 bg-blue-300 rounded-lg text-blue-600 hover:font-bold hover:bg-blue-400">
+                Worth to Glance!
+              </button>
+            </Link>
           </div>
+
+          
         </div>
       </aside>
 
