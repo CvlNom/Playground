@@ -31,7 +31,7 @@ export default async function Home() {
           {/* <p> UPDATE!!</p> */}
           <div className="flex items-start justify-left">
             <ol className="ml-2 text-sm">
-              <li className="py-2 pl-4 ">
+              {/* <li className="py-2 pl-4 ">
                 <Link
                   href="./differentThinking/01"
                   className="text-gray-600 hover:font-semibold hover:text-gray-800"
@@ -46,13 +46,13 @@ export default async function Home() {
                 >
                   2. Controlling Fill Ratio for FCW
                 </Link>
-              </li>
+              </li> */}
               <li className="py-2 pl-4 ">
                 <Link
-                  href="./differentThinking/feedibility"
+                  href="./differentThinking/04_WhyCRD"
                   className="text-blue-600 font-semibold hover:font-bold hover:text-gray-800"
                 >
-                  3. Feed Ability of FCW<sup>*new*</sup>
+                  4. Why CRD?<sup>*new*</sup>
                 </Link>
               </li>
             </ol>
