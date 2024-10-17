@@ -16,7 +16,7 @@ export default async function fillRatio(req, res) {
     return (
       <div className="flex">
         <header>
-          <title>Control Fill Ratio for FCW</title>
+          <title>Different Thinking for FCW</title>
           <link rel="icon" href="/logo.png" />
         </header>
 
@@ -45,11 +45,7 @@ export default async function fillRatio(req, res) {
                   ⬅️ Home
                 </Link>
               </li>
-              {/* <li>
-								<Link href='../forming/rollArrangement' style={{ color: 'white' }}>
-									Stand Arrangement
-								</Link>
-							</li> */}
+              
             </ul>
           </div>
           <div></div>

@@ -15,7 +15,9 @@ export default async function differentThinking() {
         <link rel="icon" href="/logo.png" />
       </header>
 
-      <main className="flex-grow order-2 bg-slate-200 p-6"></main>
+      <main className="flex-grow order-2 bg-slate-200 p-6">
+        <h1>Choose the articles you want to see</h1>
+      </main>
 
       <aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100">
         <img
@@ -46,6 +48,11 @@ export default async function differentThinking() {
             <Link href="/differentThinking/feedibility">
               <li className="text-sm text-slate-500 font-semibold pl-2 py-1">
                 3. Feed Ability of FCW
+              </li>
+            </Link>
+            <Link href="/differentThinking/04_WhyCRD">
+              <li className="text-sm text-slate-500 font-semibold pl-2 py-1">
+                4. Why CRD?
               </li>
             </Link>
           </ol>
