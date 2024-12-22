@@ -5,24 +5,24 @@ export default function Register() {
 		<div className='pageBody'>
 			<header>
 				<title>Login & Sign up</title>
-				<h2>SIGN UP</h2>
+				{/* <h2>SIGN UP</h2> */}
 				<link rel='icon' href='/logo.png' />
 			</header>
 
 			<main>
 				<div>
 					<form method='POST' action='/api/auth/signup' className='loginSignup'>
-						<input name='name' type='text' placeholder='Put your ID' />
-						<p>Please make a unique name as possible. </p>
-						<input name='email' type='text' placeholder='E-mail Address' />
-						<input name='password' type='password' placeholder='Password' />
+						<input name='name' type='text' required placeholder='Put your ID more than 5 letters' />
+						{/* <p>Please make a unique name as possible. </p> */}
+						<input name='email' type='text' required placeholder='E-mail Address' />
+						<input name='password' type='password' required placeholder='Password' />
 						<button type='submit' style={{ backgroundColor: 'lightgreen' }}>
 							SIGN UP (회원가입)
 						</button>
 					</form>
 				</div>
 			</main>
-			<aside id='asideRegister'>Side</aside>
+			<aside id='asideRegister'>Image of wire clamp</aside>
 			
 		</div>
 	);

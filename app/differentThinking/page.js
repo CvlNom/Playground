@@ -3,6 +3,7 @@
 import { connectDB } from "/util/database.js";
 
 import Link from "next/link";
+import CalCapacity from "../component/CalCapacity"
 
 export default async function differentThinking() {
   return (
@@ -16,7 +17,42 @@ export default async function differentThinking() {
       </header>
 
       <main className="flex-grow order-2 bg-slate-200 p-6">
-        <h1>Choose the articles you want to see</h1>
+        <h1 className="text-2xl text-slate-900 font-bold pl-4 my-2">Calculate Production Amounts of Drawing Machine</h1>
+
+
+        <CalCapacity/>
+
+        <div className="p-6">
+          <h4 className="text-slate-500 text-xl font-bold p-2">Other Utilities in wire-lab</h4>
+          <ul className="list-disc">
+            <li >
+            <Link href="/spool" className="text-base text-blue-800 ml-4">Wire weight per meter depending on the diameter, steel grade and FCW.
+            </Link>
+            </li>
+            <li >
+              <Link
+                href="/forming"
+                className="text-blue-800 ml-4 text-base"
+              >Check Tube Size and Fill Percent
+              </Link>
+            </li>
+            <li >
+              <Link
+                href="/pcd/byReduction"
+                className="text-blue-800 ml-4 text-base"
+              >Design drawing sequence by area reduction
+              </Link>
+            </li>
+            <li >
+              <Link
+                href="/pcd/byElongation"
+                className="text-blue-800 ml-4 text-base"
+              >Design drawing sequence by elongation rate for slip type drawing machine?
+              </Link>
+            </li>
+          </ul>
+        </div>
+
       </main>
 
       <aside className="w-80 min-w-[20rem] order-1 m-0 p-0 bg-slate-100">
