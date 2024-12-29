@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import CheckTable from "./table01";
+import DrawGraph from "@/app/component/DrawGraph";
 
 const Sequence01 = () => {
   const [inputValues, setInputValues] = useState({
@@ -186,6 +187,9 @@ const Sequence01 = () => {
       </div>
 
       <hr />
+
+      <DrawGraph data1={red} name="Reduction"/>
+
 
       <h4 className="mt-6 mb-2 text-slate-600 text-base font-semibold">
         3. Select CRD or PCD and its spec. according to detailed engineering
