@@ -618,7 +618,7 @@ const DrawFormingRoll = () => {
 			ctx.arc(x0 - trW / 2 - eR, y0 - 0.2 * scaleCanvas + eR, eR, 270 * (PI / 180), 360 * (PI / 180), false);
 			ctx.lineTo(x0 - trW / 2, y0 + dy1 - dy2 + dh1);
 			let tAng = Math.asin(dh1 / gR4) * (180 / Math.PI);
-			ctx.arc(x0, y0 + dy1 - dy2, gR4, ((180 - tAng) * PI) / 180, ((90 - tAng) * PI) / 180, true);
+			ctx.arc(x0, y0 + dy1 - dy2, gR4, ((180 - tAng) * PI) / 180, ((tAng) * PI) / 180, true);
 			ctx.lineTo(x0 + trW / 2, y0 - 0.2 * scaleCanvas + eR);
 			ctx.arc(x0 + trW / 2 + eR, y0 - 0.2 * scaleCanvas + eR, eR, 180 * (PI / 180), 270 * (PI / 180), false);
 			ctx.lineTo(x6a + 50, y0 - 0.2 * scaleCanvas);
