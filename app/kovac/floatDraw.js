@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 
 const FloatSimulation = () => {
   const [inputValues, setInputValues] = useState({
-    input1: 2.195,
-    input2: 1.97,
+    input1: 2.54,
+    input2: 2.18,
     input3: 30,
     input4: 30,
     input5: 25,
     input6: 25,
-    input7: 1.977,
-    input8: 1.776,
-    input9: 1.97,
+    input7: 2.34,
+    input8: 2.02,
+    input9: 2.28,
     input10: 12,
   });
 
@@ -20,6 +20,13 @@ const FloatSimulation = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    let numValue = parseFloat(value);
+
+    // 특정 입력 필드(input10)에 대해서만 범위 제한
+    if (name === "input10") {
+      if (numValue < 10.5) numValue = 10.5;
+      if (numValue > 13.5) numValue = 13.5;
+    }
     setInputValues({
       ...inputValues,
       [name]: value,
@@ -204,6 +211,7 @@ const FloatSimulation = () => {
     // 플러그 B에서 A 만나는 점 y
     y14 = y11 - (p2 - p1) / Math.tan((pa * PI) / 180);
     // 플러그 치수 C - 도면 참조
+
     y13 = y11 + 1.5 * scale;
     y12 = y13 - 0.15 * scale; // 플러그 모따기 후 y
     y16 = y13 - 5.5 * scale; // 플러그 전체 길이
@@ -267,15 +275,32 @@ const FloatSimulation = () => {
 
     // 튜브 내면이 꺽이는 점 (x111, y111), 기울기 tan(90 + rAngle)
     // 플러그 꺽이는 점 (x21, Y0-y11)
-    const plugAngle = inputValues.input10 + 90;
+    // const plugAngle = inputValues.input10 + 90;
     const m2 = Math.tan(((rAngle + 90) * PI) / 180);
+
     let m1;
-    if (plugAngle % 180 === 90) {
-      m1 = null; // 무한 기울기 (수직선)
+    if (inputValues.input10 == 10.5) {
+      m1 = -5.3955;
+    } else if (inputValues.input10 == 11) {
+      m1 = -5.1446;
+    } else if (inputValues.input10 == 11.5) {
+      m1 = -4.9152;
+    } else if (inputValues.input10 == 12) {
+      m1 = -4.7046;
+    } else if (inputValues.input10 == 12.5) {
+      m1 = -4.5107;
+    } else if (inputValues.input10 == 13) {
+      m1 = -4.3315;
     } else {
-      m1 = Math.tan((plugAngle * Math.PI) / 180);
+      m1 = -4.1653;
     }
-    
+
+    // if (plugAngle % 180 === 90) {
+    //   m1 = null; // 무한 기울기 (수직선)
+    // } else {
+    //   m1 = Math.tan((plugAngle * Math.PI) / 180);
+    // }
+
     // const m1 = Math.tan((plugAngle * PI) / 180);
     let a1, a2, b1, b2;
     a2 = -(X0 - x111);
@@ -284,24 +309,34 @@ const FloatSimulation = () => {
     b1 = Y0 - y11;
     const meet_x = (m1 * a1 - b1 - m2 * a2 + b2) / (m1 - m2);
     const meet_y = m1 * meet_x - m1 * a1 + b1;
-
+    
     ctx.beginPath();
     ctx.lineWidth = 0.8;
     ctx.strokeStyle = "blue";
-
-    // 좌측 내면
     ctx.moveTo(x111, dieCanvas.height * 0.03);
     ctx.lineTo(x111, y111);
+    ctx.lineTo(X0 + meet_x, Y0 - meet_y);
+    ctx.lineTo(X0 - x21, y11);
+    ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
+    ctx.stroke();
+    // 좌측 내면
     // 조건문으로 meet_x가 x21 범위를 벗어났을 때 메시지 표시 및 그리기 Bypass하도록...
-
-    if (meet_y > b1 && meet_y < Y0-y14 && meet_x > a2 && meet_x < a1){
-      let plugContact = ((meet_y - b1) / (Y0-y14 - b1))*100
-
+    console.log(`루프밖 - a1: ${a1}, b1: ${b1}, a2: ${X0-x13}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
+    
+    if (meet_y > b1 && meet_y < Y0 - y14 && meet_x > X0-x13 && meet_x < a1) {
+      let plugContact = ((meet_y - b1) / (Y0 - y14 - b1)) * 100;
+      // console.log(`참---- meet_x: ${meet_x}, meet_y: ${meet_y}`);
+      
+      ctx.beginPath();
+      ctx.lineWidth = 0.8;
+      ctx.strokeStyle = "blue";
+      ctx.moveTo(x111, dieCanvas.height * 0.03);
+      ctx.lineTo(x111, y111);
       ctx.lineTo(X0 + meet_x, Y0 - meet_y);
       ctx.lineTo(X0 - x21, y11);
       ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
       ctx.stroke();
-
+      
       ctx.beginPath();
       ctx.lineWidth = 0.15;
       ctx.setLineDash([5, 2]);
@@ -314,9 +349,17 @@ const FloatSimulation = () => {
       ctx.textAlign = "left";
       ctx.fillText(
         `내면 컨택트 포인트: ${plugContact.toFixed(1)}%`,
-        X0 + meet_x + 55, Y0 - meet_y
+        X0 + meet_x + 55,
+        Y0 - meet_y
       );
+      console.log(`루프안 - a1: ${a1}, b1: ${b1}, a2: ${a2}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
     } else {
+      console.log(`거짓- meet_x: ${meet_x}, meet_y: ${Y0 - meet_y}`);
+      ctx.beginPath();
+      ctx.lineWidth = 0.8;
+      ctx.strokeStyle = "blue";
+      ctx.moveTo(x111, dieCanvas.height * 0.03);
+      ctx.lineTo(x111, y111);
       ctx.lineTo(X0 - x21, y11);
       ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
       ctx.stroke();
@@ -331,7 +374,7 @@ const FloatSimulation = () => {
     ctx.lineTo(x222, y111);
     // 조건문으로 meet_x가 x21 범위를 벗어났을 때 메시지 표시 및 그리기 Bypass하도록...
 
-    if (meet_y > b1 && meet_y < Y0-y14 && meet_x > a2 && meet_x < a1){
+    if (meet_y > b1 && meet_y < Y0 - y14 && meet_x > a2 && meet_x < a1) {
       ctx.lineTo(X0 - meet_x, Y0 - meet_y);
       ctx.lineTo(X0 + x21, y11);
       ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
@@ -340,14 +383,11 @@ const FloatSimulation = () => {
       ctx.lineTo(X0 + x21, y11);
       ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
       ctx.stroke();
-    } 
-    console.log(
-      `a1: ${a1}, b1: ${b1}, a2: ${a2}, b2: ${b2}, _x: ${meet_x}, _y${meet_y}`
-    );
+    }
+    // console.log(`a1: ${a1}, b1: ${b1}, a2: ${a2}, b2: ${b2}, _x: ${meet_x}, _y${meet_y}`);
     //-----------------------------------------------------------------
 
     let contactPoint = -(contactY / (y3 - y2)) * 100;
-    
 
     //Write contact point Text
     ctx.lineWidth = 1;
@@ -363,18 +403,17 @@ const FloatSimulation = () => {
       contactX11 + 30,
       contactY1
     );
-    
-    let inArea, outArea
 
-    inArea = (iW * iW * PI) - (tID * tID * PI);
-    outArea = (hD * hD * PI)-(p1 * p1 * PI);
-    const rRate = ((inArea - outArea) / inArea) * 100; 
-    const eRate = ((inArea / outArea) -1 ) * 100
+    let inArea, outArea;
+
+    inArea = iW * iW * PI - tID * tID * PI;
+    outArea = hD * hD * PI - p1 * p1 * PI;
+    const rRate = ((inArea - outArea) / inArea) * 100;
+    const eRate = (inArea / outArea - 1) * 100;
     const gapTB = (tID - p2) / scale;
 
     // const rRate = (d1, d2) => (1 - Math.pow(d2, 2) / Math.pow(d1, 2)) * 100;
     // const eRate = (d1, d2) => (Math.pow(d1, 2) / Math.pow(d2, 2) - 1) * 100;
-    
 
     //Write contact point Text
     ctx.font = "14px Arial";
@@ -383,7 +422,6 @@ const FloatSimulation = () => {
     ctx.fillText(`감면율: ${rRate.toFixed(2)}%`, 800, 20);
     ctx.fillText(`연신율: ${eRate.toFixed(2)}%`, 800, 40);
     ctx.fillText(`내경 vs. 플러그 Gap: ${gapTB.toFixed(3)}mm`, 800, 60);
-    
 
     ctx.fillText(`Back Length (⍺:60°)`, x5 + 10, Y0 - (Y0 - y1) / 2 + 3);
     ctx.fillText(`Bearing Length`, x5 + 10, y1 - (y1 - y2) / 2 + 3);
@@ -501,7 +539,6 @@ const FloatSimulation = () => {
               Simulate Floating Plug Drawing
             </h3>
           </div>
-          
         </div>
 
         <div className="pl-4 py-2">
@@ -619,80 +656,81 @@ const FloatSimulation = () => {
                 type="number"
                 name="input10"
                 step="0.5"
+                min="10.5"
+                max="13.5"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
             </div>
           </div>
-          <p className="mt-2 text-sm text-slate-600"> note: 플러그 각도 조절 후, 표시가 제대로 되지 않으면 리프레쉬 버튼을 눌러주세요. 프로그램 연산 오류 !!!</p>
+          
         </div>
 
-          <div className=" pl-4 ml-4 mt-2 mb-4 py-4 " id="radio">
-            <fieldset className="w-[1000px] border-gray-900 border flex flex-row justify-left h-14 items-center pb-2 rounded-md">
-              <legend className="mx-2 px-2 ">다이스 타입 선택 및 확대</legend>
-              <input
-                className="ml-2 mr-1"
-                type="radio"
-                id="choice1"
-                name="radioGroup"
-                value="option1"
-                checked={selectedRadio === "option1"}
-                onChange={handleBlankSize}
-              />
-              <label htmlFor="choice1" className="ml-1 mr-8 text-sm">
-                D15 (ø5.2 - 2.5)
-              </label>
-              <input
-                className="ml-2 mr-1 "
-                type="radio"
-                id="choice2"
-                name="radioGroup"
-                value="option2"
-                checked={selectedRadio === "option2"}
-                onChange={handleBlankSize}
-              />
-              <label htmlFor="choice2" className="ml-1 mr-8 text-sm">
-                D18 (ø5.2 - 3.5)
-              </label>
-              <input
-                className="ml-2 mr-1 "
-                type="radio"
-                id="choice3"
-                name="radioGroup"
-                value="option3"
-                checked={selectedRadio === "option3"}
-                onChange={handleBlankSize}
-              />
-              <label htmlFor="choice3" className="ml-1 mr-8 text-sm">
-                D21 (ø6.8 - 3.86)
-              </label>
-              <input
-                className="ml-2 mr-1 "
-                type="radio"
-                id="choice4"
-                name="radioGroup"
-                value="option4"
-                checked={selectedRadio === "option4"}
-                onChange={handleBlankSize}
-              />
-              <label htmlFor="choice4" className="ml-1 mr-8 text-sm">
-                D24 (ø6.8 - 5.3)
-              </label>
-              <input
-                className="ml-2 mr-1 "
-                type="radio"
-                id="choice5"
-                name="radioGroup"
-                value="option5"
-                checked={selectedRadio === "option5"}
-                onChange={handleBlankSize}
-              />
-              <label htmlFor="choice5" className="ml-1 mr-4 text-sm">
-                확대 점검
-              </label>
-            </fieldset>
-          </div>
-        
+        <div className=" pl-4 ml-4 mt-2 mb-4 py-4 " id="radio">
+          <fieldset className="w-[1000px] border-gray-900 border flex flex-row justify-left h-14 items-center pb-2 rounded-md">
+            <legend className="mx-2 px-2 ">다이스 타입 선택 및 확대</legend>
+            <input
+              className="ml-2 mr-1"
+              type="radio"
+              id="choice1"
+              name="radioGroup"
+              value="option1"
+              checked={selectedRadio === "option1"}
+              onChange={handleBlankSize}
+            />
+            <label htmlFor="choice1" className="ml-1 mr-8 text-sm">
+              D15 (ø5.2 - 2.5)
+            </label>
+            <input
+              className="ml-2 mr-1 "
+              type="radio"
+              id="choice2"
+              name="radioGroup"
+              value="option2"
+              checked={selectedRadio === "option2"}
+              onChange={handleBlankSize}
+            />
+            <label htmlFor="choice2" className="ml-1 mr-8 text-sm">
+              D18 (ø5.2 - 3.5)
+            </label>
+            <input
+              className="ml-2 mr-1 "
+              type="radio"
+              id="choice3"
+              name="radioGroup"
+              value="option3"
+              checked={selectedRadio === "option3"}
+              onChange={handleBlankSize}
+            />
+            <label htmlFor="choice3" className="ml-1 mr-8 text-sm">
+              D21 (ø6.8 - 3.86)
+            </label>
+            <input
+              className="ml-2 mr-1 "
+              type="radio"
+              id="choice4"
+              name="radioGroup"
+              value="option4"
+              checked={selectedRadio === "option4"}
+              onChange={handleBlankSize}
+            />
+            <label htmlFor="choice4" className="ml-1 mr-8 text-sm">
+              D24 (ø6.8 - 5.3)
+            </label>
+            <input
+              className="ml-2 mr-1 "
+              type="radio"
+              id="choice5"
+              name="radioGroup"
+              value="option5"
+              checked={selectedRadio === "option5"}
+              onChange={handleBlankSize}
+            />
+            <label htmlFor="choice5" className="ml-1 mr-4 text-sm">
+              확대 점검
+            </label>
+          </fieldset>
+        </div>
       </div>
       <div className="m-2 p-1">
         <canvas
@@ -702,6 +740,8 @@ const FloatSimulation = () => {
           height="800"
         ></canvas>
       </div>
+      <p className="mt-2 text-sm text-slate-600">
+        note: 이 시뮬레이션은 기하학적으로 표현한 것이며, 실제 심인에서는 내면 컨택트 포인트가 더 높아질 것임!!</p>
     </div>
   );
 };
