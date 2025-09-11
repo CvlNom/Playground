@@ -199,7 +199,8 @@ const FloatSimulation = () => {
     const wT = iW - tID;
     const p1 = (inputValues.input8 / 2) * scale;
     const p2 = (inputValues.input9 / 2) * scale;
-    const pa = inputValues.input10;
+    const pa = inputValues.input10 / 2;
+    //20250911 플러그 각도 오류 수정
     let meet_X, meet_Y;
     x21 = p1; //플러그 치수 B
     x22 = p1 - 0.15 * scale; // 플러그 B 앞 모따기
