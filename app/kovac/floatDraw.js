@@ -280,20 +280,12 @@ const FloatSimulation = () => {
     const m2 = Math.tan(((rAngle + 90) * PI) / 180);
 
     let m1;
-    if (inputValues.input10 == 10.5) {
-      m1 = -5.3955;
-    } else if (inputValues.input10 == 11) {
-      m1 = -5.1446;
-    } else if (inputValues.input10 == 11.5) {
-      m1 = -4.9152;
+    if (inputValues.input10 == 10) {
+      m1 = -11.43005;
     } else if (inputValues.input10 == 12) {
-      m1 = -4.7046;
-    } else if (inputValues.input10 == 12.5) {
-      m1 = -4.5107;
-    } else if (inputValues.input10 == 13) {
-      m1 = -4.3315;
+      m1 = -9.51433;
     } else {
-      m1 = -4.1653;
+      m1 = -8.14434;
     }
 
     // if (plugAngle % 180 === 90) {
@@ -656,9 +648,9 @@ const FloatSimulation = () => {
                 className="w-16 border-gray-700 border text-center text-sm text-slate-600"
                 type="number"
                 name="input10"
-                step="0.5"
-                min="10.5"
-                max="13.5"
+                step="2"
+                min="10"
+                max="14"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
