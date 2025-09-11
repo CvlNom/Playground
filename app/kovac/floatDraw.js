@@ -199,8 +199,7 @@ const FloatSimulation = () => {
     const wT = iW - tID;
     const p1 = (inputValues.input8 / 2) * scale;
     const p2 = (inputValues.input9 / 2) * scale;
-    const pa = inputValues.input10 / 2;
-    //20250911 플러그 각도 오류 수정
+    const pa = inputValues.input10;
     let meet_X, meet_Y;
     x21 = p1; //플러그 치수 B
     x22 = p1 - 0.15 * scale; // 플러그 B 앞 모따기
@@ -280,14 +279,20 @@ const FloatSimulation = () => {
     const m2 = Math.tan(((rAngle + 90) * PI) / 180);
 
     let m1;
-    if (inputValues.input10 == 10) {
-      m1 = -11.43005;
+    if (inputValues.input10 == 10.5) {
+      m1 = -5.3955;
+    } else if (inputValues.input10 == 11) {
+      m1 = -5.1446;
+    } else if (inputValues.input10 == 11.5) {
+      m1 = -4.9152;
     } else if (inputValues.input10 == 12) {
-      m1 = -9.51433;
-    } else if (inputValues.input10 == 14) {
-      m1 =  -8.14434;  
+      m1 = -4.7046;
+    } else if (inputValues.input10 == 12.5) {
+      m1 = -4.5107;
+    } else if (inputValues.input10 == 13) {
+      m1 = -4.3315;
     } else {
-      m1 = -7.11537;
+      m1 = -4.1653;
     }
 
     // if (plugAngle % 180 === 90) {
@@ -531,7 +536,7 @@ const FloatSimulation = () => {
         <div className="flex flex-row items-center">
           <div>
             <h3 className="px-4 text-2xl text-slate-600 font-bold py-2">
-              Simulate Floating Plug Drawing - 수정_2025. 09. 11.
+              Simulate Floating Plug Drawing
             </h3>
           </div>
         </div>
@@ -650,9 +655,9 @@ const FloatSimulation = () => {
                 className="w-16 border-gray-700 border text-center text-sm text-slate-600"
                 type="number"
                 name="input10"
-                step="2"
-                min="10"
-                max="16"
+                step="0.5"
+                min="10.5"
+                max="13.5"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
