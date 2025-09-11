@@ -537,7 +537,7 @@ const FloatSimulation = () => {
         <div className="flex flex-row items-center">
           <div>
             <h3 className="px-4 text-2xl text-slate-600 font-bold py-2">
-              Simulate Floating Plug Drawing
+              Simulate Floating Plug Drawing - 계산식 오류로 사용 중지!!
             </h3>
           </div>
         </div>
