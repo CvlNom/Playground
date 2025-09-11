@@ -284,8 +284,10 @@ const FloatSimulation = () => {
       m1 = -11.43005;
     } else if (inputValues.input10 == 12) {
       m1 = -9.51433;
+    } else if (inputValues.input10 == 14) {
+      m1 =  -8.14434;  
     } else {
-      m1 = -8.14434;
+      m1 = -7.11537;
     }
 
     // if (plugAngle % 180 === 90) {
@@ -529,7 +531,7 @@ const FloatSimulation = () => {
         <div className="flex flex-row items-center">
           <div>
             <h3 className="px-4 text-2xl text-slate-600 font-bold py-2">
-              Simulate Floating Plug Drawing - 계산식 오류로 사용 중지!!
+              Simulate Floating Plug Drawing - 수정_2025. 09. 11.
             </h3>
           </div>
         </div>
@@ -650,7 +652,7 @@ const FloatSimulation = () => {
                 name="input10"
                 step="2"
                 min="10"
-                max="14"
+                max="16"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
