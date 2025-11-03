@@ -59,6 +59,8 @@ const FloatSimulation = () => {
     let dieH, dieOD;
 
     // 라디오버튼 블랭크 타입 선택 시 닙 사이즈 및 스케일 설정
+    // hD는 다이스 홀 사이즈
+
     if (selectedRadio0 === "option1") {
       switch (selectedRadio) {
         case "option1":
@@ -90,7 +92,7 @@ const FloatSimulation = () => {
           hD = (inputValues.input2 / 2) * scale;
           break;
         case "option5":
-          scale = 250;
+          scale = 300;
           dieH = 5.3 * scale;
           dieOD = 6.8 * scale;
           iW = (inputValues.input1 / 2) * scale;
@@ -104,7 +106,9 @@ const FloatSimulation = () => {
       iW = (inputValues.input1 / 2) * scale;
       hD = (inputValues.input2 / 2) * scale;
     }
-
+    
+    
+    
     // Define constants used in calculations
     const rAngle = inputValues.input3 / 2;
     const bL = (inputValues.input4 / 100) * hD * 2;
@@ -131,7 +135,6 @@ const FloatSimulation = () => {
     const x4 = x3 - aL * Math.tan((AP_ANGLE * PI) / 180);
     const y4 = Y0 - dieH;
     const x5 = X0 - dieOD / 2;
-
     const x11 = X0 + hD + brL * Math.tan((BACK_ANGLE * PI) / 180);
     const x12 = X0 + hD;
     const x13 =
@@ -140,14 +143,13 @@ const FloatSimulation = () => {
     const x15 = X0 + dieOD / 2;
 
     // Draw the outline of the die
-    // Set line width and color
+   
     ctx.lineWidth = 0.6;
     ctx.strokeStyle = "#000000";
     ctx.fillStyle = "hsl(0, 0%, 98%)";
     ctx.setLineDash([]);
     ctx.fillStyle = "hsl(0, 0%, 98%)";
-    // ctx.fillRect(x5, y4, dieOD, dieH);
-    // ctx.strokeRect(x5, y4, dieOD, dieH);
+
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(x1, Y0);
@@ -174,6 +176,7 @@ const FloatSimulation = () => {
     ctx.fill();
 
     // Draw divide line for nomenclature
+
     ctx.lineWidth = 0.6;
     ctx.strokeStyle = "black";
     ctx.beginPath();
@@ -186,6 +189,7 @@ const FloatSimulation = () => {
     ctx.stroke();
 
     // Draw Center line
+
     ctx.strokeStyle = "red";
     ctx.lineWidth = 0.6;
     ctx.setLineDash([5, 3]);
@@ -193,8 +197,13 @@ const FloatSimulation = () => {
     ctx.moveTo(X0, dieCanvas.height * 0.04);
     ctx.lineTo(X0, dieCanvas.height * 0.96);
     ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(X0-10, Y0);
+    ctx.lineTo(X0+10, Y0);
+    ctx.stroke();
 
-    // Draw PLUG
+    // Draw PLUG ---------------------------------------
+
     let x21, x22, x23, x24, y11, y12, y13, y14, y15, y16;
     const wT = iW - tID;
     const p1 = (inputValues.input8 / 2) * scale;
@@ -242,7 +251,8 @@ const FloatSimulation = () => {
     ctx.fill();
 
     //---------------------------------------------
-    // Draw Wire - 외경
+    
+    // Draw Tube - 외경
     let contactX = iW - hD;
     let contactX1 = X0 - iW;
     let contactX11 = X0 + iW;
@@ -267,7 +277,9 @@ const FloatSimulation = () => {
     ctx.lineTo(contactX11, dieCanvas.height * 0.03);
     ctx.stroke();
     //-----------------------------------------------------------------
-    // 내경
+    
+    // Draw Tube 내경---------------------------------------------
+
     const idY = Math.tan(((rAngle / 2) * PI) / 180) * (iW - tID);
     const x111 = contactX1 + wT;
     const y111 = contactY1 - idY;
@@ -310,18 +322,18 @@ const FloatSimulation = () => {
     const meet_x = (m1 * a1 - b1 - m2 * a2 + b2) / (m1 - m2);
     const meet_y = m1 * meet_x - m1 * a1 + b1;
     
-    ctx.beginPath();
-    ctx.lineWidth = 0.8;
-    ctx.strokeStyle = "blue";
-    ctx.moveTo(x111, dieCanvas.height * 0.03);
-    ctx.lineTo(x111, y111);
-    ctx.lineTo(X0 + meet_x, Y0 - meet_y);
-    ctx.lineTo(X0 - x21, y11);
-    ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
-    ctx.stroke();
+    // ctx.beginPath();
+    // ctx.lineWidth = 0.8;
+    // ctx.strokeStyle = "blue";
+    // ctx.moveTo(x111, dieCanvas.height * 0.03);
+    // ctx.lineTo(x111, y111);
+    // ctx.lineTo(X0 + meet_x, Y0 - meet_y);
+    // ctx.lineTo(X0 - x21, y11);
+    // ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
+    // ctx.stroke();
     // 좌측 내면
     // 조건문으로 meet_x가 x21 범위를 벗어났을 때 메시지 표시 및 그리기 Bypass하도록...
-    console.log(`루프밖 - a1: ${a1}, b1: ${b1}, a2: ${X0-x13}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
+    //console.log(`루프밖 - a1: ${a1}, b1: ${b1}, a2: ${X0-x13}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
     
     if (meet_y > b1 && meet_y < Y0 - y14 && meet_x > X0-x13 && meet_x < a1) {
       let plugContact = ((meet_y - b1) / (Y0 - y14 - b1)) * 100;
@@ -330,13 +342,24 @@ const FloatSimulation = () => {
       ctx.beginPath();
       ctx.lineWidth = 0.8;
       ctx.strokeStyle = "blue";
+
+      // 좌측
       ctx.moveTo(x111, dieCanvas.height * 0.03);
       ctx.lineTo(x111, y111);
       ctx.lineTo(X0 + meet_x, Y0 - meet_y);
       ctx.lineTo(X0 - x21, y11);
       ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
       ctx.stroke();
+
+      // 우측
+      ctx.moveTo(x222, dieCanvas.height * 0.03);
+      ctx.lineTo(x222, y111);
+      ctx.lineTo(X0 - meet_x, Y0 - meet_y);
+      ctx.lineTo(X0 + x21, y11);
+      ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
+      ctx.stroke();
       
+      // 지시선 및 코멘트
       ctx.beginPath();
       ctx.lineWidth = 0.15;
       ctx.setLineDash([5, 2]);
@@ -344,7 +367,7 @@ const FloatSimulation = () => {
       ctx.moveTo(X0 + meet_x + 5, Y0 - meet_y);
       ctx.lineTo(X0 + meet_x + 45, Y0 - meet_y);
       ctx.stroke();
-      ctx.font = "11px Arial";
+      ctx.font = "12px Arial";
       ctx.fillStyle = "red";
       ctx.textAlign = "left";
       ctx.fillText(
@@ -352,39 +375,52 @@ const FloatSimulation = () => {
         X0 + meet_x + 55,
         Y0 - meet_y
       );
-      console.log(`루프안 - a1: ${a1}, b1: ${b1}, a2: ${a2}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
     } else {
-      console.log(`거짓- meet_x: ${meet_x}, meet_y: ${Y0 - meet_y}`);
+      // 플러그 몸통과 만나는 지점을 그려야 함
+      // 탄제트 길이 = (x111-x21)/ tan(15)
+      let bodyContactY = (tID-x23) / Math.tan(((rAngle) * PI) / 180) 
+
       ctx.beginPath();
       ctx.lineWidth = 0.8;
       ctx.strokeStyle = "blue";
       ctx.moveTo(x111, dieCanvas.height * 0.03);
       ctx.lineTo(x111, y111);
-      ctx.lineTo(X0 - x21, y11);
+      ctx.lineTo(X0-p2, y111+bodyContactY);
+      ctx.lineTo(X0-x23, y14);
+      ctx.lineTo(X0-x21, y11);
       ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
       ctx.stroke();
-    }
 
-    // 우측 내면
+      ctx.beginPath();
+      ctx.lineWidth = 0.5;
+      ctx.setLineDash([]);
+      ctx.strokeStyle = "red";
+      ctx.moveTo(X0-p2+5, y111+bodyContactY);
+      ctx.lineTo(X0-p2+25, y111+bodyContactY);
+      ctx.stroke();
 
-    ctx.lineWidth = 0.8;
-    ctx.setLineDash([]);
-    ctx.strokeStyle = "blue";
-    ctx.moveTo(x222, dieCanvas.height * 0.03);
-    ctx.lineTo(x222, y111);
-    // 조건문으로 meet_x가 x21 범위를 벗어났을 때 메시지 표시 및 그리기 Bypass하도록...
+      ctx.font = "12px Arial";
+      ctx.strokeStyle = "blue";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "left";
+      ctx.fillText(`튜브 내면이 플러그 몸통에 접촉합니다`, X0 - x21 + 5 , y111+bodyContactY);
 
-    if (meet_y > b1 && meet_y < Y0 - y14 && meet_x > a2 && meet_x < a1) {
-      ctx.lineTo(X0 - meet_x, Y0 - meet_y);
-      ctx.lineTo(X0 + x21, y11);
+
+
+      ctx.beginPath();
+      ctx.lineWidth = 0.8;
+      ctx.setLineDash([]);
+      ctx.strokeStyle = "blue";
+      ctx.moveTo(x222, dieCanvas.height * 0.03);
+      ctx.lineTo(x222, y111);
+      ctx.lineTo(X0+p2, y111+bodyContactY);
+      ctx.lineTo(X0+x23, y14);
+      ctx.lineTo(X0+x21, y11);
       ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
       ctx.stroke();
-    } else {
-      ctx.lineTo(X0 + x21, y11);
-      ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
-      ctx.stroke();
+
     }
-    // console.log(`a1: ${a1}, b1: ${b1}, a2: ${a2}, b2: ${b2}, _x: ${meet_x}, _y${meet_y}`);
+    
     //-----------------------------------------------------------------
 
     let contactPoint = -(contactY / (y3 - y2)) * 100;
@@ -412,8 +448,7 @@ const FloatSimulation = () => {
     const eRate = (inArea / outArea - 1) * 100;
     const gapTB = (tID - p2) / scale;
 
-    // const rRate = (d1, d2) => (1 - Math.pow(d2, 2) / Math.pow(d1, 2)) * 100;
-    // const eRate = (d1, d2) => (Math.pow(d1, 2) / Math.pow(d2, 2) - 1) * 100;
+ 
 
     //Write contact point Text
     ctx.font = "14px Arial";
@@ -428,13 +463,11 @@ const FloatSimulation = () => {
     ctx.fillText(`Reduction Length`, x5 + 10, y2 - (y2 - y3) / 2 + 3);
     ctx.fillText(`Approach(80°)`, x5 + 10, y3 - (y3 - y4) / 2 + 3);
 
-    // console.log(rRate(iW, hD).toFixed(1));
-    // console.log(eRate(iW, hD).toFixed(1));
-    // console.log(deltaF(rRate(iW, hD), rAngle).toFixed(2));
-
     // 컨택트 포인트와 델타변수에 의한 다이스 내부 색상 변화 (Good, not good, Bad)
     // 감면율, 연신율, 델타변수 캔버스 우측 상단에 텍스트로 표시
-    // 다이스의 구간 표시 및 치수?
+
+
+    // 다이스의 구간 표시 및 치수? --------------------------------
     drawDimVer(x15, y4, x15, Y0, dieH * -0.07, 0, 6, 0);
     function drawDimVer(dx1, dy1, dx2, dy2, l0, g0, l1, pos) {
       // x값이 큰쪽을 먼저 지정
@@ -471,7 +504,7 @@ const FloatSimulation = () => {
           ctx.fillStyle = "blue";
           ctx.fill();
         } else {
-          console.log("big");
+          //console.log("big");
           ctx.moveTo(dx1 + l0, dy1);
           ctx.lineTo(dx1 + l0, dy2);
           ctx.stroke();
@@ -541,14 +574,14 @@ const FloatSimulation = () => {
           </div>
         </div>
 
-        <div className="pl-4 py-2">
+        <div className="pl-4 py-1">
           <div className="flex flex-row justify-stretch py-1">
             <div className="w-52">
               <label className="text-slate-500 text-sm mr-2.5">
                 튜브 외경(mm) :
               </label>
               <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
                 type="number"
                 name="input1"
                 step="0.001"
@@ -561,7 +594,7 @@ const FloatSimulation = () => {
                 튜브 내경(mm) :
               </label>
               <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
                 type="number"
                 name="input7"
                 step="0.001"
@@ -571,13 +604,13 @@ const FloatSimulation = () => {
             </div>
           </div>
 
-          <div className="flex flex-row justify-stretch py-1">
+          <div className="flex flex-row justify-stretch ">
             <div className="w-52">
               <label className="text-slate-500 text-sm mr-3">
                 다이스 경(mm):
               </label>
               <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                className="w-16 border-gray-700 bg-white border text-center text-sm text-slate-600"
                 type="number"
                 name="input2"
                 step="0.001"
@@ -585,12 +618,38 @@ const FloatSimulation = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="w-52">
+            <div className="w-100">
+              <label className="text-slate-500 text-sm mr-2.5">
+                플러그 경(mm) :
+              </label>
+              <input
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
+                type="number"
+                name="input8"
+                step="0.001"
+                value={inputValues.input8}
+                onChange={handleChange}
+              />
+              <label className="text-slate-500 text-sm mr-2.5 ml-2.5">x</label>
+              <input
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
+                type="number"
+                name="input9"
+                step="0.001"
+                value={inputValues.input9}
+                onChange={handleChange}
+              />
+            </div>
+            
+          </div>
+
+          <div className="flex flex-row justify-stretch py-1">
+            <div className="w-44">
               <label className="text-slate-500 text-sm mr-4">
                 리덕션 각도(°) :
               </label>
               <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
                 type="number"
                 name="input3"
                 step="0.5"
@@ -599,7 +658,22 @@ const FloatSimulation = () => {
               />
             </div>
             <div className="w-52">
-              <label className="text-slate-500 text-sm mr-2.5">
+              <label className="text-slate-500 text-sm mr-2.5 ml-10">
+                플러그 반각(°) :
+              </label>
+              <input
+                className="w-16 border-gray-700  bg-white not-only:border text-center text-sm text-slate-600"
+                type="number"
+                name="input10"
+                step="0.5"
+                min="10.5"
+                max="13.5"
+                value={inputValues.input10}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-52">
+              <label className="text-slate-500 text-sm mr-2.5 ml-10">
                 베아링 길이(%):
               </label>
               <input
@@ -610,9 +684,9 @@ const FloatSimulation = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="w-52">
-              <label className="text-slate-500 text-sm mr-2.5">
-                백 & 어프로치 비율(%):
+            <div className="w-60">
+              <label className="text-slate-500 text-sm mr-2.5 ml-10">
+                Appr&Back 비율(%):
               </label>
               <input
                 className="w-16 border-gray-700 border text-center text-sm text-slate-600"
@@ -622,51 +696,12 @@ const FloatSimulation = () => {
                 onChange={handleChange}
               />
             </div>
-          </div>
-
-          <div className="flex flex-row justify-stretch py-1">
-            <div className="w-100">
-              <label className="text-slate-500 text-sm mr-2.5">
-                플러그 치수(mm) :
-              </label>
-              <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
-                type="number"
-                name="input8"
-                step="0.001"
-                value={inputValues.input8}
-                onChange={handleChange}
-              />
-              <label className="text-slate-500 text-sm mr-2.5 ml-2.5">x</label>
-              <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
-                type="number"
-                name="input9"
-                step="0.001"
-                value={inputValues.input9}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="w-100">
-              <label className="text-slate-500 text-sm mr-2.5 ml-10">
-                플러그 각도(°) :
-              </label>
-              <input
-                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
-                type="number"
-                name="input10"
-                step="0.5"
-                min="10.5"
-                max="13.5"
-                value={inputValues.input10}
-                onChange={handleChange}
-              />
-            </div>
+            
           </div>
           
         </div>
 
-        <div className=" pl-4 ml-4 mt-2 mb-4 py-4 " id="radio">
+        <div className=" pl-4 py-4 " id="radio">
           <fieldset className="w-[1000px] border-gray-900 border flex flex-row justify-left h-14 items-center pb-2 rounded-md">
             <legend className="mx-2 px-2 ">다이스 타입 선택 및 확대</legend>
             <input
