@@ -658,7 +658,7 @@ const FloatSimulation = () => {
               />
             </div>
             <div className="w-52">
-              <label className="text-slate-500 text-sm mr-2.5 ml-10">
+              <label className="text-slate-500 text-sm mr-2.5 ml-5">
                 플러그 반각(°) :
               </label>
               <input
@@ -673,7 +673,7 @@ const FloatSimulation = () => {
               />
             </div>
             <div className="w-52">
-              <label className="text-slate-500 text-sm mr-2.5 ml-10">
+              <label className="text-slate-500 text-sm mr-2.5 ml-5">
                 베아링 길이(%):
               </label>
               <input
@@ -685,7 +685,7 @@ const FloatSimulation = () => {
               />
             </div>
             <div className="w-60">
-              <label className="text-slate-500 text-sm mr-2.5 ml-10">
+              <label className="text-slate-500 text-sm mr-2.5 ml-5">
                 Appr&Back 비율(%):
               </label>
               <input
