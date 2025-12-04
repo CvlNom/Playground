@@ -658,16 +658,16 @@ const FloatSimulation = () => {
               />
             </div>
             <div className="w-52">
-              <label className="text-slate-500 text-sm mr-2.5 ml-5">
+             <label className="text-slate-500 text-sm mr-2.5 ml-5">
                 플러그 반각(°) :
               </label>
               <input
-                className="w-16 border-gray-700  bg-white not-only:border text-center text-sm text-slate-600"
+                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
                 type="number"
                 name="input10"
-                step="0.5"
-                min="10.5"
-                max="13.5"
+                step="0.1"
+                min="11.5"
+                max="12.0"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
