@@ -113,7 +113,7 @@ const Inputs = () => {
 
     const PI = Math.PI;
     const BACK_ANGLE = 30;
-    const AP_ANGLE = 40;
+    const AP_ANGLE = 45;
     const dieCanvas = document.getElementById("dieCanvas");
     if (!dieCanvas) return;
     const ctx = dieCanvas.getContext("2d");
@@ -178,7 +178,7 @@ const Inputs = () => {
     ctx.moveTo(x1, Y0); ctx.lineTo(x11, Y0);
     ctx.moveTo(x2, y1); ctx.lineTo(x12, y1);
     ctx.moveTo(x2, y2); ctx.lineTo(x12, y2);
-    ctx.moveTo(x3, y3); ctx.lineTo(x13, y3);
+    // ctx.moveTo(x3, y3); ctx.lineTo(x13, y3);
     ctx.moveTo(x4, y4); ctx.lineTo(x14, y4);
     ctx.stroke();
 
@@ -203,35 +203,73 @@ const Inputs = () => {
     let contactX11 = X0 + iW;
     let contactY = contactX / Math.tan((rAngle * PI) / 180);
     let contactY1 = Y0 - (contactY + bL + brL);
+    console.log("contactX-", contactX1, x3);
+    // Find contactX when wire contact approach
 
-    ctx.beginPath();
-    ctx.lineWidth = 0.4;
-    ctx.strokeStyle = "blue";
-    ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(43, 147, 233, 0.12)";
-    ctx.moveTo(contactX1, dieCanvas.height * 0.05);
-    ctx.lineTo(contactX1, contactY1);
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(x2, dieCanvas.height * 0.95);
-    ctx.lineTo(x12, dieCanvas.height * 0.95);
-    ctx.lineTo(x12, y2);
-    ctx.lineTo(contactX11, contactY1);
-    ctx.lineTo(contactX11, dieCanvas.height * 0.05);
-    ctx.closePath();
-    ctx.stroke();
-    ctx.fill();
 
-    let contactPoint = -(contactY / (y3 - y2)) * 100;
-    ctx.setLineDash([5, 3]);
-    ctx.beginPath();
-    ctx.moveTo(contactX11, contactY1);
-    ctx.lineTo(contactX11 + 15, contactY1);
-    ctx.stroke();
-    ctx.font = "11px Arial";
-    ctx.fillStyle = "red";
-    ctx.textAlign = "left";
-    ctx.fillText(`Contact Point: ${contactPoint.toFixed(1)}%`, contactX11 + 10, contactY1);
+    if (contactX1 >= x3) {
+      ctx.beginPath();
+      ctx.lineWidth = 0.4;
+      ctx.strokeStyle = "blue";
+      ctx.setLineDash([]);
+      ctx.fillStyle = "rgba(43, 147, 233, 0.12)";
+      ctx.moveTo(contactX1, dieCanvas.height * 0.05);
+      ctx.lineTo(contactX1, contactY1);
+      ctx.lineTo(x2, y2);
+      ctx.lineTo(x2, dieCanvas.height * 0.95);
+      ctx.lineTo(x12, dieCanvas.height * 0.95);
+      ctx.lineTo(x12, y2);
+      ctx.lineTo(contactX11, contactY1);
+      ctx.lineTo(contactX11, dieCanvas.height * 0.05);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+  
+      let contactPoint = -(contactY / (y3 - y2)) * 100;
+      ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      ctx.moveTo(contactX11, contactY1);
+      ctx.lineTo(contactX11 + 15, contactY1);
+      ctx.stroke();
+      ctx.font = "11px Arial";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "left";
+      ctx.fillText(`Contact Point: ${contactPoint.toFixed(1)}%`, contactX11 + 10, contactY1);     
+    } else {
+      console.log("컨택트가 리덕션 구간 밖입니다", contactX1, x3); 
+      ctx.beginPath();
+      ctx.lineWidth = 0.4;
+      ctx.strokeStyle = "blue";
+      ctx.setLineDash([]);
+      ctx.fillStyle = "rgba(43, 147, 233, 0.12)";
+      ctx.moveTo(contactX1, dieCanvas.height * 0.05);
+      ctx.lineTo(contactX1, y3-(x3-contactX1));
+      ctx.lineTo(x3, y3);
+      ctx.lineTo(x2, y2);
+      ctx.lineTo(x2, dieCanvas.height * 0.95);
+      ctx.lineTo(x12, dieCanvas.height * 0.95);
+      ctx.lineTo(x12, y2);
+      ctx.lineTo(x13, y3);
+      ctx.lineTo(contactX11, y3-(x3-contactX1));
+      ctx.lineTo(contactX11, dieCanvas.height * 0.05);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
 
+      // let contactPoint = -(contactY / (y3 - y2)) * 100;
+      // ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      ctx.strokeStyle = "red";
+      ctx.moveTo(contactX11,  y3-(x3-contactX1));
+      ctx.lineTo(contactX11 + 15,  y3-(x3-contactX1));
+      ctx.stroke();
+      ctx.font = "11px Arial";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "left";
+      ctx.fillText(`Wire Contact at Approach`, contactX11 + 20 , y3-(x3-contactX1));
+    };
+    
+    
     const rRate = (d1, d2) => (1 - Math.pow(d2, 2) / Math.pow(d1, 2)) * 100;
     const eRate = (d1, d2) => (Math.pow(d1, 2) / Math.pow(d2, 2) - 1) * 100;
     const deltaF = (R, ang) => {
