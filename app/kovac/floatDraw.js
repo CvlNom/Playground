@@ -3,16 +3,21 @@ import { useEffect, useState } from "react";
 
 const FloatSimulation = () => {
   const [inputValues, setInputValues] = useState({
-    input1: 2.54,
-    input2: 2.18,
-    input3: 30,
+    input1: 2.62,
+    input2: 2.195,
+    input3: 28,
     input4: 30,
     input5: 25,
     input6: 25,
-    input7: 2.34,
-    input8: 2.02,
-    input9: 2.28,
-    input10: 12,
+    input7: 2.38,
+    input8: 1.987,
+    input9: 2.2,
+    input10: 12.0,
+    input21: 5.2,
+    input22: 3.5,
+    input23: 170,
+    input24: 0,
+    input25: 0,
   });
 
   const [selectedRadio, setSelectedRadio] = useState("option2");
@@ -24,8 +29,8 @@ const FloatSimulation = () => {
 
     // 특정 입력 필드(input10)에 대해서만 범위 제한
     if (name === "input10") {
-      if (numValue < 10.5) numValue = 10.5;
-      if (numValue > 13.5) numValue = 13.5;
+      if (numValue < 11.5) numValue = 11.5;
+      if (numValue > 12.0) numValue = 12.0;
     }
     setInputValues({
       ...inputValues,
@@ -55,183 +60,125 @@ const FloatSimulation = () => {
   }, [inputValues, selectedRadio, selectedRadio0]);
 
   function drawProfile() {
-    let scale, iW, hD;
-    let dieH, dieOD;
-
-    // 라디오버튼 블랭크 타입 선택 시 닙 사이즈 및 스케일 설정
-    // hD는 다이스 홀 사이즈
-
-    if (selectedRadio0 === "option1") {
-      switch (selectedRadio) {
-        case "option1":
-          scale = 170;
-          dieH = 2.5 * scale;
-          dieOD = 5.2 * scale;
-          iW = (inputValues.input1 / 2) * scale;
-          hD = (inputValues.input2 / 2) * scale;
-          break;
-        case "option2":
-          scale = 170;
-          dieH = 3.5 * scale;
-          dieOD = 5.2 * scale;
-          iW = (inputValues.input1 / 2) * scale;
-          hD = (inputValues.input2 / 2) * scale;
-          break;
-        case "option3":
-          scale = 140;
-          dieH = 3.86 * scale;
-          dieOD = 6.8 * scale;
-          iW = (inputValues.input1 / 2) * scale;
-          hD = (inputValues.input2 / 2) * scale;
-          break;
-        case "option4":
-          scale = 120;
-          dieH = 5.3 * scale;
-          dieOD = 6.8 * scale;
-          iW = (inputValues.input1 / 2) * scale;
-          hD = (inputValues.input2 / 2) * scale;
-          break;
-        case "option5":
-          scale = 300;
-          dieH = 5.3 * scale;
-          dieOD = 6.8 * scale;
-          iW = (inputValues.input1 / 2) * scale;
-          hD = (inputValues.input2 / 2) * scale;
-          break;
-      }
-    } else {
-      scale = 50;
-      dieH = inputBlank.input1 * scale;
-      dieOD = inputBlank.input2 * scale;
-      iW = (inputValues.input1 / 2) * scale;
-      hD = (inputValues.input2 / 2) * scale;
-    }
-    
-    
+    // 변수 셋팅
+    let scale, tube_OR, die_hR, dieB_H, dieB_OD, X0, Y0 // Origin Coordinate
+    scale = inputValues.input23;
+    dieB_H = inputValues.input22 * scale;
+    dieB_OD = inputValues.input21 * scale;
+    tube_OR = (inputValues.input1 / 2) * scale;
+    die_hR = (inputValues.input2 / 2) * scale;
     
     // Define constants used in calculations
-    const rAngle = inputValues.input3 / 2;
-    const bL = (inputValues.input4 / 100) * hD * 2;
-    const brL = (inputValues.input5 / 100) * hD * 2;
-    const aL = (inputValues.input5 / 100) * hD * 2;
-    const tID = (inputValues.input7 / 2) * scale;
+    const red_Angle = inputValues.input3 / 2;
+    const bearing_L = (inputValues.input4 / 100) * die_hR * 2;
+    const backRelief_L = (inputValues.input5 / 100) * die_hR * 2;
+    const approach_L = (inputValues.input5 / 100) * die_hR * 2;
+    const tube_IR = (inputValues.input7 / 2) * scale;
     const PI = Math.PI;
-    const BACK_ANGLE = 30; // Convert degrees to radians
-    const AP_ANGLE = 40;
+    const back_ANGLE = 30; // Convert degrees to radians
+    const approach_ANGLE = 40;
     const dieCanvas = document.getElementById("dieCanvas");
     const ctx = dieCanvas.getContext("2d");
     ctx.clearRect(0, 0, dieCanvas.width, dieCanvas.height);
-
-    // Define some coordinate variables
-    const X0 = dieCanvas.width / 2;
-    const Y0 = dieCanvas.height * 0.9;
-    const x1 = X0 - hD - brL * Math.tan((BACK_ANGLE * PI) / 180);
-    const x2 = X0 - hD;
-    const y1 = Y0 - brL;
-    const y2 = Y0 - (brL + bL);
+    X0 = (dieCanvas.width /2) + (inputValues.input24 * scale);
+    Y0 = (dieCanvas.height * 0.9) - (inputValues.input25 * scale);
+    const x1 = die_hR + backRelief_L * Math.tan((back_ANGLE * PI) / 180);
+    const x2 = die_hR;
+    const y1 = Y0 - backRelief_L;
+    const y2 = Y0 - (backRelief_L + bearing_L);
     const x3 =
-      X0 - hD - Math.tan((rAngle * PI) / 180) * (dieH - (bL + brL + aL));
-    const y3 = Y0 - (dieH - aL);
-    const x4 = x3 - aL * Math.tan((AP_ANGLE * PI) / 180);
-    const y4 = Y0 - dieH;
-    const x5 = X0 - dieOD / 2;
-    const x11 = X0 + hD + brL * Math.tan((BACK_ANGLE * PI) / 180);
-    const x12 = X0 + hD;
-    const x13 =
-      X0 + hD + Math.tan((rAngle * PI) / 180) * (dieH - (bL + brL + aL));
-    const x14 = x13 + aL * Math.tan((AP_ANGLE * PI) / 180);
-    const x15 = X0 + dieOD / 2;
-
+      die_hR + Math.tan((red_Angle * PI) / 180) * (dieB_H - (bearing_L + backRelief_L + approach_L));
+    const y3 = Y0 - (dieB_H - approach_L);
+    const x4 = x3 + approach_L * Math.tan((approach_ANGLE * PI) / 180);
+    const y4 = Y0 - dieB_H;
+    const x5 = dieB_OD / 2;
+    
     // Draw the outline of the die
-   
-    ctx.lineWidth = 0.6;
     ctx.strokeStyle = "#000000";
-    ctx.fillStyle = "hsl(0, 0%, 98%)";
+    ctx.fillStyle = "hsl(0, 0%, 80%)";
     ctx.setLineDash([]);
-    ctx.fillStyle = "hsl(0, 0%, 98%)";
-
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2.0;
     ctx.beginPath();
-    ctx.moveTo(x1, Y0);
-    ctx.lineTo(x2, y1);
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(x3, y3);
-    ctx.lineTo(x4, y4);
-    ctx.lineTo(x5, y4);
-    ctx.lineTo(x5, Y0);
+    ctx.moveTo(X0-x1, Y0);
+    ctx.lineTo(X0-x2, y1);
+    ctx.lineTo(X0-x2, y2);
+    ctx.lineTo(X0-x3, y3);
+    ctx.lineTo(X0-x4, y4);
+    ctx.lineTo(X0-x5, y4);
+    ctx.lineTo(X0-x5, Y0);
     ctx.closePath();
     ctx.stroke();
-    ctx.fill();
-
+    ctx.fill();    
     ctx.beginPath();
-    ctx.moveTo(x11, Y0);
-    ctx.lineTo(x12, y1);
-    ctx.lineTo(x12, y2);
-    ctx.lineTo(x13, y3);
-    ctx.lineTo(x14, y4);
-    ctx.lineTo(x15, y4);
-    ctx.lineTo(x15, Y0);
+    ctx.moveTo(X0+x1, Y0);
+    ctx.lineTo(X0+x2, y1);
+    ctx.lineTo(X0+x2, y2);
+    ctx.lineTo(X0+x3, y3);
+    ctx.lineTo(X0+x4, y4);
+    ctx.lineTo(X0+x5, y4);
+    ctx.lineTo(X0+x5, Y0);
     ctx.closePath();
     ctx.stroke();
     ctx.fill();
 
     // Draw divide line for nomenclature
-
     ctx.lineWidth = 0.6;
     ctx.strokeStyle = "black";
     ctx.beginPath();
-    ctx.moveTo(x2 - 10, y1);
-    ctx.lineTo(x5 + 10, y1);
-    ctx.moveTo(x2 - 10, y2);
-    ctx.lineTo(x5 + 10, y2);
-    ctx.moveTo(x3 - 10, y3);
-    ctx.lineTo(x5 + 10, y3);
-    ctx.stroke();
-
-    // Draw Center line
-
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 0.6;
-    ctx.setLineDash([5, 3]);
-    ctx.beginPath();
-    ctx.moveTo(X0, dieCanvas.height * 0.04);
-    ctx.lineTo(X0, dieCanvas.height * 0.96);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(X0-10, Y0);
-    ctx.lineTo(X0+10, Y0);
+    ctx.moveTo(X0-x2 - 10, y1);
+    ctx.lineTo(X0-x5 + 10, y1);
+    ctx.moveTo(X0-x2 - 10, y2);
+    ctx.lineTo(X0-x5 + 10, y2);
+    ctx.moveTo(X0-x3 - 10, y3);
+    ctx.lineTo(X0-x5 + 10, y3);
     ctx.stroke();
 
     // Draw PLUG ---------------------------------------
-
+    // 그리는 방식이 달라짐 좌측과 우측을 X0 기준으로 마이너스 플러스
     let x21, x22, x23, x24, y11, y12, y13, y14, y15, y16;
-    const wT = iW - tID;
-    const p1 = (inputValues.input8 / 2) * scale;
-    const p2 = (inputValues.input9 / 2) * scale;
-    const pa = inputValues.input10;
+    const wall_T = tube_OR - tube_IR; // wall thick = in tube OD  - in tube ID
+    const plug_A = (inputValues.input8 / 2) * scale; // point1 = plug D /2
+    const plug_B = (inputValues.input9 / 2) * scale; // point2 = plug body D / 2
+    const p_Angle = Number(inputValues.input10); // plug_Angle : plug angle
+
     let meet_X, meet_Y;
-    x21 = p1; //플러그 치수 B
-    x22 = p1 - 0.15 * scale; // 플러그 B 앞 모따기
-    x23 = p2; // 플러그 치수 A
+    x21 = plug_A; //플러그 치수 A
+    x22 = plug_A - (Math.tan((30 * PI) / 180) * (0.5 * scale)); // 플러그 B 앞 모따기 (정확한 계산 필요: 각도 30도?)
+    x23 = plug_B; // 플러그 치수 B
+    
     // 플러그 후면 모따기 위치 (15도에 1mm)
-    x24 = p2 - Math.tan((15 * PI) / 180) * (1.0 * scale);
-    // 플러그 안착 지점 y축
-    y11 = y2 - Math.tan(((pa / 2) * PI) / 180) * (hD - p1);
+    x24 = plug_B - Math.tan((15 * PI) / 180) * (1.0 * scale);
+    
+    // 리덕션 플러그 안착 지점 y축 - reduction_Angle??
+    y11 = y2 - Math.tan(((p_Angle / 2) * PI) / 180) * (die_hR - plug_A);
+
     // 플러그 B에서 A 만나는 점 y
-    y14 = y11 - (p2 - p1) / Math.tan((pa * PI) / 180);
+    y14 = y11 - (plug_B - plug_A) / Math.tan((p_Angle * PI) / 180);
     // 플러그 치수 C - 도면 참조
 
-    y13 = y11 + 1.5 * scale;
-    y12 = y13 - 0.15 * scale; // 플러그 모따기 후 y
-    y16 = y13 - 5.5 * scale; // 플러그 전체 길이
-    y15 = y16 + 0.3 * scale; // 플러그 후면 모따기 높이
+    // 플러그 치수 도면에 따른 A 길이 및 전체 길이
+    if (inputValues.input2 > 3.41) {
+      y13 = y11 + (3.0 * scale);
+    } else if (inputValues.input2 > 2.4 ) {
+      y13 = y11 + (2.5 * scale);
+    } else {
+      y13 = y11 + (2.0 * scale);
+    }
+
+    if (inputValues.input2 > 2.75) {
+      y16 = y13 - ( 11 * scale);
+    } else {
+      y16 = y13 - ( 10 * scale);
+    }
+  
+    // 모따기 부분은 상세하게 각도를 그리지 않음. - 참조
+    y12 = y13 - 0.4 * scale; // 플러그 모따기 후 y
+    y15 = y16 + 1 * scale; // 플러그 후면 모따기 높이
 
     ctx.beginPath();
-    ctx.lineWidth = 0.6;
-    ctx.strokeStyle = "gray";
+    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = "black";
     ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(43, 147, 233, 0.22)";
-
     ctx.moveTo(X0, y13);
     ctx.lineTo(X0 - x22, y13);
     ctx.lineTo(X0 - x21, y12);
@@ -249,72 +196,37 @@ const FloatSimulation = () => {
     ctx.lineTo(X0, y13);
     ctx.stroke();
     ctx.fill();
-
-    //---------------------------------------------
+    // End of Draw Plug ------------------------------------
     
-    // Draw Tube - 외경
-    let contactX = iW - hD;
-    let contactX1 = X0 - iW;
-    let contactX11 = X0 + iW;
-    let contactY = contactX / Math.tan((rAngle * PI) / 180);
-    let contactY1 = Y0 - (contactY + bL + brL);
 
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "blue";
-    ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(43, 147, 233, 0.12)";
-
-    ctx.moveTo(contactX1, dieCanvas.height * 0.03);
-    ctx.lineTo(contactX1, contactY1);
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(x2, dieCanvas.height * 0.98);
-    ctx.stroke();
-
-    ctx.moveTo(x12, dieCanvas.height * 0.98);
-    ctx.lineTo(x12, y2);
-    ctx.lineTo(contactX11, contactY1);
-    ctx.lineTo(contactX11, dieCanvas.height * 0.03);
-    ctx.stroke();
-    //-----------------------------------------------------------------
+    // Draw Tube ------------------------------------------- 
+    // 외측 변수
+    // 베아링에서 컨택트 점까지의 거리를 구하기 위함. 코놉티카 각도 검사 거리 파악
+    let contactX = tube_OR - die_hR; //??
+    let contactY = contactX / Math.tan((red_Angle * PI) / 180);
     
-    // Draw Tube 내경---------------------------------------------
+    let contactX1 = X0 - tube_OR;
+    let contactX11 = X0 + tube_OR;
 
-    const idY = Math.tan(((rAngle / 2) * PI) / 180) * (iW - tID);
-    const x111 = contactX1 + wT;
+    // 리덕션에서 접촉할 때 y 좌표 및 내면 높이
+    let contactY1 = Y0 - (contactY + bearing_L + backRelief_L);
+    const idY = Math.tan(((red_Angle / 2) * PI) / 180) * (tube_OR - tube_IR);
+    const x111 = contactX1 + wall_T; // ?? 튜브 내경 x111 = tube_IR
     const y111 = contactY1 - idY;
-    const x222 = contactX11 - wT;
+    
 
-    // 튜브 내면이 꺽이는 점 (x111, y111), 기울기 tan(90 + rAngle)
-    // 플러그 꺽이는 점 (x21, Y0-y11)
-    // const plugAngle = inputValues.input10 + 90;
-    const m2 = Math.tan(((rAngle + 90) * PI) / 180);
 
-    let m1;
-    if (inputValues.input10 == 10.5) {
-      m1 = -5.3955;
-    } else if (inputValues.input10 == 11) {
-      m1 = -5.1446;
-    } else if (inputValues.input10 == 11.5) {
-      m1 = -4.9152;
-    } else if (inputValues.input10 == 12) {
-      m1 = -4.7046;
-    } else if (inputValues.input10 == 12.5) {
-      m1 = -4.5107;
-    } else if (inputValues.input10 == 13) {
-      m1 = -4.3315;
-    } else {
-      m1 = -4.1653;
-    }
 
-    // if (plugAngle % 180 === 90) {
-    //   m1 = null; // 무한 기울기 (수직선)
-    // } else {
-    //   m1 = Math.tan((plugAngle * Math.PI) / 180);
-    // }
 
-    // const m1 = Math.tan((plugAngle * PI) / 180);
-    let a1, a2, b1, b2;
+
+
+    // 플러그 앵글의 기울기
+    const m1 = Math.tan(((p_Angle + 90) * Math.PI) / 180);
+    // 리덕션 앵글의 기울기
+    const m2 = Math.tan(((red_Angle + 90) * PI) / 180);
+    
+    // 두 직선이 만나는 점 구하기 - 어떻게 구했는지 생각이 안남, 직선 방정식 y = ax + b??
+    let a1, a2, a3, b1, b2, b3;
     a2 = -(X0 - x111);
     b2 = Y0 - y111;
     a1 = -(X0 - (X0 - x21));
@@ -322,153 +234,253 @@ const FloatSimulation = () => {
     const meet_x = (m1 * a1 - b1 - m2 * a2 + b2) / (m1 - m2);
     const meet_y = m1 * meet_x - m1 * a1 + b1;
     
-    // ctx.beginPath();
-    // ctx.lineWidth = 0.8;
-    // ctx.strokeStyle = "blue";
-    // ctx.moveTo(x111, dieCanvas.height * 0.03);
-    // ctx.lineTo(x111, y111);
-    // ctx.lineTo(X0 + meet_x, Y0 - meet_y);
-    // ctx.lineTo(X0 - x21, y11);
-    // ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
-    // ctx.stroke();
-    // 좌측 내면
-    // 조건문으로 meet_x가 x21 범위를 벗어났을 때 메시지 표시 및 그리기 Bypass하도록...
-    //console.log(`루프밖 - a1: ${a1}, b1: ${b1}, a2: ${X0-x13}, b2: ${Y0-y14}, _x: ${meet_x}, _y${meet_y}`);
     
-    if (meet_y > b1 && meet_y < Y0 - y14 && meet_x > X0-x13 && meet_x < a1) {
-      let plugContact = ((meet_y - b1) / (Y0 - y14 - b1)) * 100;
-      // console.log(`참---- meet_x: ${meet_x}, meet_y: ${meet_y}`);
-      
-      ctx.beginPath();
-      ctx.lineWidth = 0.8;
-      ctx.strokeStyle = "blue";
+    
+    
+    // m3 : 어프로치 앵글의 기울기
+    const m3 = Math.tan((130 * PI) / 180);
+    console.log(`변수: ${a1} , ${a2}, ${b1}, ${b2},`);
+    
+    // 조건이 많음. 어프로치 내면 각도가 플러그 경사면을 만날 경우
+    let idY2 = Math.tan((50 * PI) / 180) * (contactX1 - (X0-x3));
+    let contactY2 = y3 + idY2
+    a3 = a2;
+    b3 = Y0 - (contactY2 - idY2 ); // contactY2 번수 정리
 
-      // 좌측
-      ctx.moveTo(x111, dieCanvas.height * 0.03);
-      ctx.lineTo(x111, y111);
-      ctx.lineTo(X0 + meet_x, Y0 - meet_y);
-      ctx.lineTo(X0 - x21, y11);
-      ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
-      ctx.stroke();
+    let idY3 = Math.tan((40 *PI)/180) * (tube_IR-plug_B);
 
-      // 우측
-      ctx.moveTo(x222, dieCanvas.height * 0.03);
-      ctx.lineTo(x222, y111);
-      ctx.lineTo(X0 - meet_x, Y0 - meet_y);
-      ctx.lineTo(X0 + x21, y11);
-      ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
-      ctx.stroke();
-      
-      // 지시선 및 코멘트
-      ctx.beginPath();
-      ctx.lineWidth = 0.15;
-      ctx.setLineDash([5, 2]);
-      ctx.strokeStyle = "red";
-      ctx.moveTo(X0 + meet_x + 5, Y0 - meet_y);
-      ctx.lineTo(X0 + meet_x + 45, Y0 - meet_y);
-      ctx.stroke();
-      ctx.font = "12px Arial";
-      ctx.fillStyle = "red";
-      ctx.textAlign = "left";
-      ctx.fillText(
-        `내면 컨택트 포인트: ${plugContact.toFixed(1)}%`,
-        X0 + meet_x + 55,
-        Y0 - meet_y
-      );
+
+    // 어프로치 내면 각도가 내려가다 플러그 경사를 아직 만나지 않고
+    // 리덕션 내면 경사가 플러그 경사와 만날 경우
+    // 어프로치 내면 각도가 플러그 몸통과 만날 경우
+
+
+
+    // const meet_x = (m1 * a1 - b1 - m2 * a2 + b2) / (m1 - m2);
+    // const meet_y = m1 * meet_x - m1 * a1 + b1;
+    
+    // 내면 컨택트 비율을 구하기 위함
+    let plugContactRatio = ((meet_y - b1) / (Y0 - y14 - b1)) * 100;
+
+    // 리덕션 구간에서 만날 때 내면 컨택트가 바디에서 만날 때
+    let bodyContactY = (tube_IR-x23) / Math.tan(((red_Angle) * PI) / 180) 
+
+
+    // 좌측 튜브 ------------------------
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "blue";
+    ctx.setLineDash([]);
+    ctx.fillStyle = "rgba(43, 147, 233, 0.22)";
+    // 조건 문
+    ctx.moveTo(contactX1, -15);
+    if (contactY1 > y3){
+      // 리덕션 컨택
+      ctx.lineTo(contactX1, contactY1);
     } else {
-      // 플러그 몸통과 만나는 지점을 그려야 함
-      // 탄제트 길이 = (x111-x21)/ tan(15)
-      let bodyContactY = (tID-x23) / Math.tan(((rAngle) * PI) / 180) 
-
-      ctx.beginPath();
-      ctx.lineWidth = 0.8;
-      ctx.strokeStyle = "blue";
-      ctx.moveTo(x111, dieCanvas.height * 0.03);
-      ctx.lineTo(x111, y111);
-      ctx.lineTo(X0-p2, y111+bodyContactY);
-      ctx.lineTo(X0-x23, y14);
-      ctx.lineTo(X0-x21, y11);
-      ctx.lineTo(X0 - x21, dieCanvas.height * 0.98);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = 0.5;
-      ctx.setLineDash([]);
-      ctx.strokeStyle = "red";
-      ctx.moveTo(X0-p2+5, y111+bodyContactY);
-      ctx.lineTo(X0-p2+25, y111+bodyContactY);
-      ctx.stroke();
-
-      ctx.font = "12px Arial";
-      ctx.strokeStyle = "blue";
+      // 어프로치 컨택
+      ctx.lineTo(contactX1, contactY2);
+      ctx.lineTo(X0-x3, y3);
+      // 경고 문구
+      ctx.font = "20px Arial";
       ctx.fillStyle = "red";
-      ctx.textAlign = "left";
-      ctx.fillText(`튜브 내면이 플러그 몸통에 접촉합니다`, X0 - x21 + 5 , y111+bodyContactY);
-
-
-
-      ctx.beginPath();
-      ctx.lineWidth = 0.8;
-      ctx.setLineDash([]);
-      ctx.strokeStyle = "blue";
-      ctx.moveTo(x222, dieCanvas.height * 0.03);
-      ctx.lineTo(x222, y111);
-      ctx.lineTo(X0+p2, y111+bodyContactY);
-      ctx.lineTo(X0+x23, y14);
-      ctx.lineTo(X0+x21, y11);
-      ctx.lineTo(X0 + x21, dieCanvas.height * 0.98);
+      ctx.textAlign = "center";
+      ctx.fillText(`ALERT!! Increase die blank size!!!`, X0, dieCanvas.height/2);
+    }
+    ctx.lineTo(X0-x2, y2);
+    ctx.lineTo(X0-x2, dieCanvas.height+15);
+    ctx.lineTo(X0 - x21, dieCanvas.height+15);
+    ctx.lineTo(X0 - x21, y11);
+    if (Y0-meet_y > y14){
+      // console.log(`True: Y0-meet_y: ${Y0-meet_y}, y14: ${y14}`);
+      
+        ctx.lineTo(X0 + meet_x, Y0 - meet_y);
+        ctx.lineTo(X0-tube_IR, y111);
+        ctx.lineTo(X0-tube_IR, -15);
+        ctx.lineTo(contactX1, -15)
+        ctx.stroke();
+        ctx.fill();
+       
+    } else {
+      // console.log(`False: Y0-meet_y: ${Y0-meet_y}, y14: ${y14}`);
+      ctx.lineTo(X0 - x23, y14);
+      ctx.lineTo(X0 - x23, y111 +bodyContactY);
+      ctx.lineTo(X0-tube_IR, y111);
+      ctx.lineTo(X0-tube_IR, -15);
+      ctx.lineTo(contactX1, -15)
       ctx.stroke();
+      ctx.fill();
 
     }
+    // 좌측 튜브 완료 ----------------------
     
+    // 우측 튜브 ------------------------
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "blue";
+    ctx.setLineDash([]);
+    ctx.fillStyle = "rgba(43, 147, 233, 0.22)";
+    // 조건 문
+    ctx.moveTo(contactX11, -15);
+    if (contactY1 > y3){
+      // 리덕션 컨택
+      ctx.lineTo(contactX11, contactY1);
+    } else {
+      // 어프로치 컨택
+      ctx.lineTo(contactX11, contactY2);
+      ctx.lineTo(X0+x3, y3);
+      // 경고 문구
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "center";
+      ctx.fillText(`ALERT!! Increase die blank size!!!`, X0, dieCanvas.height/2);
+    }
+    ctx.lineTo(X0+x2, y2);
+    ctx.lineTo(X0+x2, dieCanvas.height+15);
+    ctx.lineTo(X0 + x21, dieCanvas.height+15);
+    ctx.lineTo(X0 + x21, y11);
+    if (Y0-meet_y > y14){
+      let plugContact = ((meet_y - b1) / (Y0 - y14 - b1)) * 100;
+      // console.log(`True: Y0-meet_y: ${Y0-meet_y}, y14: ${y14}`);
+      
+        ctx.lineTo(X0 - meet_x, Y0 - meet_y);
+        ctx.lineTo(X0 +tube_IR, y111);
+        ctx.lineTo(X0 + tube_IR, -15);
+        ctx.lineTo(contactX11, -15)
+        ctx.stroke();
+        ctx.fill();
+
+        // 지시선 및 코멘트
+        ctx.beginPath();
+        ctx.lineWidth = 0.8;
+        ctx.setLineDash([5, 2]);
+        ctx.strokeStyle = "red";
+        ctx.moveTo(X0 + meet_x , Y0 - meet_y);
+        ctx.lineTo(X0 + meet_x + 30, Y0 - meet_y);
+        ctx.stroke();
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "blue";
+        ctx.textAlign = "left";
+        ctx.fillText(
+          `플러그 컨택트 포인트: ${plugContact.toFixed(1)}%`,
+          X0 + meet_x + 35,
+          Y0 - meet_y +5
+        );
+       
+    } else {
+      // console.log(`False: Y0-meet_y: ${Y0-meet_y}, y14: ${y14}`);
+      ctx.lineTo(X0 + x23, y14);
+      ctx.lineTo(X0 + x23, y111 +bodyContactY);
+      ctx.lineTo(X0+tube_IR, y111);
+      ctx.lineTo(X0+tube_IR, -15);
+      ctx.lineTo(contactX11, -15)
+      ctx.stroke();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.lineWidth = 0.8;
+      ctx.setLineDash([5, 2]);
+      ctx.strokeStyle = "red";
+      ctx.moveTo(X0-plug_B+5, y111+bodyContactY);
+      ctx.lineTo(X0-plug_B+30, y111+bodyContactY);
+      ctx.stroke();
+
+      ctx.font = "12px Arial";
+      ctx.strokeStyle = "blue";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "left";
+      ctx.fillText(`튜브 내면이 플러그 몸통에 접촉합니다`, X0 - x21 + 25 , y111+bodyContactY+5 );
+
+
+
+    }
+    // 좌측 튜브 완료 ----------------------
+    
+   
+     // Draw Center line
+
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 0.6;
+    ctx.setLineDash([20, 6, 4, 6]);
+    ctx.beginPath();
+    ctx.moveTo(X0, -15);
+    ctx.lineTo(X0, dieCanvas.height + 15);
+    ctx.stroke();
+    ctx.beginPath();
+    // ctx.moveTo(X0-50, Y0);
+    // ctx.lineTo(X0+50, Y0);
+    // ctx.stroke();
     //-----------------------------------------------------------------
 
+    
     let contactPoint = -(contactY / (y3 - y2)) * 100;
-
     //Write contact point Text
     ctx.lineWidth = 1;
     ctx.setLineDash([5, 3]);
     ctx.moveTo(contactX11, contactY1);
     ctx.lineTo(contactX11 + 25, contactY1);
     ctx.stroke();
-    ctx.font = "11px Arial";
-    ctx.fillStyle = "red";
+    ctx.font = "12px Arial";
     ctx.textAlign = "left";
-    ctx.fillText(
-      `Die Contact: ${contactPoint.toFixed(1)}%`,
-      contactX11 + 30,
-      contactY1
-    );
+    if (contactPoint >= 100){
+      ctx.fillStyle = "red";
+      ctx.fillText(
+        `Alert!! 더 큰 블랭크를 적용하세요!`,
+        contactX11 + 30,
+        contactY1 + 2
+      );
+    } else {
+      ctx.fillStyle = "blue";
+      ctx.fillText(
+        `Die Contact: ${contactPoint.toFixed(1)}%`,
+        contactX11 + 30,
+        contactY1 + 2
+      );
+    }
 
+
+    // 컨택트가 어프로치에 부딪히면 조건문으로 2개의 컨택트를 그릴 것!! 260520
+
+    
+    
     let inArea, outArea;
 
-    inArea = iW * iW * PI - tID * tID * PI;
-    outArea = hD * hD * PI - p1 * p1 * PI;
+    inArea = tube_OR * tube_OR * PI - tube_IR * tube_IR * PI;
+    outArea = die_hR * die_hR * PI - plug_A * plug_A * PI;
     const rRate = ((inArea - outArea) / inArea) * 100;
     const eRate = (inArea / outArea - 1) * 100;
-    const gapTB = (tID - p2) / scale;
+    const gapTB = (tube_IR - plug_B) / scale;
 
  
 
     //Write contact point Text
+    // 외경 변화율 추가 필요 2026. 05. 18.
     ctx.font = "14px Arial";
     ctx.fillStyle = "black";
     ctx.textAlign = "left";
     ctx.fillText(`감면율: ${rRate.toFixed(2)}%`, 800, 20);
     ctx.fillText(`연신율: ${eRate.toFixed(2)}%`, 800, 40);
     ctx.fillText(`내경 vs. 플러그 Gap: ${gapTB.toFixed(3)}mm`, 800, 60);
+    const distContact = (y2 - contactY1)/scale;
+    ctx.fillText(`베아링 to 컨택트 거리: ${distContact.toFixed(3)}mm`, 800, 100);
+    const rateDia = ((tube_OR/die_hR)-1)*100;
+    ctx.fillText(`외경 변화율: ${rateDia.toFixed(1)}%`, 800, 80);
 
-    ctx.fillText(`Back Length (⍺:60°)`, x5 + 10, Y0 - (Y0 - y1) / 2 + 3);
-    ctx.fillText(`Bearing Length`, x5 + 10, y1 - (y1 - y2) / 2 + 3);
-    ctx.fillText(`Reduction Length`, x5 + 10, y2 - (y2 - y3) / 2 + 3);
-    ctx.fillText(`Approach(80°)`, x5 + 10, y3 - (y3 - y4) / 2 + 3);
+    if (scale > 100){
+      ctx.fillText(`Back Length (⍺:60°)`, X0 - x5 + 10, Y0 - (Y0 - y1) / 2 + 3);
+      ctx.fillText(`Bearing Length`, X0 - x5 + 10, y1 - (y1 - y2) / 2 + 3);
+      ctx.fillText(`Reduction Length`, X0 - x5 + 10, y2 - (y2 - y3) / 2 + 3);
+      ctx.fillText(`Approach(80°)`, X0 - x5 + 10, y3 - (y3 - y4) / 2 + 3);
+
+    }
+
 
     // 컨택트 포인트와 델타변수에 의한 다이스 내부 색상 변화 (Good, not good, Bad)
     // 감면율, 연신율, 델타변수 캔버스 우측 상단에 텍스트로 표시
 
 
     // 다이스의 구간 표시 및 치수? --------------------------------
-    drawDimVer(x15, y4, x15, Y0, dieH * -0.07, 0, 6, 0);
+    drawDimVer(X0+x5, y4, X0+x5, Y0, dieB_H * -0.04, 0, 7, 0);
     function drawDimVer(dx1, dy1, dx2, dy2, l0, g0, l1, pos) {
       // x값이 큰쪽을 먼저 지정
       ctx.lineWidth = 0.5;
@@ -564,12 +576,12 @@ const FloatSimulation = () => {
   }
 
   return (
-    <div>
+     <div>
       <div className="w-[1000px]">
         <div className="flex flex-row items-center">
           <div>
             <h3 className="px-4 text-2xl text-slate-600 font-bold py-2">
-              Simulate Floating Plug Drawing
+              튜브 심인 시뮬레이션
             </h3>
           </div>
         </div>
@@ -666,8 +678,8 @@ const FloatSimulation = () => {
                 type="number"
                 name="input10"
                 step="0.1"
-                min="11.5"
-                max="12.0"
+                min="11.0"
+                max="12.5"
                 value={inputValues.input10}
                 onChange={handleChange}
               />
@@ -698,12 +710,43 @@ const FloatSimulation = () => {
             </div>
             
           </div>
+          <div className="flex flex-row justify-stretch ">
+            <div className="w-44">
+              <label className="text-slate-500 text-sm mr-4">
+                Blank D(mm) :
+              </label>
+              <input
+                className="w-16 border-gray-700  bg-white border text-center text-sm text-slate-600"
+                type="number"
+                name="input21"
+                step="0.1"
+                value={inputValues.input21}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-52">
+             <label className="text-slate-500 text-sm mr-2.5 ml-5">
+                Blank H(mm) :
+              </label>
+              <input
+                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                type="number"
+                name="input22"
+                step="0.1"
+                min="1"
+                max="12.0"
+                value={inputValues.input22}
+                onChange={handleChange}
+              />
+            </div>
+            
+          </div>
           
         </div>
 
-        <div className=" pl-4 py-4 " id="radio">
+        {/* <div className=" pl-4 py-4 " id="radio">
           <fieldset className="w-[1000px] border-gray-900 border flex flex-row justify-left h-14 items-center pb-2 rounded-md">
-            <legend className="mx-2 px-2 ">다이스 타입 선택 및 확대</legend>
+            <legend className="mx-2 px-2 ">확대 시 축 이동</legend>
             <input
               className="ml-2 mr-1"
               type="radio"
@@ -714,7 +757,7 @@ const FloatSimulation = () => {
               onChange={handleBlankSize}
             />
             <label htmlFor="choice1" className="ml-1 mr-8 text-sm">
-              D15 (ø5.2 - 2.5)
+              스케일: 125
             </label>
             <input
               className="ml-2 mr-1 "
@@ -726,7 +769,7 @@ const FloatSimulation = () => {
               onChange={handleBlankSize}
             />
             <label htmlFor="choice2" className="ml-1 mr-8 text-sm">
-              D18 (ø5.2 - 3.5)
+              스케일: 175
             </label>
             <input
               className="ml-2 mr-1 "
@@ -738,7 +781,7 @@ const FloatSimulation = () => {
               onChange={handleBlankSize}
             />
             <label htmlFor="choice3" className="ml-1 mr-8 text-sm">
-              D21 (ø6.8 - 3.86)
+              스케일: 500
             </label>
             <input
               className="ml-2 mr-1 "
@@ -765,7 +808,9 @@ const FloatSimulation = () => {
               확대 점검
             </label>
           </fieldset>
-        </div>
+        </div> */}
+
+
       </div>
       <div className="m-2 p-1">
         <canvas
@@ -775,6 +820,57 @@ const FloatSimulation = () => {
           height="800"
         ></canvas>
       </div>
+      
+      <div className="flex flex-row justify-stretch ">
+      <div className="w-52">
+              <label className="text-slate-500 text-sm mr-2.5 ml-5">
+                X0 좌표이동:
+              </label>
+              <input
+                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                type="number"
+                name="input24"
+                step="0.1"
+                min="-3"
+                max="+3"
+                value={inputValues.input24}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-60">
+              <label className="text-slate-500 text-sm mr-2.5 ml-5">
+                Y0 좌표이동:
+              </label>
+              <input
+                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                type="number"
+                name="input25"
+                step="0.1"
+                min="-3"
+                max="+3"
+                value={inputValues.input25}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-52">
+             <label className="text-slate-500 text-sm mr-2.5 ml-5">
+                스케일 :
+              </label>
+              <input
+                className="w-16 border-gray-700 border text-center text-sm text-slate-600"
+                type="number"
+                name="input23"
+                step="10"
+                min="50"
+                max="800"
+                value={inputValues.input23}
+                onChange={handleChange}
+              />
+            </div>
+      </div>
+
+
+
       <p className="mt-2 text-sm text-slate-600">
         note: 이 시뮬레이션은 기하학적으로 표현한 것이며, 실제 심인에서는 내면 컨택트 포인트가 더 높아질 것임!!</p>
     </div>
